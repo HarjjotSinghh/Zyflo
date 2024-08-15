@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 8% 5%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 240 8% 5%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 240 8% 5%;
+
+    --primary: 232 86% 51%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 7% 94%;
+    --secondary-foreground: 240 8% 5%;
+
+    --muted: 240 7% 94%;
+    --muted-foreground: 231 6% 45%;
+
+    --accent: 261 94.2% 52.9%;
+    --accent-foreground: 240 8% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 6% 90%;
+    --input: 228 6% 83%;
+    --ring: 232 24% 75%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 180 4% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 3% 6%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 3% 6%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 232 96% 56%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 2% 12%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 2% 18%;
+    --muted-foreground: 228 2% 49%;
+
+    --accent: 261 94.2% 52.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 2% 12%;
+    --input: 240 2% 18%;
+    --ring: 232 96% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1 {
+    @apply text-3xl font-extrabold tracking-tighter md:text-5xl lg:text-6xl xl:text-7xl;
+  }
+  h2 {
+    @apply text-2xl font-extrabold tracking-tighter md:text-4xl lg:text-5xl xl:text-6xl;
+  }
+  h3 {
+    @apply text-xl font-extrabold tracking-tighter md:text-3xl lg:text-4xl xl:text-5xl;
+  }
+  h4 {
+    @apply text-lg font-extrabold tracking-tight md:text-2xl lg:text-3xl xl:text-4xl;
+  }
+  h5 {
+    @apply text-lg font-extrabold tracking-tight md:text-xl lg:text-2xl xl:text-3xl;
+  }
+  h6 {
+    @apply text-base font-extrabold tracking-tight md:text-lg lg:text-xl xl:text-2xl;
+  }
+  a {
+    @apply text-primary/80 hover:text-primary;
+  }
+}
+
+@font-face {
+  font-family: "Zyflo";
+  src: url("../assets/fonts/ITCAvantGardeStd-Bk.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Zyflo";
+  src: url("../assets/fonts/ITCAvantGardeStd-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Zyflo";
+  src: url("../assets/fonts/ITCAvantGardeStd-Demi.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Zyflo";
+  src: url("../assets/fonts/ITCAvantGardeStd-Md.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Zyflo";
+  src: url("../assets/fonts/ITCAvantGardeStd-XLt.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
