@@ -22,13 +22,13 @@ module.exports = {
     screens: {
       xxxxs: "200px",
       xxxs: "320px",
-      xxs: "562px",
-      xs: "640px",
-      sm: "768px",
-      md: "1024px",
-      lg: "1280px",
-      xl: "1536px",
-      "2xl": "2048px"
+      xxs: "480px",
+      xs: "562px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1536px"
     },
     extend: {
       colors: {

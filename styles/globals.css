@@ -1,10 +1,41 @@
 @tailwind base;
+html {
+  scroll-behavior: smooth !important;
+  scroll-padding-top: 60px;
+  word-break: normal;
+}
+
+::selection {
+  /* color: hsl(var(--foreground) / 0.95); */
+  background: hsl(var(--primary) / 0.4);
+}
+
+* {
+  scrollbar-width: auto;
+  scrollbar-color: hsl(var(--primary) / 0.9) hsl(var(--background));
+}
+
+*::-webkit-scrollbar {
+  width: 24px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--accent));
+  border-radius: 24px;
+  border: 3px solid hsl(var(--primary));
+}
+
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 98%;
+    --background: 198 74% 98%;
     --foreground: 240 8% 5%;
 
     --card: 0 0% 98%;
@@ -16,7 +47,7 @@
     --primary: 232 86% 51%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 7% 94%;
+    --secondary: 221 64% 95%;
     --secondary-foreground: 240 8% 5%;
 
     --muted: 240 7% 94%;
@@ -28,15 +59,15 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 6% 90%;
-    --input: 228 6% 83%;
-    --ring: 232 24% 75%;
+    --border: var(--primary);
+    --input: var(--primary);
+    --ring: var(--primary);
 
-    --radius: 0.5rem;
+    --radius: 0.6em;
   }
 
   .dark {
-    --background: 214 33% 7%;
+    --background: 232 70% 5%;
     --foreground: 0 0% 98%;
 
     --card: 240 3% 6%;
@@ -48,7 +79,7 @@
     --primary: 232 96% 56%;
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 240 2% 12%;
+    --secondary: 214 15% 10%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 240 2% 18%;
@@ -60,9 +91,9 @@
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 2% 12%;
-    --input: 240 2% 18%;
-    --ring: 232 96% 40%;
+    --border: var(--primary);
+    --input: var(--primary);
+    --ring: var(--primary);
   }
 }
 

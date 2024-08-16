@@ -19,27 +19,14 @@ export default async function MarketingLayout({
       <ZyfloNavbar
         logoText={{ text: "Zyflo", as: "h4" }}
         logo={{
-          src: "/images/logos/zyflo-logo-transparent-black-background.svg",
+          src: "/images/logos/normal-zyflo-logo-transparent.svg",
           alt: "Logo",
           width: 300,
           height: 100
         }}
         items={marketingConfig.mainNav}
         srOnly={true}
-        mobileNavFooter={
-          <div className="flex justify-start">
-            <Link
-              href="/"
-              className={cn(
-                buttonVariants({ variant: "secondary", size: "sm" }),
-                "px-4"
-              )}
-            >
-              Login
-            </Link>
-          </div>
-        }
-        mobileNavbarCentred={true}
+        mobileNavbarCentred={false}
         sticky={true}
         // disableAnimations
       />

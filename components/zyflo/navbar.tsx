@@ -517,7 +517,7 @@ export default function ZyfloNavbar({
                       whileInView="animate"
                       viewport={{ once: true }}
                       key={item.title + " " + (index + 1).toString()}
-                      className={`w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary text-${
+                      className={`w-fit text-foreground/80 zyflo-transition hover:text-primary text-${
                         mobileNavbarCentred ? "center" : "left"
                       }`}
                     >
@@ -539,7 +539,7 @@ export default function ZyfloNavbar({
                   items.map((item, index) => (
                     <li
                       key={item.title + " " + (index + 1).toString()}
-                      className={`w-fit text-foreground/80 transition-all duration-300 ease-in-out hover:text-primary text-${
+                      className={`w-fit text-foreground/80 zyflo-transition hover:text-primary text-${
                         mobileNavbarCentred ? "center" : "left"
                       }`}
                     >

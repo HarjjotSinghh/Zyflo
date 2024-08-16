@@ -49,7 +49,7 @@ export const zyfloFadeBlurInFromRightVariants: ZyfloVariants = {
     name: "zyfloFadeBlurInFromRight",
     initial: {
         opacity: 0,
-        x: -45,
+        x: -48,
         filter: `blur(3px)`
     },
     animate: (index) => ({
@@ -58,7 +58,7 @@ export const zyfloFadeBlurInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -68,7 +68,7 @@ export const zyfloFadeBlurInFromTopVariants: ZyfloVariants = {
     name: "zyfloFadeBlurInFromTop",
     initial: {
         opacity: 0,
-        y: -45,
+        y: -48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -77,7 +77,7 @@ export const zyfloFadeBlurInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -87,7 +87,7 @@ export const zyfloFadeBlurInFromLeftVariants: ZyfloVariants = {
     name: "zyfloFadeBlurInFromLeft",
     initial: {
         opacity: 0,
-        x: 45,
+        x: 48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -96,7 +96,7 @@ export const zyfloFadeBlurInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -106,7 +106,7 @@ export const zyfloFadeBlurInFromBottomVariants: ZyfloVariants = {
     name: "zyfloFadeBlurInFromBottom",
     initial: {
         opacity: 0,
-        y: 45,
+        y: 48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -115,7 +115,7 @@ export const zyfloFadeBlurInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 }
@@ -129,7 +129,7 @@ export const zyfloFadeInFromRightVariants: ZyfloVariants = {
     name: "zyfloFadeInFromRight",
     initial: {
         opacity: 0,
-        x: -45,
+        x: -48,
         filter: "blur(0px)"
     },
     animate: (index) => ({
@@ -138,7 +138,7 @@ export const zyfloFadeInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -148,7 +148,7 @@ export const zyfloFadeInFromLeftVariants: ZyfloVariants = {
     name: "zyfloFadeInFromLeft",
     initial: {
         opacity: 0,
-        x: 45,
+        x: 48,
         filter: "blur(0px)"
     },
     animate: (index) => ({
@@ -157,7 +157,7 @@ export const zyfloFadeInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -167,7 +167,7 @@ export const zyfloFadeInFromTopVariants: ZyfloVariants = {
     name: "zyfloFadeInFromTop",
     initial: {
         opacity: 0,
-        y: -45,
+        y: -48,
         filter: "blur(0px)"
     },
     animate: (index) => ({
@@ -176,7 +176,7 @@ export const zyfloFadeInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 }
@@ -186,7 +186,7 @@ export const zyfloFadeInFromBottomVariants: ZyfloVariants = {
     name: "zyfloFadeInFromBottom",
     initial: {
         opacity: 0,
-        y: 45,
+        y: 48,
         filter: "blur(0px)"
     },
     animate: (index) => ({
@@ -195,7 +195,7 @@ export const zyfloFadeInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 }
@@ -209,7 +209,7 @@ export const zyfloScaleInFromLeftVariants: ZyfloVariants = {
     name: "zyfloScaleInFromLeft",
     initial: {
         opacity: 0,
-        x: 45,
+        x: 48,
         scale: 0.5
     },
     animate: (index) => ({
@@ -218,7 +218,7 @@ export const zyfloScaleInFromLeftVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -228,7 +228,7 @@ export const zyfloScaleInFromRightVariants: ZyfloVariants = {
     name: "zyfloScaleInFromRight",
     initial: {
         opacity: 0,
-        x: -45,
+        x: -48,
         scale: 0.5
     },
     animate: (index) => ({
@@ -237,7 +237,7 @@ export const zyfloScaleInFromRightVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -247,7 +247,7 @@ export const zyfloScaleInFromTopVariants: ZyfloVariants = {
     name: "zyfloScaleInFromTop",
     initial: {
         opacity: 0,
-        y: -45,
+        y: -48,
         scale: 0.5
     },
     animate: (index) => ({
@@ -256,7 +256,7 @@ export const zyfloScaleInFromTopVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -266,7 +266,7 @@ export const zyfloScaleInFromBottomVariants: ZyfloVariants = {
     name: "zyfloScaleInFromBottom",
     initial: {
         opacity: 0,
-        y: 45,
+        y: 48,
         scale: 0.5
     },
     animate: (index) => ({
@@ -275,7 +275,41 @@ export const zyfloScaleInFromBottomVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
+        }
+    })
+};
+
+export const zyfloScaleInVariants: ZyfloVariants = {
+    name: "zyfloScaleIn",
+    initial: {
+        opacity: 0,
+        scale: 0.5
+    },
+    animate: (index) => ({
+        opacity: 1,
+        scale: 1,
+        transition: {
+            ease: "easeInOut",
+            delay: 0.3 * index
+        }
+    })
+};
+
+export const zyfloBlurScaleInVariants: ZyfloVariants = {
+    name: "zyfloBlurScaleIn",
+    initial: {
+        opacity: 0,
+        filter: "blur(3px)",
+        scale: 0
+    },
+    animate: (index) => ({
+        opacity: 1,
+        filter: "blur(0px)",
+        scale: 1,
+        transition: {
+            ease: "easeInOut",
+            delay: 0.3 * index
         }
     })
 };
@@ -289,7 +323,7 @@ export const zyfloBlurInFromRightVariants: ZyfloVariants = {
     name: "zyfloBlurInFromRight",
     initial: {
         opacity: 0,
-        x: -45,
+        x: -48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -298,7 +332,7 @@ export const zyfloBlurInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -308,7 +342,7 @@ export const zyfloBlurInFromLeftVariants: ZyfloVariants = {
     name: "zyfloBlurInFromLeft",
     initial: {
         opacity: 0,
-        x: 45,
+        x: 48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -317,7 +351,7 @@ export const zyfloBlurInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -327,7 +361,7 @@ export const zyfloBlurInFromTopVariants: ZyfloVariants = {
     name: "zyfloBlurInFromTop",
     initial: {
         opacity: 0,
-        y: -45,
+        y: -48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -336,7 +370,7 @@ export const zyfloBlurInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
@@ -346,7 +380,7 @@ export const zyfloBlurInFromBottomVariants: ZyfloVariants = {
     name: "zyfloBlurInFromBottom",
     initial: {
         opacity: 0,
-        y: 45,
+        y: 48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -355,7 +389,7 @@ export const zyfloBlurInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.25 * index
+            delay: 0.3 * index
         }
     })
 };
