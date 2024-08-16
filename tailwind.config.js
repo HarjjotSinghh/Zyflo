@@ -6,7 +6,9 @@ module.exports = {
     "./app/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
     "./ui/**/*.{ts,tsx}",
-    "./content/**/*.{md,mdx}"
+    "./contents/**/*.{md,mdx}",
+    "./contents/**/**/*.{md,mdx}",
+    "./config/**/*.{ts,tsx}"
   ],
   darkMode: ["class"],
   theme: {
@@ -17,6 +19,17 @@ module.exports = {
         "2xl": "1400px"
       }
     },
+    screens: {
+      xxxxs: "200px",
+      xxxs: "320px",
+      xxs: "562px",
+      xs: "640px",
+      sm: "768px",
+      md: "1024px",
+      lg: "1280px",
+      xl: "1536px",
+      "2xl": "2048px"
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -26,7 +39,18 @@ module.exports = {
         foreground: "hsl(var(--foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))"
+          foreground: "hsl(var(--primary-foreground))",
+          50: "#e8f4ff",
+          100: "#d5eaff",
+          200: "#b3d6ff",
+          300: "#85b9ff",
+          400: "#568cff",
+          500: "#2f61ff",
+          600: "#0c2fff",
+          700: "#1131ff",
+          800: "#0624cd",
+          900: "#10299f",
+          950: "#0a165c"
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -42,7 +66,18 @@ module.exports = {
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))"
+          foreground: "hsl(var(--accent-foreground))",
+          50: "#f3f1ff",
+          100: "#eae5ff",
+          200: "#d7cfff",
+          300: "#baa9ff",
+          400: "#9878ff",
+          500: "#7941ff",
+          600: "#6b1bff",
+          700: "#6516f8",
+          800: "#4d07d0",
+          900: "#4108aa",
+          950: "#250174"
         },
         popover: {
           DEFAULT: "hsl(var(--popover))",
@@ -55,8 +90,8 @@ module.exports = {
       },
       borderRadius: {
         lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: "calc(var(--radius) - 4px)"
+        md: `calc(var(--radius) - 3px)`,
+        sm: "calc(var(--radius) - 6px)"
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
@@ -74,10 +109,24 @@ module.exports = {
         }
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out"
+        "accordion-down": "accordion-down 0.4s ease-out",
+        "accordion-up": "accordion-up 0.4s ease-out"
       }
     }
   },
-  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")]
+  safelist: ["zyflo-transition"],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography"),
+    require("tailwindcss-easing"),
+    ({ addUtilities }) => {
+      addUtilities({
+        ".zyflo-transition": {
+          "transition-timing-function": "cubic-bezier(0.12, 0, 0.39, 0)",
+          "transition-duration": "200ms",
+          "transition-property": "all"
+        }
+      })
+    }
+  ]
 }

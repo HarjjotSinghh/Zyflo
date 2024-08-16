@@ -127,7 +127,7 @@ export const Author = defineDocumentType(() => ({
 
 export const Page = defineDocumentType(() => ({
   name: "Page",
-  filePathPattern: `pages/**/*.mdx`,
+  filePathPattern: `contents/docs/**/*.mdx`,
   contentType: "mdx",
   fields: {
     title: {
@@ -142,7 +142,7 @@ export const Page = defineDocumentType(() => ({
 }))
 
 export default makeSource({
-  contentDirPath: "./content",
+  contentDirPath: "./contents",
   documentTypes: [Page, Doc, Guide, Post, Author],
   mdx: {
     remarkPlugins: [remarkGfm],

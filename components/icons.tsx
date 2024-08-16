@@ -9,7 +9,7 @@ import {
   File,
   FileText,
   HelpCircle,
-  Image,
+  Image as LucideImage,
   Laptop,
   Loader2,
   LucideProps,
@@ -23,13 +23,56 @@ import {
   Twitter,
   User,
   X,
-  type Icon as LucideIcon,
+  type Icon as LucideIcon
 } from "lucide-react"
 
-export type Icon = LucideIcon
+import Image from "next/image"
+
+const ZyfloLogo = () => {
+  return (
+    <div>
+      <Image
+        src="/images/logos/zyflo-logo-transparent-black-background.svg"
+        alt="Logo"
+        width={300}
+        height={100}
+        className="hidden h-12 w-auto brightness-125 transition-all duration-200 ease-in-out-sine dark:block"
+      />
+      <Image
+        src="/images/logos/zyflo-logo-transparent-white-background.svg"
+        alt="Logo"
+        width={300}
+        height={100}
+        className="block h-12 w-auto dark:hidden"
+      />
+    </div>
+  )
+}
+
+export const ZyfloIcon = () => {
+  return (
+    <>
+      <Image
+        src="/images/logos/zyflo-icon-black-bakground.svg"
+        alt="Logo"
+        width={300}
+        height={100}
+        className="hidden h-12 w-auto transition-all duration-200 ease-in-out-sine dark:block"
+      />
+      <Image
+        src="/images/logos/zyflo-icon-white-bakground.svg"
+        alt="Logo"
+        width={300}
+        height={100}
+        className="block h-12 w-auto dark:hidden"
+      />
+    </>
+  )
+}
 
 export const Icons = {
-  logo: Command,
+  logo: ZyfloLogo,
+  logoIcon: ZyfloIcon,
   close: X,
   spinner: Loader2,
   chevronLeft: ChevronLeft,
@@ -37,7 +80,7 @@ export const Icons = {
   trash: Trash,
   post: FileText,
   page: File,
-  media: Image,
+  media: LucideImage,
   settings: Settings,
   billing: CreditCard,
   ellipsis: MoreVertical,
@@ -68,5 +111,5 @@ export const Icons = {
     </svg>
   ),
   twitter: Twitter,
-  check: Check,
+  check: Check
 }

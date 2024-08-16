@@ -31,7 +31,9 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    "lib/markdown.js",
+    "contents/docs/getting-started/command-line-interface.mdx"
   ],
   "exclude": ["node_modules"]
 }

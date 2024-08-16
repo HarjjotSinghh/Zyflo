@@ -1,13 +1,10 @@
-import { Inter as FontSans } from "next/font/google"
-import localFont from "next/font/local"
-
 import "@/styles/globals.css"
+import "@/styles/prism.css"
 import { siteConfig } from "@/config/site"
-import { absoluteUrl, cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
-import { Analytics } from "@/components/analytics"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
+import Head from "next/head"
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -66,7 +63,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={"min-h-screen bg-background font-zyflo antialiased"}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <Analytics />
           <Toaster />
           <TailwindIndicator />
         </ThemeProvider>

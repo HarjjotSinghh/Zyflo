@@ -1,0 +1,143 @@
+---
+title: Installation
+description: Install Zyflo in your Next.js project.
+---
+
+#### Prerequisites
+
+Before you begin, ensure that your project meets the following prerequisites:
+
+1. <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a> version 16 or higher
+2. <a href="https://nextjs.org/docs/getting-started" target="_blank">Next.js</a> version 13 or higher
+3. <a href="https://reactjs.org/" target="_blank">React</a> version 18 or higher
+4. <a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> version 3 or higher
+5. <a href="https://pnpm.io/" target="_blank">ShadcnUI</a> initialized/configured in the project
+
+<ZyfloAlert
+  alertTitle={{
+    title: "Title",
+    as: "h5",
+    label: "Label"
+  }}
+  alertDescription={{
+    description: "Please follow these links for more info and detailed installation instructions for each of these prerequisites. You can continue with the installation process once you have completed the prerequisites.",
+    as: "p"
+  }}
+  alertIcon={{
+    type: "info"
+  }}
+  alertType="info"
+  disableAnimations={false}
+/>
+
+
+#### Create Config File 
+
+To get started with Zyflo, follow these steps:
+- Create a file called <code>zyflo.config.ts</code> n your project's root directory.
+- Copy and paste the following code into the <code>zyflo.config.ts</code> file: 
+
+<ComponentSource>
+```tsx showLineNumbers wrap
+/ * Zyflo Config File */
+
+// Zyflo Variant
+interface ZyfloVariant {
+    [key: string]: any;
+}
+
+// Zyflo Variants
+interface ZyfloVariants {
+    name: string;
+    initial: ZyfloVariant;
+    animate: (index: number) => ZyfloVariant;
+}
+
+/* 
+ * Blur Variants
+*/
+
+// * Blur In From Right
+export const zyfloBlurInFromRightVariants: ZyfloVariants = {
+    name: "zyfloBlurInFromRight",
+    initial: {
+        opacity: 0,
+        x: 50,
+        filter: "blur(3px)"
+    },
+    animate: (index) => ({
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        transition: {
+            ease: "circInOut",
+            delay: 0.15 * index
+        }
+    })
+};
+
+// * Blur In From Left
+export const zyfloBlurInFromLeftVariants: ZyfloVariants = {
+    name: "zyfloBlurInFromLeft",
+    initial: {
+        opacity: 0,
+        x: -50,
+        filter: "blur(3px)"
+    },
+    animate: (index) => ({
+        opacity: 1,
+        x: 0,
+        filter: "blur(0px)",
+        transition: {
+            ease: "circInOut",
+            delay: 0.15 * index
+        }
+    })
+};
+
+// * Blur In From Top
+export const zyfloBlurInFromTopVariants: ZyfloVariants = {
+    name: "zyfloBlurInFromTop",
+    initial: {
+        opacity: 0,
+        y: 50,
+        filter: "blur(3px)"
+    },
+    animate: (index) => ({
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: {
+            ease: "circInOut",
+            delay: 0.15 * index
+        }
+    })
+};
+
+// * Blur In From Bottom
+export const zyfloBlurInFromBottomVariants: ZyfloVariants = {
+    name: "zyfloBlurInFromBottom",
+    initial: {
+        opacity: 0,
+        y: -50,
+        filter: "blur(3px)"
+    },
+    animate: (index) => ({
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        transition: {
+            ease: "circInOut",
+            delay: 0.15 * index
+        }
+    })
+};
+
+```
+</ComponentSource>
+
+#### Start Adding Zyflo Components
+Once you have added the config file, you can start adding Zyflo components to your project. Zyflo provides a set of components that you can use to build your UI. You can find the list of available components in the [Components](/docs/components) section of the documentation.
+
+The basic idea we follow is similar to how <a href="https://ui.shadcn.com" target="_blank">shadcnUI</a> and <a href="https://ui.aceternity.com" target="_blank">Aceternity UI</a> work. We use Tailwind CSS to style the components and provide a set of pre-defined variants for each component. This allows you to easily customize the appearance and functionality of the components based on your requirements.   
+

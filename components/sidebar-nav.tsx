@@ -36,7 +36,7 @@ interface DocsSidebarNavItemsProps {
 
 export function DocsSidebarNavItems({
   items,
-  pathname,
+  pathname
 }: DocsSidebarNavItemsProps) {
   return items?.length ? (
     <div className="grid grid-flow-row auto-rows-max text-sm">
@@ -48,7 +48,7 @@ export function DocsSidebarNavItems({
             className={cn(
               "flex w-full items-center rounded-md p-2 hover:underline",
               {
-                "bg-muted": pathname === item.href,
+                "bg-muted": pathname === item.href
               }
             )}
             target={item.external ? "_blank" : ""}

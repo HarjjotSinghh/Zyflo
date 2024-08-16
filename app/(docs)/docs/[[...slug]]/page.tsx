@@ -1,107 +1,71 @@
-import { notFound } from "next/navigation"
-import { allDocs } from "contentlayer/generated"
+import DocsBreadcrumb from "@/components/docs-breadcrumb"
+import Pagination from "@/components/pagination"
+import { page_routes } from "@/lib/routes-config"
+import { notFound, usePathname } from "next/navigation"
+import { getMarkdownForSlug, getTocs } from "@/lib/markdown"
+import { PropsWithChildren } from "react"
+import { cache } from "react"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import TocObserver from "@/components/toc-observer"
 
-import { getTableOfContents } from "@/lib/toc"
-import { Mdx } from "@/components/mdx-components"
-import { DocsPageHeader } from "@/components/page-header"
-import { DocsPager } from "@/components/pager"
-import { DashboardTableOfContents } from "@/components/toc"
-
-import "@/styles/mdx.css"
-import { Metadata } from "next"
-
-import { env } from "@/env.mjs"
-import { absoluteUrl } from "@/lib/utils"
-
-interface DocPageProps {
-  params: {
-    slug: string[]
-  }
+type PageProps = {
+  params: { slug: string[] }
 }
 
-async function getDocFromParams(params) {
-  const slug = params.slug?.join("/") || ""
-  const doc = allDocs.find((doc) => doc.slugAsParams === slug)
+const cachedGetMarkdownForSlug = cache(getMarkdownForSlug)
 
-  if (!doc) {
-    null
-  }
+export default async function DocsPage({ params: { slug = [] } }: PageProps) {
+  const pathName = slug.join("/")
+  const res: any = await cachedGetMarkdownForSlug(pathName)
+  const tocs = await getTocs(pathName)
 
-  return doc
-}
-
-export async function generateMetadata({
-  params,
-}: DocPageProps): Promise<Metadata> {
-  const doc = await getDocFromParams(params)
-
-  if (!doc) {
-    return {}
-  }
-
-  const url = env.NEXT_PUBLIC_APP_URL
-
-  const ogUrl = new URL(`${url}/api/og`)
-  ogUrl.searchParams.set("heading", doc.description ?? doc.title)
-  ogUrl.searchParams.set("type", "Documentation")
-  ogUrl.searchParams.set("mode", "dark")
-
-  return {
-    title: doc.title,
-    description: doc.description,
-    openGraph: {
-      title: doc.title,
-      description: doc.description,
-      type: "article",
-      url: absoluteUrl(doc.slug),
-      images: [
-        {
-          url: ogUrl.toString(),
-          width: 1200,
-          height: 630,
-          alt: doc.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: doc.title,
-      description: doc.description,
-      images: [ogUrl.toString()],
-    },
-  }
-}
-
-export async function generateStaticParams(): Promise<
-  DocPageProps["params"][]
-> {
-  return allDocs.map((doc) => ({
-    slug: doc.slugAsParams.split("/"),
-  }))
-}
-
-export default async function DocPage({ params }: DocPageProps) {
-  const doc = await getDocFromParams(params)
-
-  if (!doc) {
-    notFound()
-  }
-
-  const toc = await getTableOfContents(doc.body.raw)
-
+  if (!res) notFound()
   return (
-    <main className="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]">
-      <div className="mx-auto w-full min-w-0">
-        <DocsPageHeader heading={doc.title} text={doc.description} />
-        <Mdx code={doc.body.code} />
-        <hr className="my-4 md:my-6" />
-        <DocsPager doc={doc} />
+    <div className="flex w-full items-start gap-8 ">
+      <div className=" px-0 pt-10 xxxxs:pl-0.5 xxxxs:pr-4 xxxs:pl-1 xxxs:pr-4 xxs:pl-0.5 xxs:pr-4 xs:px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0">
+        <DocsBreadcrumb paths={slug} />
+        <Markdown>
+          <h2 className="mb-8">{res.frontmatter.title}</h2>
+          <p className="text-[16.5px] text-muted-foreground">
+            {res.frontmatter.description}
+          </p>
+          <div>{res.content}</div>
+          <Pagination pathname={pathName} />
+        </Markdown>
       </div>
-      <div className="hidden text-sm xl:block">
-        <div className="sticky top-16 -mt-10 max-h-[calc(var(--vh)-4rem)] overflow-y-auto pt-10">
-          <DashboardTableOfContents toc={toc} />
+      <div className="toc sticky top-[88px] hidden h-[95.95vh] min-w-fit py-8 lg:flex">
+        <div className="flex w-full flex-col gap-2.5">
+          <h5 className="text-sm font-medium">On this page</h5>
+          <ScrollArea className="pb-4 pt-0.5">
+            <TocObserver data={tocs} />
+          </ScrollArea>
         </div>
       </div>
-    </main>
+    </div>
   )
+}
+
+function Markdown({ children }: PropsWithChildren) {
+  return (
+    <div className="prose-code:font-code prose prose-zinc w-fit max-w-[100dvw] shrink grow-0 pt-2 dark:prose-invert prose-headings:scroll-m-20 prose-headings:text-balance prose-h2:mb-[0.8rem] prose-h2:mt-[1.5rem] prose-h5:text-foreground prose-h6:text-foreground prose-p:text-pretty prose-code:rounded-md prose-code:bg-transparent prose-code:p-1  prose-code:text-sm prose-code:leading-6 prose-code:text-neutral-800 prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:!border-none prose-pre:bg-neutral-100 prose-pre:shadow-2xl prose-pre:shadow-primary/10 dark:prose-code:bg-neutral-900 dark:prose-code:bg-transparent dark:prose-code:text-white dark:prose-pre:shadow-primary/15 sm:mx-auto">
+      {children}
+    </div>
+  )
+}
+
+export async function generateMetadata({ params: { slug = [] } }: PageProps) {
+  const pathName = slug.join("/")
+  const res = await cachedGetMarkdownForSlug(pathName)
+  if (!res) return null as any
+  const { frontmatter } = res
+  return {
+    title: frontmatter.title as string,
+    description: frontmatter.description as string
+  }
+}
+
+export function generateStaticParams() {
+  return page_routes.map((item) => ({
+    slug: item.href.split("/")
+  }))
 }
