@@ -7,7 +7,7 @@ html {
 
 ::selection {
   /* color: hsl(var(--foreground) / 0.95); */
-  background: hsl(var(--primary) / 0.4);
+  background: hsl(var(--primary) / 0.3);
 }
 
 * {

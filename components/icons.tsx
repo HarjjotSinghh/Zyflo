@@ -32,14 +32,14 @@ const ZyfloLogo = () => {
   return (
     <div>
       <Image
-        src="/images/logos/zyflo-logo-transparent-black-background.svg"
+        src="/images/logos/normal-zyflo-logo-transparent-black-background.svg"
         alt="Logo"
         width={300}
         height={100}
         className="hidden h-12 w-auto brightness-125 transition-all duration-200 ease-in-out-sine dark:block"
       />
       <Image
-        src="/images/logos/zyflo-logo-transparent-white-background.svg"
+        src="/images/logos/normal-zyflo-logo-transparent-white-background.svg"
         alt="Logo"
         width={300}
         height={100}
