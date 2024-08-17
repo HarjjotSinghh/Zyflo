@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import ZyfloNavbar from "@/components/zyflo/navbar"
+import ZyfloNavbarTest from "@/components/zyflo/navbar-2"
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -16,9 +17,17 @@ export default async function MarketingLayout({
 }: MarketingLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <ZyfloNavbar
-        logoText={{ text: "Zyflo", as: "h4" }}
+      <ZyfloNavbarTest
+        // logoText={{ text: "Zyflo", as: "h4" }}
+        // logo={{
+        //   src: "/images/logos/normal-zyflo-logo-transparent.svg",
+        //   alt: "Logo",
+        //   width: 300,
+        //   height: 100
+        // }}
         logo={{
+          text: "Zyflo",
+          as: "h4",
           src: "/images/logos/normal-zyflo-logo-transparent.svg",
           alt: "Logo",
           width: 300,
@@ -26,8 +35,9 @@ export default async function MarketingLayout({
         }}
         items={marketingConfig.mainNav}
         srOnly={true}
-        mobileNavbarCentred={false}
+        mobileNavbarCentered={true}
         sticky={true}
+        mobileNavFooter={<div>Mobile Footer</div>}
         // disableAnimations
       />
       <main className="flex-1">{children}</main>

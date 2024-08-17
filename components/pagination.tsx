@@ -7,7 +7,7 @@ export default function Pagination({ pathname }: { pathname: string }) {
   const res = getPreviousNext(pathname)
 
   return (
-    <div className="flex items-center justify-between py-5 sm:py-7">
+    <div className="flex items-center justify-between py-8 sm:pb-16 sm:pt-8">
       <div>
         {res.prev && (
           <Link

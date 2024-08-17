@@ -22,7 +22,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
   if (!res) notFound()
   return (
     <div className="flex w-full items-start gap-8 ">
-      <div className=" px-0 pt-10 xxxxs:pl-0.5 xxxxs:pr-4 xxxs:pl-1 xxxs:pr-4 xxs:pl-0.5 xxs:pr-4 xs:px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0">
+      <div className=" max-w-2xl px-0 pt-10 xxxxs:pl-0.5 xxxxs:pr-4 xxxs:pl-1 xxxs:pr-4 xxs:pl-0.5 xxs:pr-4 xs:px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0">
         <DocsBreadcrumb paths={slug} />
         <Markdown>
           <h2 className="mb-8">{res.frontmatter.title}</h2>
@@ -47,7 +47,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
 
 function Markdown({ children }: PropsWithChildren) {
   return (
-    <div className="prose-code:font-code prose prose-zinc w-fit max-w-[100dvw] shrink grow-0 pt-2 dark:prose-invert prose-headings:scroll-m-20 prose-headings:text-balance prose-h2:mb-[0.8rem] prose-h2:mt-[1.5rem] prose-h5:text-foreground prose-h6:text-foreground prose-p:text-pretty prose-code:rounded-md prose-code:bg-transparent prose-code:p-1  prose-code:text-sm prose-code:leading-6 prose-code:text-neutral-800 prose-code:before:content-none prose-code:after:content-none prose-pre:border prose-pre:!border-none prose-pre:bg-neutral-100 prose-pre:shadow-2xl prose-pre:shadow-primary/10 dark:prose-code:bg-neutral-900 dark:prose-code:bg-transparent dark:prose-code:text-white dark:prose-pre:shadow-primary/15 sm:mx-auto">
+    <div className="prose-code:font-code prose prose-zinc w-fit max-w-2xl max-w-[100dvw] shrink grow-0 pt-2 dark:prose-invert prose-headings:scroll-m-20 prose-headings:text-balance prose-h2:mb-[0.8rem] prose-h2:mt-[1.5rem] prose-h5:text-foreground prose-h6:text-foreground prose-p:text-pretty prose-code:rounded-md prose-code:bg-transparent prose-code:p-1  prose-code:text-sm prose-code:leading-6 prose-code:text-neutral-800 prose-code:before:content-none prose-code:after:content-none prose-pre:border-[2px] prose-pre:border-primary/[0.03] prose-pre:bg-neutral-100 dark:prose-code:bg-neutral-900 dark:prose-code:bg-transparent dark:prose-code:text-white sm:mx-auto">
       {children}
     </div>
   )
@@ -60,7 +60,19 @@ export async function generateMetadata({ params: { slug = [] } }: PageProps) {
   const { frontmatter } = res
   return {
     title: frontmatter.title as string,
-    description: frontmatter.description as string
+    description: frontmatter.description as string,
+    openGraph: {
+      title: frontmatter.title as string,
+      description: frontmatter.description as string,
+      url: `https://zyflo.co/docs/${pathName}`,
+      images: [
+        {
+          url: "https://zyflo.co/og.png",
+          width: 1200,
+          height: 630
+        }
+      ]
+    }
   }
 }
 

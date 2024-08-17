@@ -95,7 +95,7 @@ const alertTitleVariants = cva(
           ? "text-gray-950"
           : primaryAndWhiteAreCompatible
           ? "text-gray-50"
-          : "text-gray-500" // TODO: Better way to handle this?
+          : "" // TODO: Better way to handle this?
       }
     },
     defaultVariants: {
@@ -120,7 +120,7 @@ const alertIconVariants = cva("zyflo-transition", {
         ? "text-gray-950"
         : primaryAndWhiteAreCompatible
         ? "text-gray-50"
-        : "text-gray-500"
+        : ""
     }
   },
   defaultVariants: {
@@ -146,7 +146,7 @@ const alertDescriptionVariants = cva(
           ? "text-gray-950/80"
           : primaryAndWhiteAreCompatible
           ? "text-gray-50/80"
-          : "text-gray-500/80"
+          : ""
       }
     },
     defaultVariants: {
@@ -236,6 +236,7 @@ export default function ZyfloAlert({
   const titleRef = React.useRef<HTMLElement>(null)
   const iconRef = React.useRef<SVGSVGElement>(null)
   const descriptionRef = React.useRef<HTMLElement>(null)
+
   const gradientVariantClassName = getAutoContrastClassName(
     areColorsCompatible(primaryHSL[0], primaryHSL[1], primaryHSL[2], 0, 0, 0),
     areColorsCompatible(
@@ -247,7 +248,6 @@ export default function ZyfloAlert({
       100
     )
   )
-  console.log(gradientVariantClassName)
   useEffect(() => {
     if (variant === "gradient") {
       if (titleRef.current) {
@@ -260,20 +260,7 @@ export default function ZyfloAlert({
         descriptionRef.current.classList.add(gradientVariantClassName)
       }
     }
-    return () => {
-      if (variant === "gradient") {
-        if (titleRef.current) {
-          titleRef.current.classList.remove(gradientVariantClassName)
-        }
-        if (iconRef.current) {
-          iconRef.current.classList.remove(gradientVariantClassName)
-        }
-        if (descriptionRef.current) {
-          descriptionRef.current.classList.remove(gradientVariantClassName)
-        }
-      }
-    }
-  }, [gradientVariantClassName])
+  }, [gradientVariantClassName, variant])
 
   switch (alertTitleAs) {
     case "h1":

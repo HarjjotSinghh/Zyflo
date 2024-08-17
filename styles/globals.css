@@ -7,7 +7,7 @@ html {
 
 ::selection {
   /* color: hsl(var(--foreground) / 0.95); */
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--primary) / 0.2);
 }
 
 * {
@@ -124,7 +124,7 @@ html {
     @apply !text-base !font-extrabold tracking-normal sm:!text-lg lg:!text-lg xl:!text-xl;
   }
   a {
-    @apply text-foreground/80 transition-all duration-200 ease-in-out-sine hover:text-primary;
+    @apply text-foreground/80 zyflo-transition hover:text-primary;
   }
 
   .ease-in-sin {
@@ -373,8 +373,8 @@ pre > code {
 .dark .constant,
 .dark .annotation,
 .dark .boolean,
-.dark.number {
-  color: hsl(0, 0%, 71%);
+.dark .number {
+  color: hsl(0, 0%, 91%);
 }
 
 .dark .keyword {

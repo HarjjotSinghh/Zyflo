@@ -37,7 +37,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           </div>
         </div>
       </header>
-      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-row justify-center gap-8 px-4 lg:gap-16 lg:px-8">
+      <main className="mx-auto flex w-full max-w-7xl flex-row justify-center gap-6 px-4 lg:gap-12 lg:px-8">
         {children}
       </main>
       <SiteFooter className="border-t" />
