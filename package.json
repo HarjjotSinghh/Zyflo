@@ -69,6 +69,7 @@
     "contentlayer": "^0.3.1",
     "date-fns": "^2.29.3",
     "framer-motion": "^11.3.28",
+    "fs": "^0.0.1-security",
     "hast-util-properties-to-mdx-jsx-attributes": "^1.0.0",
     "lucide-react": "^0.427.0",
     "mdx": "^0.3.1",

@@ -16,7 +16,18 @@ const nextConfig = withMDX({
   experimental: {
     // ppr: true,
     // reactCompiler: true
-  }
+  },
+  future: {
+    webpack5: true,   
+  },
+  webpack(config) {
+    config.resolve.fallback = {
+      ...config.resolve.fallback,  
+      fs: false,
+    };
+    
+    return config;
+  },
 })
 
 export default withContentlayer(nextConfig)
