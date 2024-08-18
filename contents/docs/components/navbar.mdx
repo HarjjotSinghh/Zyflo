@@ -1,3 +1,18 @@
+---
+title: Navbar
+description: A responsive and customizable navigation bar component with optional animations, logo, and mobile drawer support.
+---
+
+## Introduction
+
+The <code>ZyfloNavbar</code> component is a versatile and responsive navigation bar that can be easily integrated into your Next.js project. It offers a range of customization options, including logo display, navigation items, animations, and mobile drawer support.
+
+## Add The Component
+
+Add the following component to your project in the <code>/components/zyflo</code> directory:
+
+<ComponentSource>
+```tsx showLineNumbers wrap
 "use client"
 import Link from "next/link"
 import React from "react"
@@ -235,3 +250,207 @@ export default function ZyfloNavbar({
     </header>
   )
 }
+```
+</ComponentSource>
+
+## Usage
+Here's a basic example of how to use the Navbar component:
+
+```tsx showLineNumbers wrap
+import { ZyfloNavbar } from "@/components/zyflo/navbar"
+
+const navItems = [
+    { title: "Home", href: "/" },
+    { title: "About", href: "/about" },
+    { title: "Contact", href: "/contact" },
+]
+
+export default function MyPage() {
+    return (
+        <ZyfloNavbar
+            items={navItems}
+            logo={{ text: "My Website" }}
+        />
+    )
+}
+```
+
+## Props
+
+The <code>ZyfloNavbar</code> component accepts the following props:
+
+### <code>items</code> 
+
+- Type: <code>ZyfloNavbarItem[]</code>
+- Required: Yes
+
+An array of navigation items to be displayed in the navbar. Each item should have the following structure:
+
+```tsx
+interface ZyfloNavbarItem {
+  title: string
+  href: string
+  label?: string
+  icon?: React.ReactNode
+}
+```
+
+### <code>logo</code>
+
+The logo to be displayed in the navbar
+
+- Type: <code>ZyfloNavbarLogoComponent</code>
+- Required: No
+
+It can be either an image or text:
+
+```tsx
+type ZyfloNavbarLogoComponent =
+  | { src: string; alt: string; width: number; height: number }
+  | { text: string; as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" }
+```
+
+### <code>srOnly</code>
+
+- Type: boolean
+- Default: false
+
+If set to true, adds screen reader-only labels to navigation items.
+
+### <code>mobileNavFooter</code>
+
+- Type: React.ReactNode
+- Default: null
+
+Additional content to be displayed at the bottom of the mobile navigation drawer.
+
+### <code>disableAnimations</code>
+
+- Type: boolean
+- Default: false
+
+If set to true, disables all animations in the navbar.
+
+### <code>mobileNavbarCentered</code>
+
+- Type: boolean
+- Default: false
+
+If set to true, centers the content in the mobile navigation drawer.
+
+### <code>sticky</code>
+
+- Type: boolean
+- Default: true
+
+If set to true, makes the navbar sticky at the top of the page.
+
+### <code>className</code>
+
+- Type: string
+- Required: No
+
+Additional CSS classes to be applied to the navbar container.
+
+## Examples
+
+Here are some examples of how to use the <code>ZyfloNavbar</code> component:
+
+#### With Image Logo
+```tsx
+<ZyfloNavbar
+  items={[
+    { title: "Home", href: "/" },
+    { title: "Products", href: "/products" },
+    { title: "About", href: "/about" },
+  ]}
+  logo={{
+    src: "/logo.png",
+    alt: "Company Logo",
+    width: 150,
+    height: 50,
+  }}
+/>
+```
+
+#### With Text Logo and Custom Heading
+
+```tsx
+<ZyfloNavbar
+  items={[
+    { title: "Services", href: "/services" },
+    { title: "Portfolio", href: "/portfolio" },
+    { title: "Contact", href: "/contact" },
+  ]}
+  logo={{
+    text: "My Brand",
+    as: "h2",
+  }}
+/>
+```
+
+#### With Icons in Navigation Items
+
+```tsx
+import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa"
+
+<ZyfloNavbar
+    items={[
+        { title: "Home", href: "/", icon: <FaHome /> },
+        { title: "About", href: "/about", icon: <FaInfoCircle /> },
+        { title: "Contact", href: "/contact", icon: <FaEnvelope /> },
+    ]}
+    logo={{ text: "Icon Nav" }}
+/>
+```
+
+#### With Mobile Navigation Footer
+
+```tsx
+<ZyfloNavbar
+  items={[
+    { title: "Dashboard", href: "/dashboard" },
+    { title: "Settings", href: "/settings" },
+  ]}
+  logo={{ text: "Admin Panel" }}
+  mobileNavFooter={
+    <button>Logout</button>
+  }
+/>
+```
+
+#### Centered Mobile Navigation
+```tsx
+<ZyfloNavbar
+  items={[
+    { title: "Shop", href: "/shop" },
+    { title: "Cart", href: "/cart" },
+    { title: "Account", href: "/account" },
+  ]}
+  logo={{ text: "E-Commerce" }}
+  mobileNavbarCentered={true}
+/>
+```
+
+## Customization
+
+The component uses Tailwind CSS classes for styling. You can customize its appearance by modifying the CSS classes in the component's source code or by passing additional classes through the className prop.
+
+## Accessibility
+
+The component is designed with accessibility in mind:
+
+- It uses semantic HTML elements (header, nav, ul, li) for proper structure.
+- The mobile navigation drawer is implemented using the shadcnUI Drawer component, which handles proper focus management and keyboard navigation.
+- The <code>srOnly</code> prop can be used to add screen reader-only labels to navigation items for improved clarity.
+
+## Notes
+
+- The component uses Framer Motion for animations. Make sure you have Framer Motion installed in your project if you plan to use animations.
+- The mobile navigation drawer is implemented using the shadcnUI Drawer component. Ensure that this component is available in your project.
+
+## Contributing
+
+If you find any issues or have any sort of feedback or suggestions for improvements, please feel free to open an issue or submit a pull request on our <a href="https://github.com/harjjotsinghh/Zyflo" target="_blank">GitHub repository</a>. We appreciate your contributions and are always open to collaboration.
+
+Thank you for considering contributing to Zyflo!

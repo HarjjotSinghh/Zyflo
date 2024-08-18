@@ -59,7 +59,9 @@ function Menu({ isSheet = false }) {
       {ROUTES.map(({ href, items, title }) => {
         return (
           <div className="mt-5 flex min-w-fit flex-col gap-3 " key={href}>
-            <h5 className="font-medium sm:text-sm">{title}</h5>
+            <Anchor href={`/docs/${href}`} className="hover:text-current">
+              <h5 className="font-medium sm:text-sm">{title}</h5>
+            </Anchor>
             <div className="ml-0.5 flex flex-col gap-3 text-neutral-800 dark:text-neutral-300/85 sm:text-sm">
               {items.map((subItem) => {
                 const key = `/docs/${href}${subItem.href}`

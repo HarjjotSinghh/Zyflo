@@ -9,5 +9,11 @@ export const siteConfig: SiteConfig = {
   links: {
     twitter: "https://twitter.com/HarjjotSinghh",
     github: "https://github.com/HarjjotSinghh/Zyflo",
+    author: "https://harjot.pro",
   },
 }
+
+export const zyfloComponents = [
+  "Navbar",
+  "Alert",
+]

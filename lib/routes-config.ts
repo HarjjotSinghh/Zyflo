@@ -4,19 +4,19 @@ export const ROUTES = [
         title: "Getting Started",
         href: "getting-started",
         items: [
-            { title: "Introduction", href: "/introduction" },
-            { title: "Installation", href: "/installation" },
-            { title: "CLI", href: "/command-line-interface" },
+            { title: "Installation", href: "/installation", description: "Learn how to install Zyflo in your project." },
+            { title: "CLI", href: "/command-line-interface", description: "Learn how to use the Zyflo CLI to create a new project." },
         ],
+        description: "Learn how to get started with Zyflo and implement it in your project, within a few minutes.",
     },
     {
         title: "Components",
         href: "components",
         items: [
-            { title: "Navbar", href: "/navbar" },
-            { title: "Drawer", href: "/drawer" },
-            { title: "Alert", href: "/alert" },
+            { title: "Navbar", href: "/navbar", description: "Learn how to use the Zyflo Navbar component to create a responsive and customizable navigation bar." },
+            { title: "Alert", href: "/alert", description: "Learn how to use the Zyflo Alert component to create a visually appealing and informative alert box." },
         ],
+        description: "Explore the various components available in Zyflo and learn how to use them in your project.",
     }
 ];
 
@@ -25,6 +25,7 @@ export const page_routes = ROUTES.map(({ href, items }) => {
         return {
             title: link.title,
             href: href + link.href,
+            descritpion: link.description,
         };
     });
 }).flat();

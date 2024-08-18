@@ -109,10 +109,10 @@ html {
     @apply !text-4xl !font-extrabold tracking-normal sm:!text-5xl lg:!text-5xl xl:!text-6xl;
   }
   h2 {
-    @apply !text-3xl !font-extrabold tracking-normal sm:!text-4xl lg:!text-4xl xl:!text-5xl;
+    @apply !text-3xl !font-extrabold tracking-normal sm:!text-4xl lg:!text-4xl xl:!text-4xl;
   }
   h3 {
-    @apply !text-2xl !font-extrabold tracking-normal sm:!text-3xl lg:!text-3xl xl:!text-4xl;
+    @apply !text-2xl !font-extrabold tracking-normal sm:!text-3xl lg:!text-3xl xl:!text-3xl;
   }
   h4 {
     @apply !text-xl !font-extrabold tracking-normal sm:!text-2xl lg:!text-2xl xl:!text-3xl;
@@ -412,4 +412,12 @@ pre > code {
 
 .highlight-comp > code {
   background-color: transparent !important;
+}
+
+.code-not-in-pre code:not(pre > code) {
+  @apply rounded-md border-2 border-primary/20 bg-primary/5 px-1.5 py-1 text-base leading-6 before:content-none after:content-none dark:border-primary/30 dark:bg-primary/20;
+}
+
+.dark .code-not-in-pre code:not(pre > code) {
+  @apply border-2 border-primary/10;
 }

@@ -4,54 +4,59 @@ import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
 import ModeToggle from "@/components/mode-toggle"
-
+import WordRotate from "@/components/magicui/word-rotate"
+import Link from "next/link"
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <footer className={cn(className)}>
-      <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
-        <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-4 px-6 py-8 md:flex-row lg:px-8">
+        <div className="flex w-full flex-col items-start gap-4 md:flex-col">
           <Icons.logo />
-          <p className="text-center text-sm leading-loose md:text-left">
-            Built by{" "}
-            <a
-              href={siteConfig.links.twitter}
+          <div className="pb-2 text-center text-sm leading-loose md:text-left">
+            <p className="max-w-sm text-foreground/80">
+              Zyflo is an open-source UI library with the goal to help
+              developers build eye-catching and responsive web apps. We are on a
+              misison to make web interfaces livelier and more attractive.
+            </p>
+          </div>
+          <div className="w-full border-t border-muted pb-3 pt-8 text-sm text-foreground/90">
+            <span className="inline-flex items-center gap-1.5 pr-1.5">
+              Developed with{" "}
+              <WordRotate
+                className="text-lg"
+                words={["💙", "🧠", "☕", "🍔", "🍕"]}
+              />{" "}
+              by
+            </span>
+            <Link
+              href={siteConfig.links.author}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              Harjot Singh Rana
-            </a>
+              Harjot
+            </Link>
             . Hosted on{" "}
-            <a
+            <Link
               href="https://vercel.com"
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
               Vercel
-            </a>
-            . Illustrations by{" "}
-            <a
-              href="https://popsy.co"
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4"
-            >
-              Popsy
-            </a>
+            </Link>
             . The source code is available on{" "}
-            <a
+            <Link
               href={siteConfig.links.github}
               target="_blank"
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
               GitHub
-            </a>
+            </Link>
             .
-          </p>
+          </div>
         </div>
-        <ModeToggle />
       </div>
     </footer>
   )

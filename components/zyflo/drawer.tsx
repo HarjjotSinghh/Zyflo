@@ -26,7 +26,7 @@ const ZyfloDrawerOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ZyfloDrawerPrimitive.Overlay
     ref={ref}
-    className={cn("fixed inset-0 z-50 bg-black/80", className)}
+    className={cn("fixed inset-0 z-50 bg-black/80 backdrop-blur", className)}
     {...props}
   />
 ))

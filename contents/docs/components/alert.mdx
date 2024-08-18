@@ -1,0 +1,503 @@
+---
+title: Alert
+description: A customizable alert component with various styles, icons, and optional animations.
+---
+## Introduction
+The ZyfloAlert component is a versatile and customizable alert that can be easily integrated into your Next.js project. It offers a range of styling options, icon support, and optional animations.
+## Add The Component
+Add the following component to your project in the /components/zyflo directory:
+<ComponentSource>
+```tsx wrap showLineNumbers
+"use client"
+import {
+  cn,
+  getAutoContrastClassName,
+  getCSSVariable,
+  areColorsCompatible
+} from "@/lib/utils"
+import {
+  AlertCircleIcon,
+  CheckCircleIcon,
+  InfoIcon,
+  MessageSquareWarningIcon
+} from "lucide-react"
+import React, { useEffect } from "react"
+import { motion, Variants } from "framer-motion"
+import {
+  zyfloBlurInFromBottomVariants,
+  zyfloBlurInFromRightVariants,
+  zyfloBlurScaleInVariants,
+  zyfloFadeBlurInFromBottomVariants
+} from "@/zyflo.config"
+import { cva, type VariantProps } from "class-variance-authority"
+// ... (rest of the component code)
+export default function ZyfloAlert({
+  alertTitle,
+  alertDescription,
+  alertIcon,
+  variant = "light",
+  disableAnimations = false,
+  className,
+  backdropBlur = true,
+  ...props
+}: ZyfloAlertProps) {
+  // ... (component implementation)
+}
+```
+</ComponentSource>
+## Usage
+Here's a basic example of how to use the Alert component:
+```tsx wrap showLineNumbers
+import { ZyfloAlert } from "@/components/zyflo/alert"
+export default function MyPage() {
+  return (
+    <ZyfloAlert
+      alertTitle={{ title: "Success!" }}
+      alertDescription={{ description: "Your action was completed successfully." }}
+      alertIcon={{ type: "success" }}
+      variant="success"
+    />
+  )
+}
+```
+## Props
+The ZyfloAlert component accepts the following props:
+### <code>alertTitle</code>
+- Type: ZyfloAlertTitle
+- Required: Yes
+
+Defines the title of the alert. It has the following structure:
+```tsx wrap showLineNumbers
+interface ZyfloAlertTitle extends React.HTMLAttributes<HTMLElement> {
+  title: string
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "div" | "span"
+  label?: string
+  srOnly?: boolean
+}
+```
+### <code>alertDescription</code>
+- Type: ZyfloAlertDescription
+- Required: Yes
+
+Defines the description of the alert. It has the following structure:
+```tsx wrap showLineNumbers
+interface ZyfloAlertDescription {
+  description: string
+  as?: "div" | "p" | "span"
+  label?: string
+  srOnly?: boolean
+}
+```
+### <code>alertIcon</code>
+- Type: ZyfloAlertIcon
+- Required: No
+
+Defines the icon to be displayed in the alert. It can be either a predefined type or a custom icon:
+```tsx wrap showLineNumbers
+type ZyfloAlertIcon = (
+  | { type: ZyfloAlertIconType }
+  | {
+      type: "custom"
+      customIcon: React.FC<
+        React.PropsWithRef<React.ComponentProps<"svg" | "img" | "div" | "span">>
+      >
+    }
+) & ZyfloAlertIconBase
+```
+### <code>variant</code>
+- Type: ZyfloAlertType
+- Default: "light"
+
+Defines the visual style of the alert. Possible values are:
+- light
+- info
+- warning
+- danger
+- success
+- default
+- outline
+- secondary
+- transparent
+- gradient
+
+```tsx wrap showLineNumbers
+const PossibleZyfloAlertType = [
+  "info",
+  "warning",
+  "danger",
+  "success",
+  "default",
+  "outline",
+  "secondary",
+  "transparent",
+  "light",
+  "gradient"
+] as const
+export type ZyfloAlertType = (typeof PossibleZyfloAlertType)[number]
+```
+
+### <code>disableAnimations</code>
+- Type: boolean
+- Default: false
+
+If set to true, disables all animations in the alert.
+### <code>backdropBlur</code>
+- Type: boolean
+- Default: true
+
+If set to true, applies a backdrop blur effect to the alert.
+### <code>className</code>
+- Type: string
+- Required: No
+
+Additional CSS classes to be applied to the alert container.
+## Examples
+Here are some examples of how to use the ZyfloAlert component with different variants:
+
+### Light
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup>
+    <ZyfloAlert
+        alertTitle={{ title: "Light (Default)", as: "h5" }}
+        alertDescription={{ description: "This is an example of the light variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" ateast..." }}
+        variant="light"
+        alertIcon={{ type: "default" }}
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+    
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Information" }}
+        alertDescription={{ description: "This is an example of the light variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "info" }}
+        variant="light"
+      />
+      ```
+  </TabsContent>
+</Tabs>
+
+
+### Success
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Success", as: "h5" }}
+        alertDescription={{ description: "This is an example of the success variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+        variant="success"
+        alertIcon={{ type: "success" }}
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+    <ZyfloAlert
+      alertTitle={{ title: "Success", as: "h5" }}
+      alertDescription={{ description: "This is an example of the success variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+      alertIcon={{ type: "success" }}
+      variant="success"
+    />
+    ```
+  </TabsContent>
+</Tabs>
+
+
+### Info
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Information", as: "h5" }}
+        alertDescription={{ description: "This is an example of the info variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+        variant="info"
+        alertIcon={{ type: "info" }}
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+    <ZyfloAlert
+      alertTitle={{ title: "Information", as: "h5" }}
+      alertDescription={{ description: "This is an example of the info variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+      alertIcon={{ type: "info" }}
+      variant="info"
+    />
+    ```
+  </TabsContent>
+</Tabs>
+
+### Warning
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Warning", as: "h5" }}
+        alertDescription={{ description: "This is an example of the warning variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+        variant="warning"
+        alertIcon={{ type: "warning" }}
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+    <ZyfloAlert
+      alertTitle={{ title: "Warning", as: "h5" }}
+      alertDescription={{ description: "This is an example of the warning variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+      alertIcon={{ type: "warning" }}
+      variant="warning"
+    />
+    ```
+  </TabsContent>
+</Tabs>
+
+### Danger
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Danger", as: "h5" }}
+        alertDescription={{ description: "This is an example of the danger variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+        variant="danger"
+        alertIcon={{ type: "danger" }}
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+    <ZyfloAlert
+      alertTitle={{ title: "Danger", as: "h5" }}
+      alertDescription={{ description: "This is an example of the danger variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+      alertIcon={{ type: "danger" }}
+      variant="danger"
+    />
+    ```
+  </TabsContent>
+</Tabs>
+
+### Default
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Default", as: "h5" }}
+        alertDescription={{ description: "This is an example of the default variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" at least..." }}
+        alertIcon={{ type: "default" }}
+        variant="default"
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Default" }}
+        alertDescription={{ description: "This is an example of the default variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "default" }}
+        variant="default"
+      />
+    ```
+  </TabsContent>
+</Tabs>
+
+### Outline
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup>
+    <ZyfloAlert
+      alertTitle={{ title: "Outline", as: "h5" }}
+      alertDescription={{ description: "This is an example of the outline variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" ateast..." }}
+      alertIcon={{ type: "outline" }}
+      variant="outline"
+      className="w-full"
+      triggerWhenInView={true}
+      disableAnimations={false}
+      backdropBlur={true}
+    />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Outline" }}
+        alertDescription={{ description: "This is an example of the outline variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "outline" }}
+        variant="outline"
+      />
+      ```
+  </TabsContent>
+</Tabs>
+
+### Secondary
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup>
+    <ZyfloAlert
+      alertTitle={{ title: "Secondary", as: "h5" }}
+      alertDescription={{ description: "This is an example of the secondary variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" ateast..." }}
+      alertIcon={{ type: "secondary" }}
+      variant="secondary"
+      className="w-full"
+      triggerWhenInView={true}
+      disableAnimations={false}
+      backdropBlur={true}
+    />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Secondary" }}
+        alertDescription={{ description: "This is an example of the secondary variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "secondary" }}
+        variant="secondary"
+      />
+      ```
+  </TabsContent>
+</Tabs>
+
+### Transparent
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+    <ZyfloWindowMockup>
+      <ZyfloAlert
+        alertTitle={{ title: "Transparent", as: "h5" }}
+        alertDescription={{ description: "This is an example of the transparent variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" ateast..." }}
+        alertIcon={{ type: "transparent" }}
+        variant="transparent"
+        className="w-full"
+        triggerWhenInView={true}
+        disableAnimations={false}
+        backdropBlur={true}
+      />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Transparent" }}
+        alertDescription={{ description: "This is an example of the transparent variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "transparent" }}
+        variant="transparent"
+      />
+    ```
+  </TabsContent>
+</Tabs>
+
+### Gradient
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup>
+    <ZyfloAlert
+      alertTitle={{ title: "Gradient", as: "h5" }}
+      alertDescription={{ description: "This is an example of the gradient variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend that this is a long description, alright? It's not though. Okay, Whatever. Better than \"Lorem Ipsum\" ateast..." }}
+      alertIcon={{ type: "gradient" }}
+      variant="gradient"
+      className="w-full"
+      triggerWhenInView={true}
+      disableAnimations={false}
+      backdropBlur={true}
+    />
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+    ```tsx wrap showLineNumbers
+      <ZyfloAlert
+        alertTitle={{ title: "Gradient" }}
+        alertDescription={{ description: "This is an example of the gradient variant. Here is a longer description to demonstrate how it looks. Okay, this is a really long description. Just pretend it's a long description. It's not." }}
+        alertIcon={{ type: "gradient" }}
+        variant="gradient"
+      />
+      ```
+  </TabsContent>
+</Tabs>
+
+## Customization
+The component uses Tailwind CSS classes for styling. You can customize its appearance by modifying the CSS classes in the component's source code or by passing additional classes through the className prop.
+
+## Accessibility
+The component is designed with accessibility in mind:
+- It uses semantic HTML elements for proper structure.
+- The srOnly prop can be used to add screen reader-only labels to the title, description, and icon.
+- The component supports keyboard navigation and focus management.
+## Notes
+- The component uses Framer Motion for animations. Make sure you have Framer Motion installed in your project if you plan to use animations.
+- The alert's colors and styles are designed to work with both light and dark modes.
+## Contributing
+If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on our GitHub repository. We appreciate your contributions and are always open to collaboration.
+Thank you for considering contributing to Zyflo!

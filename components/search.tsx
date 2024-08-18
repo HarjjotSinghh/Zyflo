@@ -53,7 +53,7 @@ export default function Search() {
           <div className="relative min-w-[150px] max-w-md flex-1 cursor-pointer sm:min-w-[300px] md:min-w-[300px] lg:min-w-[350px]">
             <SearchIcon className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-500 dark:text-neutral-400" />
             <Input
-              className="h-9 w-full rounded-md border bg-muted pl-10 pr-4 text-sm shadow-sm "
+              className="h-9 w-full rounded-md border-2 border-gray-200/50 bg-muted/60  pl-10 pr-4 text-sm shadow-sm dark:border-gray-700/50 "
               placeholder="Search documentation..."
               type="search"
             />
@@ -70,7 +70,7 @@ export default function Search() {
               onChange={(e) => setSearchedInput(e.target.value)}
               placeholder="Type something to search..."
               autoFocus
-              className="h-14 border-b bg-transparent px-4 text-[15px] outline-none"
+              className="h-14 border-b-2 border-primary/50 bg-transparent px-4 text-[15px] outline-none placeholder:pl-3"
             />
           </DialogHeader>
           {filteredResults.length == 0 && searchedInput && (
@@ -88,12 +88,17 @@ export default function Search() {
                   asChild
                 >
                   <Anchor
-                    className="flex w-full items-center gap-2.5 rounded-sm p-2.5 px-3 text-[15px] hover:bg-neutral-100 dark:hover:bg-neutral-900"
+                    className="flex w-full flex-col items-start gap-2 rounded-sm p-3.5 text-[15px] hover:bg-primary/5"
                     href={`/docs/${item.href}`}
-                    activeClassName="dark:bg-neutral-900 bg-neutral-100"
+                    activeClassName="hover:bg-primary/10 dark:hover:bg-primary/15 bg-primary/5 dark:bg-primary/10"
                   >
-                    <FileTextIcon className="h-[1.1rem] w-[1.1rem]" />{" "}
-                    {item.title}
+                    <div className="flex items-center gap-2">
+                      <FileTextIcon className="h-[1.2rem] w-[1.2rem]" />{" "}
+                      {item.title}
+                    </div>
+                    <p className="text-sm text-foreground/70">
+                      {item.descritpion}
+                    </p>
                   </Anchor>
                 </DialogClose>
               ))}

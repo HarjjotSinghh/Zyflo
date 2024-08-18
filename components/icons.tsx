@@ -30,22 +30,29 @@ import Image from "next/image"
 
 const ZyfloLogo = () => {
   return (
-    <div>
-      <Image
-        src="/images/logos/normal-zyflo-logo-transparent-black-background.svg"
-        alt="Logo"
-        width={300}
-        height={100}
-        className="hidden h-12 w-auto brightness-125 transition-all duration-200 ease-in-out-sine dark:block"
-      />
-      <Image
-        src="/images/logos/normal-zyflo-logo-transparent-white-background.svg"
-        alt="Logo"
-        width={300}
-        height={100}
-        className="block h-12 w-auto dark:hidden"
-      />
-    </div>
+    // <div>
+    //   <Image
+    //     src="/images/logos/normal-zyflo-logo-transparent-black-background.svg"
+    //     alt="Logo"
+    //     width={300}
+    //     height={100}
+    //     className="hidden h-12 w-auto brightness-125 transition-all duration-200 ease-in-out-sine dark:block"
+    //   />
+    //   <Image
+    //     src="/images/logos/normal-zyflo-logo-transparent-white-background-01.svg"
+    //     alt="Logo"
+    //     width={300}
+    //     height={100}
+    //     className="block h-12 w-auto dark:hidden"
+    //   />
+    // </div>
+    <Image
+      src="/images/logos/normal-zyflo-logo-transparent.svg"
+      alt="Zyflo Logo"
+      width={300}
+      height={100}
+      className="h-12 w-auto zyflo-transition"
+    />
   )
 }
 

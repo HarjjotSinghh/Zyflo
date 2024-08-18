@@ -33,7 +33,7 @@ export const NAVLINKS = [
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 h-16 w-full border-b bg-opacity-5 px-2 backdrop-blur-xl backdrop-filter lg:px-4">
+    <nav className="sticky top-0 z-50 h-16 w-full border-b bg-transparent px-2 backdrop-blur-sm lg:px-4">
       <div className="mx-auto flex h-full max-w-7xl items-center justify-between gap-2 p-2 sm:p-3">
         <div className="flex items-center gap-5">
           <SheetLeftbar />

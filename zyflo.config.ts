@@ -58,7 +58,7 @@ export const zyfloFadeBlurInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -77,7 +77,7 @@ export const zyfloFadeBlurInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -96,7 +96,7 @@ export const zyfloFadeBlurInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -106,7 +106,7 @@ export const zyfloFadeBlurInFromBottomVariants: ZyfloVariants = {
     name: "zyfloFadeBlurInFromBottom",
     initial: {
         opacity: 0,
-        y: 48,
+        y: 40,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -115,7 +115,7 @@ export const zyfloFadeBlurInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 }
@@ -138,7 +138,7 @@ export const zyfloFadeInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -157,7 +157,7 @@ export const zyfloFadeInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -176,7 +176,7 @@ export const zyfloFadeInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 }
@@ -195,7 +195,7 @@ export const zyfloFadeInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 }
@@ -218,7 +218,7 @@ export const zyfloScaleInFromLeftVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -237,7 +237,7 @@ export const zyfloScaleInFromRightVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -256,7 +256,7 @@ export const zyfloScaleInFromTopVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -275,7 +275,7 @@ export const zyfloScaleInFromBottomVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -291,7 +291,7 @@ export const zyfloScaleInVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -309,7 +309,7 @@ export const zyfloBlurScaleInVariants: ZyfloVariants = {
         scale: 1,
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -332,7 +332,7 @@ export const zyfloBlurInFromRightVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -351,7 +351,7 @@ export const zyfloBlurInFromLeftVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -370,7 +370,7 @@ export const zyfloBlurInFromTopVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };
@@ -389,7 +389,7 @@ export const zyfloBlurInFromBottomVariants: ZyfloVariants = {
         filter: "blur(0px)",
         transition: {
             ease: "easeInOut",
-            delay: 0.3 * index
+            delay: 0.2 * index
         }
     })
 };

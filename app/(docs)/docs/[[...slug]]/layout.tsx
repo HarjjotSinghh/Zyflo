@@ -5,10 +5,5 @@ export default function DocsLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  return (
-    <>
-      <Leftbar />
-      {children}
-    </>
-  )
+  return <>{children}</>
 }

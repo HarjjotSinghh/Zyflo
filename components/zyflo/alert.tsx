@@ -1,9 +1,9 @@
 "use client"
 import {
-  areColorsCompatible,
   cn,
   getAutoContrastClassName,
-  getCSSVariable
+  getCSSVariable,
+  areColorsCompatible
 } from "@/lib/utils"
 import {
   AlertCircleIcon,
@@ -11,15 +11,13 @@ import {
   InfoIcon,
   MessageSquareWarningIcon
 } from "lucide-react"
-import React, { LegacyRef, useEffect } from "react"
+import React, { useEffect } from "react"
 import { motion, Variants } from "framer-motion"
 import {
   zyfloBlurInFromBottomVariants,
   zyfloBlurInFromRightVariants,
-  zyfloBlurScaleInVariants,
   zyfloFadeBlurInFromBottomVariants
 } from "@/zyflo.config"
-
 import { cva, type VariantProps } from "class-variance-authority"
 
 const primaryHSL: number[] = getCSSVariable("--primary")
@@ -47,7 +45,7 @@ const primaryAndWhiteAreCompatible = areColorsCompatible(
 )
 
 const alertVariants = cva(
-  "relative flex w-full flex-col items-start justify-start gap-2 rounded-xl border-2 zyflo-transition sm:max-w-md xl:p-8 lg:p-7 md:p-6 p-6 overflow-hidden",
+  "relative flex w-full flex-col items-start justify-start gap-2 rounded-xl border-2 zyflo-transition xl:p-7 lg:p-6 md:p-5 p-5 overflow-hidden",
   {
     variants: {
       variant: {
@@ -71,9 +69,7 @@ const alertVariants = cva(
           "bg-gradient-to-r bg-[size:300%_300%] hover:bg-[position:0%_0%] bg-[position:100%_100%] from-primary to-primary via-accent border-primary/10 border-2 hover:border-primary/30 dark:[box-shadow:0_3px_30px_1px_hsl(var(--primary)/0.4)] dark:hover:[box-shadow:0_4px_40px_1px_hsl(var(--primary)/0.5)] hover:[box-shadow:0_4px_40px_1px_hsl(var(--primary)/0.4)] [box-shadow:0_3px_30px_1px_hsl(var(--primary)/0.3)]"
       }
     },
-    defaultVariants: {
-      variant: "light"
-    }
+    defaultVariants: { variant: "light" }
   }
 )
 
@@ -91,16 +87,10 @@ const alertTitleVariants = cva(
         outline: "text-gray-950 dark:text-gray-50",
         secondary: "text-gray-950 dark:text-gray-50",
         transparent: "text-gray-950 dark:text-gray-50",
-        gradient: primaryAndBlackAreCompatible
-          ? "text-gray-950"
-          : primaryAndWhiteAreCompatible
-          ? "text-gray-50"
-          : "" // TODO: Better way to handle this?
+        gradient: ""
       }
     },
-    defaultVariants: {
-      variant: "light"
-    }
+    defaultVariants: { variant: "light" }
   }
 )
 
@@ -116,16 +106,10 @@ const alertIconVariants = cva("zyflo-transition", {
       outline: "text-gray-950 dark:text-gray-50",
       secondary: "text-gray-950 dark:text-gray-50",
       transparent: "text-gray-950 dark:text-gray-50",
-      gradient: primaryAndBlackAreCompatible
-        ? "text-gray-950"
-        : primaryAndWhiteAreCompatible
-        ? "text-gray-50"
-        : ""
+      gradient: ""
     }
   },
-  defaultVariants: {
-    variant: "light"
-  }
+  defaultVariants: { variant: "light" }
 })
 
 const alertDescriptionVariants = cva(
@@ -142,16 +126,10 @@ const alertDescriptionVariants = cva(
         outline: "text-gray-950/80 dark:text-gray-50/80",
         secondary: "text-gray-950/80 dark:text-gray-50/80",
         transparent: "text-gray-950/80 dark:text-gray-50/80",
-        gradient: primaryAndBlackAreCompatible
-          ? "text-gray-950/80"
-          : primaryAndWhiteAreCompatible
-          ? "text-gray-50/80"
-          : ""
+        gradient: ""
       }
     },
-    defaultVariants: {
-      variant: "light"
-    }
+    defaultVariants: { variant: "light" }
   }
 )
 
@@ -219,6 +197,7 @@ export interface ZyfloAlertProps
   alertIcon?: ZyfloAlertIcon
   disableAnimations?: boolean
   backdropBlur?: boolean
+  triggerWhenInView?: boolean
 }
 
 export default function ZyfloAlert({
@@ -229,6 +208,7 @@ export default function ZyfloAlert({
   disableAnimations = false,
   className,
   backdropBlur = true,
+  triggerWhenInView = true,
   ...props
 }: ZyfloAlertProps) {
   const alertTitleAs = alertTitle.as ?? "h4"
@@ -238,52 +218,24 @@ export default function ZyfloAlert({
   const descriptionRef = React.useRef<HTMLElement>(null)
 
   const gradientVariantClassName = getAutoContrastClassName(
-    areColorsCompatible(primaryHSL[0], primaryHSL[1], primaryHSL[2], 0, 0, 0),
-    areColorsCompatible(
-      primaryHSL[0],
-      primaryHSL[1],
-      primaryHSL[2],
-      100,
-      100,
-      100
-    )
+    primaryAndBlackAreCompatible,
+    primaryAndWhiteAreCompatible
   )
+
   useEffect(() => {
     if (variant === "gradient") {
-      if (titleRef.current) {
-        titleRef.current.classList.add(gradientVariantClassName)
-      }
-      if (iconRef.current) {
-        iconRef.current.classList.add(gradientVariantClassName)
-      }
-      if (descriptionRef.current) {
-        descriptionRef.current.classList.add(gradientVariantClassName)
-      }
+      ;[titleRef, iconRef, descriptionRef].forEach((ref) => {
+        if (ref.current) {
+          ref.current.style.color = gradientVariantClassName
+        }
+      })
     }
   }, [gradientVariantClassName, variant])
 
-  switch (alertTitleAs) {
-    case "h1":
-      alertIconClassName = "size-12"
-      break
-    case "h2":
-      alertIconClassName = "size-10"
-      break
-    case "h3":
-      alertIconClassName = "size-8"
-      break
-    case "h4":
-      alertIconClassName = "size-6"
-      break
-    case "h5":
-      alertIconClassName = "size-6"
-      break
-    case "h6":
-      alertIconClassName = "size-6"
-      break
-    default:
-      alertIconClassName = "size-6"
-  }
+  alertIconClassName = alertTitleAs.startsWith("h")
+    ? `size-${14 - parseInt(alertTitleAs[1])}`
+    : "size-6"
+
   const divAs = disableAnimations ? "div" : motion.div
   const commonProps = {
     className: cn(
@@ -297,378 +249,97 @@ export default function ZyfloAlert({
     : {
         variants: zyfloBlurInFromBottomVariants as unknown as Variants,
         initial: "initial",
-        custom: 0,
-        whileInView: "animate",
-        viewport: { once: true }
+        ...(triggerWhenInView
+          ? { whileInView: "animate", viewport: { once: true } }
+          : { animate: "animate" }),
+        custom: 0
       }
 
-  const combinedProps = {
-    ...commonProps,
-    ...animationProps,
-    ...props
+  const combinedProps = { ...commonProps, ...animationProps, ...props }
+
+  const renderIcon = () => {
+    if (!alertIcon || alertIcon.type === "none") return null
+
+    const IconComponent =
+      alertIcon.type === "custom"
+        ? alertIcon.customIcon
+        : {
+            info: InfoIcon,
+            warning: MessageSquareWarningIcon,
+            danger: AlertCircleIcon,
+            success: CheckCircleIcon,
+            default: InfoIcon
+          }[alertIcon.type as ZyfloAlertIconType] || InfoIcon
+
+    return (
+      <div
+        className="flex items-center justify-center"
+        aria-label={alertIcon.label ?? `${alertIcon.type} Alert`}
+      >
+        {alertIcon.srOnly && (
+          <span className="sr-only">{alertIcon.type} Alert</span>
+        )}
+        <IconComponent
+          ref={iconRef}
+          className={cn(alertIconClassName, alertIconVariants({ variant }))}
+        />
+      </div>
+    )
   }
-  if (
-    !PossibleZyfloAlertIconType.includes(alertIcon?.type as ZyfloAlertIconType)
-  ) {
-    if (alertIcon) {
-      alertIcon.type = "default"
-    }
-  }
-  return (
+
+  const titleAnimation = disableAnimations
+    ? {}
+    : {
+        variants: zyfloBlurInFromRightVariants as unknown as Variants,
+        initial: "initial",
+        ...(triggerWhenInView
+          ? { whileInView: "animate", viewport: { once: true } }
+          : { animate: "animate" }),
+        custom: 1
+      }
+
+  const descriptionAnimation = disableAnimations
+    ? {}
+    : {
+        variants: zyfloFadeBlurInFromBottomVariants as unknown as Variants,
+        initial: "initial",
+        ...(triggerWhenInView
+          ? { whileInView: "animate", viewport: { once: true } }
+          : { animate: "animate" }),
+        custom: 2
+      }
+
+  return React.createElement(
+    divAs,
+    combinedProps as any,
     <>
-      {React.createElement(
-        divAs,
-        combinedProps as any,
-        <>
-          {!disableAnimations && alertTitle && (
-            <motion.div
-              variants={zyfloBlurInFromRightVariants as unknown as Variants}
-              initial="initial"
-              custom={1}
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="flex flex-col items-start justify-start gap-2 sm:flex-row sm:items-center sm:gap-3"
-            >
-              {!disableAnimations && alertIcon && alertIcon.type !== "none" && (
-                <motion.div
-                  variants={zyfloBlurScaleInVariants as unknown as Variants}
-                  initial="initial"
-                  custom={0}
-                  whileInView="animate"
-                  aria-label={alertIcon.label ?? alertIcon.type + " Alert"}
-                  viewport={{ once: true }}
-                  className="flex items-center justify-center"
-                >
-                  {alertIcon.srOnly && (
-                    <span className="sr-only">{alertIcon.type} Alert</span>
-                  )}
-                  {alertIcon.type === "custom" && (
-                    <alertIcon.customIcon
-                      ref={iconRef}
-                      className={`${alertIconClassName} zyflo-transition`}
-                    />
-                  )}
-                  {alertIcon.type !== "custom" && (
-                    <div className="w-fit">
-                      {alertIcon.type === "info" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "warning" && (
-                        <MessageSquareWarningIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "danger" && (
-                        <AlertCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "success" && (
-                        <CheckCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "default" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              )}
-              {disableAnimations && alertIcon && alertIcon.type !== "none" && (
-                <div
-                  className="flex items-center justify-center"
-                  aria-label={alertIcon.label ?? alertIcon.type + " Alert"}
-                >
-                  {alertIcon.srOnly && (
-                    <span className="sr-only">{alertIcon.type} Alert</span>
-                  )}
-                  {alertIcon.type === "custom" && (
-                    <alertIcon.customIcon
-                      ref={iconRef}
-                      className={`${alertIconClassName} zyflo-transition`}
-                    />
-                  )}
-                  {alertIcon.type !== "custom" && (
-                    <div className="w-fit">
-                      {alertIcon.type === "info" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "warning" && (
-                        <MessageSquareWarningIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "danger" && (
-                        <AlertCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "success" && (
-                        <CheckCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "default" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {/* if alertIcon.type is unknows, show default icon */}
-                      {alertIcon.type !== "danger" &&
-                        alertIcon.type !== "warning" &&
-                        alertIcon.type !== "success" &&
-                        alertIcon.type !== "info" &&
-                        alertIcon.type !== "default" &&
-                        alertIcon.type !== "none" && (
-                          <InfoIcon
-                            className={cn(
-                              alertIconClassName,
-                              alertIconVariants({ variant })
-                            )}
-                            ref={iconRef}
-                          />
-                        )}
-                    </div>
-                  )}
-                </div>
-              )}
-              {React.createElement(
-                alertTitleAs,
-                {
-                  className: cn(alertTitleVariants({ variant })),
-                  ref: titleRef
-                },
-                alertTitle.title
-              )}
-            </motion.div>
-          )}
-          {disableAnimations && alertTitle && (
-            <div>
-              {!disableAnimations && alertIcon && alertIcon.type !== "none" && (
-                <motion.div
-                  variants={zyfloBlurScaleInVariants as unknown as Variants}
-                  initial="initial"
-                  custom={0}
-                  whileInView="animate"
-                  aria-label={alertIcon.label ?? alertIcon.type + " Alert"}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-start justify-center sm:flex-row sm:items-center"
-                >
-                  {alertIcon.srOnly && (
-                    <span className="sr-only">{alertIcon.type} Alert</span>
-                  )}
-                  {alertIcon.type === "custom" && (
-                    <alertIcon.customIcon
-                      ref={iconRef}
-                      className={`${alertIconClassName} zyflo-transition`}
-                    />
-                  )}
-                  {alertIcon.type !== "custom" && (
-                    <div className="w-fit">
-                      {alertIcon.type === "info" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "warning" && (
-                        <MessageSquareWarningIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "danger" && (
-                        <AlertCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "success" && (
-                        <CheckCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "default" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                    </div>
-                  )}
-                </motion.div>
-              )}
-              {disableAnimations && alertIcon && alertIcon.type !== "none" && (
-                <div
-                  className="flex items-center justify-center"
-                  aria-label={alertIcon.label ?? alertIcon.type + " Alert"}
-                >
-                  {alertIcon.srOnly && (
-                    <span className="sr-only">{alertIcon.type} Alert</span>
-                  )}
-                  {alertIcon.type === "custom" && (
-                    <alertIcon.customIcon
-                      ref={iconRef}
-                      className={`${alertIconClassName} zyflo-transition`}
-                    />
-                  )}
-                  {alertIcon.type !== "custom" && (
-                    <div className="w-fit">
-                      {alertIcon.type === "info" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "warning" && (
-                        <MessageSquareWarningIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "danger" && (
-                        <AlertCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "success" && (
-                        <CheckCircleIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                      {alertIcon.type === "default" && (
-                        <InfoIcon
-                          className={cn(
-                            alertIconClassName,
-                            alertIconVariants({ variant })
-                          )}
-                          ref={iconRef}
-                        />
-                      )}
-                    </div>
-                  )}
-                </div>
-              )}
-              {React.createElement(
-                alertTitleAs,
-                {
-                  className: cn(alertTitleVariants({ variant })),
-                  ref: titleRef
-                },
-                alertTitle.title
-              )}
-            </div>
-          )}
-          {!disableAnimations && alertDescription && (
-            <motion.div
-              variants={
-                zyfloFadeBlurInFromBottomVariants as unknown as Variants
-              }
-              initial="initial"
-              custom={2}
-              whileInView="animate"
-              viewport={{ once: true }}
-              className={cn(alertDescriptionVariants({ variant }))}
-            >
-              {React.createElement(
-                alertDescription.as ?? "p",
-                {
-                  ref: descriptionRef,
-                  className: ""
-                },
-                alertDescription.description
-              )}
-            </motion.div>
-          )}
-          {disableAnimations &&
-            alertDescription &&
-            React.createElement(
-              alertDescription.as ?? "p",
-              {
-                ref: descriptionRef,
-                className: cn(alertDescriptionVariants({ variant }))
-              },
-              alertDescription.description
+      {alertTitle &&
+        React.createElement(
+          disableAnimations ? "div" : motion.div,
+          {
+            className:
+              "flex flex-col items-start justify-start gap-2 sm:flex-row sm:items-center sm:gap-3",
+            ...titleAnimation
+          },
+          <>
+            {renderIcon()}
+            {React.createElement(
+              alertTitleAs,
+              { className: cn(alertTitleVariants({ variant })), ref: titleRef },
+              alertTitle.title
             )}
-        </>
-      )}
+          </>
+        )}
+      {alertDescription &&
+        React.createElement(
+          disableAnimations ? alertDescription.as ?? "p" : motion.div,
+          {
+            className: cn(alertDescriptionVariants({ variant })),
+            ref: descriptionRef as React.RefObject<HTMLDivElement>,
+            ...descriptionAnimation
+          },
+          alertDescription.description
+        )}
     </>
   )
 }

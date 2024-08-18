@@ -47,7 +47,7 @@ export function CodeBlockWrapper({
           <CollapsibleTrigger asChild>
             <Button
               variant="outline"
-              className="h-10 rounded-full px-7 text-sm transition-all duration-300 ease-in-out-sine hover:bg-primary/5 dark:hover:bg-primary/10"
+              className="h-10 rounded-full px-7 text-sm backdrop-blur-sm transition-all duration-300 ease-in-out-sine hover:bg-primary/15 dark:hover:bg-primary/30"
             >
               {isOpened ? "Collapse" : expandButtonTitle}
             </Button>

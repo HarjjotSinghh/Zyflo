@@ -46,6 +46,8 @@ export default function IndexPage() {
                   // customIcon: Icons.logoIcon
                 }}
                 variant={variant as ZyfloAlertType}
+                triggerWhenInView={true}
+                className="h-full max-w-md"
               />
             ))}
           </div>

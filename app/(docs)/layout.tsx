@@ -7,6 +7,7 @@ import { MainNav } from "@/components/main-nav"
 import Search from "@/components/search"
 import { DocsSidebarNav } from "@/components/sidebar-nav"
 import { SiteFooter } from "@/components/site-footer"
+import ModeToggle from "@/components/mode-toggle"
 
 interface DocsLayoutProps {
   children: React.ReactNode
@@ -15,8 +16,8 @@ interface DocsLayoutProps {
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full border-b border-muted bg-background/90 backdrop-blur-md ">
-        <div className=" mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-4 py-5 sm:px-8">
+      <header className="sticky top-0 z-40 w-full border-b border-muted bg-background/80 backdrop-blur-md ">
+        <div className=" mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-5 sm:px-8">
           <MainNav items={docsConfig.mainNav}>
             <DocsSidebarNav items={docsConfig.sidebarNav} />
           </MainNav>
@@ -24,7 +25,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
             <div className="flex-1 sm:grow-0">
               <Search />
             </div>
-            <nav className="flex space-x-4">
+            <nav className="flex items-center space-x-4">
               <Link
                 href={siteConfig.links.github}
                 target="_blank"
@@ -33,6 +34,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                 <Icons.gitHub className="h-7 w-7" />
                 <span className="sr-only">GitHub</span>
               </Link>
+              <ModeToggle />
             </nav>
           </div>
         </div>
@@ -40,7 +42,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
       <main className="mx-auto flex w-full max-w-7xl flex-row justify-center gap-6 px-4 lg:gap-12 lg:px-8">
         {children}
       </main>
-      <SiteFooter className="border-t" />
+      <SiteFooter className="border-t border-muted" />
     </div>
   )
 }

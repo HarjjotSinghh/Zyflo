@@ -85,19 +85,19 @@ export function areColorsCompatible(
   return contrastRatio >= 4.5;
 }
 
-export function getAutoContrastClassName(comaptibleWithBlack: boolean, comaptibleWithWhite: boolean): string {
+export function getAutoContrastClassName(comaptibleWithBlack: boolean, comaptibleWithWhite: boolean): "rgb(10,10,10)" | "rgb(245,245,245)" | "" {
   const defaultClassName = "";
   if (!comaptibleWithBlack && !comaptibleWithWhite) {
     return defaultClassName
   }
   if (comaptibleWithBlack) {
-    return "text-gray-950"
+    return "rgb(10,10,10)"
   }
   if (comaptibleWithWhite) {
-    return "text-gray-50"
+    return "rgb(245,245,245)"
   }
   if (comaptibleWithBlack && comaptibleWithWhite) {
-    return "text-gray-50"
+    return "rgb(245,245,245)"
   }
   return defaultClassName
 }

@@ -125,8 +125,12 @@ module.exports = {
           "transition-timing-function": "cubic-bezier(0.12, 0, 0.39, 0)",
           "transition-duration": "200ms",
           "transition-property": "all"
-        }
+        } 
       })
-    }
-  ]
+    },
+    require('daisyui')
+  ],
+  daisyui: {
+    themes: []
+  }
 }
