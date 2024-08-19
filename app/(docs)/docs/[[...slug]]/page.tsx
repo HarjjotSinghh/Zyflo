@@ -34,7 +34,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
           <Pagination pathname={pathName} />
         </Markdown>
       </div>
-      <div className="toc sticky top-[36px] hidden h-[95.95vh] max-w-[200px] flex-1 overflow-x-visible break-words pr-4 lg:flex lg:pr-4">
+      <div className="toc sticky top-[36px] hidden h-[95.95vh] max-w-[200px] flex-1 break-words pr-4 lg:flex lg:pr-4">
         <div className="flex w-full flex-col gap-2.5">
           <h5 className="text-sm font-medium">On this page</h5>
           <ScrollArea className="">

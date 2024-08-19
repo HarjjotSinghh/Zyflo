@@ -11,12 +11,12 @@ html {
 }
 
 * {
-  scrollbar-width: auto;
-  scrollbar-color: hsl(var(--primary) / 0.9) hsl(var(--background));
+  scrollbar-width: auto !important;
+  scrollbar-color: hsl(var(--primary) / 0.9) hsl(var(--background)) !important;
 }
 
 *::-webkit-scrollbar {
-  width: 24px;
+  width: 24px !important;
 }
 
 *::-webkit-scrollbar-track {

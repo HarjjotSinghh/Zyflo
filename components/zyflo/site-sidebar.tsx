@@ -14,7 +14,7 @@ export function SiteSidebar({
   return (
     <div
       className={cn(
-        `hidden flex-col border-r-2 border-primary/10 bg-transparent backdrop-blur-3xl [box-shadow:inset_0_0px_60px_1px_hsl(var(--primary)/0.05)] sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`,
+        `hidden flex-col border-r-2 border-primary/10 bg-transparent backdrop-blur-3xl sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`,
         className
       )}
       {...props}
