@@ -37,6 +37,7 @@ interface ZyfloNavbarProps extends React.ComponentPropsWithRef<"header"> {
   disableAnimations?: boolean
   mobileNavbarCentered?: boolean
   sticky?: boolean
+  backdropBlur?: boolean
 }
 
 export default function ZyfloNavbar({
@@ -48,6 +49,7 @@ export default function ZyfloNavbar({
   mobileNavbarCentered = false,
   sticky = true,
   className,
+  backdropBlur = true,
   ...props
 }: ZyfloNavbarProps) {
   const justify = !logo ? "center" : "between"
@@ -111,7 +113,7 @@ export default function ZyfloNavbar({
       ? `flex list-none flex-col gap-2 justify-${
           mobileNavbarCentered ? "center" : "start"
         } items-${mobileNavbarCentered ? "center" : "start"}`
-      : "flex list-none flex-row gap-6"
+      : "flex list-none flex-row gap-6 !my-0"
 
     return (
       <ul className={listClass}>
@@ -164,7 +166,9 @@ export default function ZyfloNavbar({
       className={cn(
         `${
           sticky ? "sticky top-0" : "relative"
-        } z-50 flex items-center justify-${justify} border-b border-b-muted bg-background/90 px-4 py-5 backdrop-blur lg:px-8`,
+        } z-50 flex items-center justify-${justify} border-b border-b-muted  px-4 py-5 ${
+          backdropBlur ? "bg-background/85 backdrop-blur-sm" : "bg-background"
+        } lg:px-8`,
         className
       )}
       {...props}

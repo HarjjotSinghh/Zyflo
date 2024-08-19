@@ -1,9 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import fs from "fs"
-import path from "path"
-import { ComponentSource } from "../component-source"
-import { CodeBlockWrapper } from "../code-block-wrapper"
 
 const ZyfloFileContent = ({ fileName }) => {
   const [fileContent, setFileContent] = useState<string | null>(null)

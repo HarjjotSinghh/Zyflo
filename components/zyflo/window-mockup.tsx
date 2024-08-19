@@ -1,8 +1,11 @@
+import { cn } from "@/lib/utils"
 import { GlobeIcon } from "lucide-react"
 
 export default function ZyfloWindowMockup({
-  children
-}: React.PropsWithChildren<{}>) {
+  children,
+  className,
+  ...props
+}: React.PropsWithChildren<{ className?: string }>) {
   return (
     <div className="w-full rounded-lg bg-gradient-to-br from-primary/[0.03] from-50% to-primary/[0.08] shadow-2xl shadow-primary/10 ease-linear zyflo-transition dark:from-primary/5 dark:to-primary/15 dark:shadow-primary/15">
       <div className="relative flex h-12 w-full items-center justify-start gap-1.5 rounded-t-lg border-b-2 border-primary/10 px-4">
@@ -14,7 +17,13 @@ export default function ZyfloWindowMockup({
         </span>
         <GlobeIcon className="ml-auto size-4 text-foreground/80" />
       </div>
-      <div className="w-full rounded-b-lg border-t-0 px-4 py-16 lg:px-8">
+      <div
+        className={cn(
+          "w-full rounded-b-lg border-t-0 px-4 py-16 lg:px-8",
+          className
+        )}
+        {...props}
+      >
         {children}
       </div>
     </div>

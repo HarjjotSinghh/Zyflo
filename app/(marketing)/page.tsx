@@ -13,11 +13,12 @@ import ZyfloAlert, {
 import ModeToggle from "@/components/mode-toggle"
 import { RxAccessibility } from "react-icons/rx"
 import { Icons } from "@/components/icons"
-
+import Image from "next/image"
+import CodeBlock from "@/components/zyflo/test"
 export default function IndexPage() {
   return (
     <>
-      <section className="flex items-center justify-center space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
+      <section className="relative flex items-center justify-center space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-4 px-4 text-center md:px-8 lg:px-12 xl:px-16">
           <ModeToggle />
           <h1 className="mb-8 text-center ">Hello, Zyflo!</h1>

@@ -40,6 +40,7 @@ module.exports = {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          0: "#f5f5ff",
           50: "#e8f4ff",
           100: "#d5eaff",
           200: "#b3d6ff",
@@ -50,7 +51,8 @@ module.exports = {
           700: "#1131ff",
           800: "#0624cd",
           900: "#10299f",
-          950: "#0a165c"
+          950: "#0a165c",
+          1000: "#020522"
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -125,10 +127,11 @@ module.exports = {
           "transition-timing-function": "cubic-bezier(0.12, 0, 0.39, 0)",
           "transition-duration": "200ms",
           "transition-property": "all"
-        } 
+        }
       })
     },
-    require('daisyui')
+    require("daisyui"),
+    require("@designbycode/tailwindcss-mask-image")
   ],
   daisyui: {
     themes: []

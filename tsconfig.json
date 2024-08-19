@@ -33,7 +33,8 @@
     ".next/types/**/*.ts",
     ".contentlayer/generated",
     "lib/markdown.js",
-    "contents/docs/getting-started/command-line-interface.mdx"
+    "contents/docs/getting-started/command-line-interface.mdx",
+    "contents/docs/components/badge.mdx"
   ],
   "exclude": ["node_modules"]
 }

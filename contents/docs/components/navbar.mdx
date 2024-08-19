@@ -126,7 +126,7 @@ export default function ZyfloNavbar({
       ? `flex list-none flex-col gap-2 justify-${
           mobileNavbarCentered ? "center" : "start"
         } items-${mobileNavbarCentered ? "center" : "start"}`
-      : "flex list-none flex-row gap-6"
+      : "flex list-none flex-row gap-6 !my-0"
 
     return (
       <ul className={listClass}>
@@ -275,6 +275,227 @@ export default function MyPage() {
 }
 ```
 
+
+## Examples
+
+Here are some examples of how to use the <code>ZyfloNavbar</code> component:
+
+#### With Image Logo
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup className="!p-0 h-full">
+    <div className="relative w-full">
+      <ZyfloNavbar
+        items={[
+          { title: "Home", href: "/" },
+          { title: "Products", href: "/products" },
+          { title: "About", href: "/about" },
+        ]}
+        logo={{
+          src: "/images/logos/normal-zyflo-logo-transparent.svg",
+          alt: "Company Logo",
+          width: 150,
+          height: 50,
+        }}
+        backdropBlur={false}
+        className="bg-primary/[0.03] absolute top-0 w-full z-0"
+      />
+    </div>
+      <ZyfloWindowMockupPlaceholder/>
+  </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">   
+```tsx showLineNumbers wrap
+<ZyfloNavbar
+  items={[
+    { title: "Home", href: "/" },
+    { title: "Products", href: "/products" },
+    { title: "About", href: "/about" },
+  ]}
+  logo={{
+    src: "/logo.png",
+    alt: "Company Logo",
+    width: 150,
+    height: 50,
+  }}
+/>
+```
+  </TabsContent>
+</Tabs>
+
+#### With Text Logo and Custom Heading
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup className="!p-0 h-full">
+    <div className="relative w-full">
+      <ZyfloNavbar
+        items={[
+          { title: "Services", href: "/services" },
+          { title: "Portfolio", href: "/portfolio" },
+          { title: "Contact", href: "/contact" },
+        ]}
+        logo={{
+          text: "My Brand",
+          as: "h5",
+        }}
+        backdropBlur={false}
+        className="bg-primary/[0.03] absolute top-0 w-full z-0"
+      />
+    </div>
+      <ZyfloWindowMockupPlaceholder/>
+  </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+  ```tsx showLineNumbers wrap
+  <ZyfloNavbar
+    items={[
+      { title: "Services", href: "/services" },
+      { title: "Portfolio", href: "/portfolio" },
+      { title: "Contact", href: "/contact" },
+    ]}
+    logo={{
+      text: "My Brand",
+      as: "h5",
+    }}
+  />    
+  ```
+  </TabsContent>
+</Tabs>
+
+#### With Icons in Navigation Items
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup className="!p-0 h-full">
+    <div className="relative w-full">
+      <ZyfloNavbar
+        items={[
+            { title: "Home", href: "/", icon: <FaHome /> },
+            { title: "About", href: "/about", icon: <FaInfoCircle /> },
+            { title: "Contact", href: "/contact", icon: <FaEnvelope /> },
+        ]}
+        logo={{ text: "Icon Nav", as: "h5" }}
+        backdropBlur={false}
+        className="bg-primary/[0.03] absolute top-0 w-full z-0"
+      />
+      <ZyfloWindowMockupPlaceholder/>
+    </div>
+  </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+  ```tsx showLineNumbers wrap
+  import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa"
+  // ...
+  <ZyfloNavbar
+    items={[
+        { title: "Home", href: "/", icon: <FaHome /> },
+        { title: "About", href: "/about", icon: <FaInfoCircle /> },
+        { title: "Contact", href: "/contact", icon: <FaEnvelope /> },
+    ]}
+    logo={{ text: "Icon Nav", as: "h5" }}
+  />
+  ```
+  </TabsContent>
+</Tabs>
+
+#### With Mobile Navigation Footer
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup className="!p-0 h-full">
+    <div className="relative w-full">
+      <ZyfloNavbar
+        items={[
+          { title: "Dashboard", href: "/dashboard" },
+          { title: "Settings", href: "/settings" },
+        ]}
+        logo={{ text: "Admin Panel", as: "h5" }}
+        backdropBlur={false}
+        className="bg-primary/[0.03] absolute top-0 w-full z-0"
+        mobileNavFooter={
+          <Button>Logout</Button>
+        }
+      />
+    </div>
+      <ZyfloWindowMockupPlaceholder/>
+  </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+  ```tsx showLineNumbers wrap
+  <ZyfloNavbar
+    items={[
+        { title: "Dashboard", href: "/dashboard" },
+        { title: "Settings", href: "/settings" },
+    ]}
+    logo={{ text: "Admin Panel" }}
+    mobileNavFooter={
+      <button>Logout</button>
+    }
+  />
+  ```
+  </TabsContent>
+</Tabs>
+
+#### Centered Mobile Navigation
+
+<Tabs defaultValue="preview" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5" value="preview">Preview</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5" value="code">Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview">
+  <ZyfloWindowMockup className="!p-0 h-full">
+    <div className="relative w-full">
+      <ZyfloNavbar
+        items={[
+          { title: "Shop", href: "/shop" },
+          { title: "Cart", href: "/cart" },
+          { title: "Account", href: "/account" },
+        ]}
+        logo={{ text: "E-Commerce", as: "h5" }}
+        backdropBlur={false}
+        className="bg-primary/[0.03] absolute top-0 w-full z-0"
+        mobileNavbarCentered={true}
+      />
+    </div>
+      <ZyfloWindowMockupPlaceholder/>
+  </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="code">
+  ```tsx showLineNumbers wrap
+  <ZyfloNavbar
+    items={[
+      { title: "Shop", href: "/shop" },
+      { title: "Cart", href: "/cart" },
+      { title: "Account", href: "/account" },
+    ]}
+    logo={{ text: "E-Commerce", as: "h5" }}
+    backdropBlur={false}
+    className="bg-primary/[0.03] absolute top-0 w-full z-0"
+    mobileNavbarCentered={true}
+  />
+  ```
+  </TabsContent>
+</Tabs>
+
 ## Props
 
 The <code>ZyfloNavbar</code> component accepts the following props:
@@ -352,85 +573,6 @@ If set to true, makes the navbar sticky at the top of the page.
 
 Additional CSS classes to be applied to the navbar container.
 
-## Examples
-
-Here are some examples of how to use the <code>ZyfloNavbar</code> component:
-
-#### With Image Logo
-```tsx
-<ZyfloNavbar
-  items={[
-    { title: "Home", href: "/" },
-    { title: "Products", href: "/products" },
-    { title: "About", href: "/about" },
-  ]}
-  logo={{
-    src: "/logo.png",
-    alt: "Company Logo",
-    width: 150,
-    height: 50,
-  }}
-/>
-```
-
-#### With Text Logo and Custom Heading
-
-```tsx
-<ZyfloNavbar
-  items={[
-    { title: "Services", href: "/services" },
-    { title: "Portfolio", href: "/portfolio" },
-    { title: "Contact", href: "/contact" },
-  ]}
-  logo={{
-    text: "My Brand",
-    as: "h2",
-  }}
-/>
-```
-
-#### With Icons in Navigation Items
-
-```tsx
-import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa"
-
-<ZyfloNavbar
-    items={[
-        { title: "Home", href: "/", icon: <FaHome /> },
-        { title: "About", href: "/about", icon: <FaInfoCircle /> },
-        { title: "Contact", href: "/contact", icon: <FaEnvelope /> },
-    ]}
-    logo={{ text: "Icon Nav" }}
-/>
-```
-
-#### With Mobile Navigation Footer
-
-```tsx
-<ZyfloNavbar
-  items={[
-    { title: "Dashboard", href: "/dashboard" },
-    { title: "Settings", href: "/settings" },
-  ]}
-  logo={{ text: "Admin Panel" }}
-  mobileNavFooter={
-    <button>Logout</button>
-  }
-/>
-```
-
-#### Centered Mobile Navigation
-```tsx
-<ZyfloNavbar
-  items={[
-    { title: "Shop", href: "/shop" },
-    { title: "Cart", href: "/cart" },
-    { title: "Account", href: "/account" },
-  ]}
-  logo={{ text: "E-Commerce" }}
-  mobileNavbarCentered={true}
-/>
-```
 
 ## Customization
 

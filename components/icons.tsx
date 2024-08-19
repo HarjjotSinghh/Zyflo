@@ -60,18 +60,11 @@ export const ZyfloIcon = () => {
   return (
     <>
       <Image
-        src="/images/logos/zyflo-icon-black-bakground.svg"
-        alt="Logo"
-        width={300}
+        src="/images/logos/normal-zyflo-icon.svg"
+        alt="Zyflo Logo"
+        width={100}
         height={100}
-        className="hidden h-12 w-auto transition-all duration-200 ease-in-out-sine dark:block"
-      />
-      <Image
-        src="/images/logos/zyflo-icon-white-bakground.svg"
-        alt="Logo"
-        width={300}
-        height={100}
-        className="block h-12 w-auto dark:hidden"
+        className="h-12 w-auto zyflo-transition"
       />
     </>
   )

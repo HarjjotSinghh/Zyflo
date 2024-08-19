@@ -372,97 +372,8 @@ export default function MyPage() {
   )
 }
 ```
-## Props
-The ZyfloAlert component accepts the following props:
-### <code>alertTitle</code>
-- Type: ZyfloAlertTitle
-- Required: Yes
 
-Defines the title of the alert. It has the following structure:
-```tsx wrap showLineNumbers
-interface ZyfloAlertTitle extends React.HTMLAttributes<HTMLElement> {
-  title: string
-  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "div" | "span"
-  label?: string
-  srOnly?: boolean
-}
-```
-### <code>alertDescription</code>
-- Type: ZyfloAlertDescription
-- Required: Yes
 
-Defines the description of the alert. It has the following structure:
-```tsx wrap showLineNumbers
-interface ZyfloAlertDescription {
-  description: string
-  as?: "div" | "p" | "span"
-  label?: string
-  srOnly?: boolean
-}
-```
-### <code>alertIcon</code>
-- Type: ZyfloAlertIcon
-- Required: No
-
-Defines the icon to be displayed in the alert. It can be either a predefined type or a custom icon:
-```tsx wrap showLineNumbers
-type ZyfloAlertIcon = (
-  | { type: ZyfloAlertIconType }
-  | {
-      type: "custom"
-      customIcon: React.FC<
-        React.PropsWithRef<React.ComponentProps<"svg" | "img" | "div" | "span">>
-      >
-    }
-) & ZyfloAlertIconBase
-```
-### <code>variant</code>
-- Type: ZyfloAlertType
-- Default: "light"
-
-Defines the visual style of the alert. Possible values are:
-- light
-- info
-- warning
-- danger
-- success
-- default
-- outline
-- secondary
-- transparent
-- gradient
-
-```tsx wrap showLineNumbers
-const PossibleZyfloAlertType = [
-  "info",
-  "warning",
-  "danger",
-  "success",
-  "default",
-  "outline",
-  "secondary",
-  "transparent",
-  "light",
-  "gradient"
-] as const
-export type ZyfloAlertType = (typeof PossibleZyfloAlertType)[number]
-```
-
-### <code>disableAnimations</code>
-- Type: boolean
-- Default: false
-
-If set to true, disables all animations in the alert.
-### <code>backdropBlur</code>
-- Type: boolean
-- Default: true
-
-If set to true, applies a backdrop blur effect to the alert.
-### <code>className</code>
-- Type: string
-- Required: No
-
-Additional CSS classes to be applied to the alert container.
 ## Examples
 Here are some examples of how to use the ZyfloAlert component with different variants:
 
@@ -798,6 +709,101 @@ Here are some examples of how to use the ZyfloAlert component with different var
       ```
   </TabsContent>
 </Tabs>
+
+## Props
+
+The ZyfloAlert component accepts the following props:
+
+### <code>alertTitle</code>
+- Type: ZyfloAlertTitle
+- Required: Yes
+
+Defines the title of the alert. It has the following structure:
+```tsx wrap showLineNumbers
+interface ZyfloAlertTitle extends React.HTMLAttributes<HTMLElement> {
+  title: string
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "div" | "span"
+  label?: string
+  srOnly?: boolean
+}
+```
+### <code>alertDescription</code>
+- Type: ZyfloAlertDescription
+- Required: Yes
+
+Defines the description of the alert. It has the following structure:
+```tsx wrap showLineNumbers
+interface ZyfloAlertDescription {
+  description: string
+  as?: "div" | "p" | "span"
+  label?: string
+  srOnly?: boolean
+}
+```
+### <code>alertIcon</code>
+- Type: ZyfloAlertIcon
+- Required: No
+
+Defines the icon to be displayed in the alert. It can be either a predefined type or a custom icon:
+```tsx wrap showLineNumbers
+type ZyfloAlertIcon = (
+  | { type: ZyfloAlertIconType }
+  | {
+      type: "custom"
+      customIcon: React.FC<
+        React.PropsWithRef<React.ComponentProps<"svg" | "img" | "div" | "span">>
+      >
+    }
+) & ZyfloAlertIconBase
+```
+### <code>variant</code>
+- Type: ZyfloAlertType
+- Default: "light"
+
+Defines the visual style of the alert. Possible values are:
+- light
+- info
+- warning
+- danger
+- success
+- default
+- outline
+- secondary
+- transparent
+- gradient
+
+```tsx wrap showLineNumbers
+const PossibleZyfloAlertType = [
+  "info",
+  "warning",
+  "danger",
+  "success",
+  "default",
+  "outline",
+  "secondary",
+  "transparent",
+  "light",
+  "gradient"
+] as const
+export type ZyfloAlertType = (typeof PossibleZyfloAlertType)[number]
+```
+
+### <code>disableAnimations</code>
+- Type: boolean
+- Default: false
+
+If set to true, disables all animations in the alert.
+### <code>backdropBlur</code>
+- Type: boolean
+- Default: true
+
+If set to true, applies a backdrop blur effect to the alert.
+### <code>className</code>
+- Type: string
+- Required: No
+
+Additional CSS classes to be applied to the alert container.
+
 
 ## Customization
 The component uses Tailwind CSS classes for styling. You can customize its appearance by modifying the CSS classes in the component's source code or by passing additional classes through the className prop.

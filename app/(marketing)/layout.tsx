@@ -6,7 +6,6 @@ import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import ZyfloNavbar from "@/components/zyflo/navbar"
-import ZyfloNavbarTest from "@/components/zyflo/navbar-2"
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -35,7 +34,7 @@ export default async function MarketingLayout({
         }}
         items={marketingConfig.mainNav}
         srOnly={true}
-        mobileNavbarCentered={true}
+        mobileNavbarCentered={false}
         sticky={true}
         // disableAnimations
       />

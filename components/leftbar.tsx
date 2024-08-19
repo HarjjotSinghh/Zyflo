@@ -12,14 +12,22 @@ import { Logo, NavMenu } from "./navbar"
 import { Button } from "./ui/button"
 import { AlignLeftIcon } from "lucide-react"
 import { FooterButtons } from "./footer"
+import { cn } from "@/lib/utils"
 
-export function Leftbar() {
+export function Leftbar({
+  className,
+  ...props
+}: React.ComponentProps<typeof ScrollArea>) {
   return (
-    <aside className="sticky top-[88px] hidden h-[92.75vh] min-w-fit flex-col overflow-y-auto md:flex">
-      <ScrollArea className="py-4">
-        <Menu />
-      </ScrollArea>
-    </aside>
+    <ScrollArea
+      className={cn(
+        "sticky top-[94px] hidden h-[92.75vh] min-w-fit flex-col md:flex",
+        className
+      )}
+      {...props}
+    >
+      <Menu />
+    </ScrollArea>
   )
 }
 
@@ -53,14 +61,14 @@ export function SheetLeftbar() {
   )
 }
 
-function Menu({ isSheet = false }) {
+export function Menu({ isSheet = false }) {
   return (
-    <>
+    <div className="flex min-w-fit flex-col gap-6 ">
       {ROUTES.map(({ href, items, title }) => {
         return (
-          <div className="mt-5 flex min-w-fit flex-col gap-3 " key={href}>
+          <div className="flex min-w-fit flex-col gap-1.5 " key={href}>
             <Anchor href={`/docs/${href}`} className="hover:text-current">
-              <h5 className="font-medium sm:text-sm">{title}</h5>
+              <h5 className="mb-2 font-medium sm:text-sm">{title}</h5>
             </Anchor>
             <div className="ml-0.5 flex flex-col gap-3 text-neutral-800 dark:text-neutral-300/85 sm:text-sm">
               {items.map((subItem) => {
@@ -86,6 +94,6 @@ function Menu({ isSheet = false }) {
           </div>
         )
       })}
-    </>
+    </div>
   )
 }

@@ -8,7 +8,7 @@ import WordRotate from "@/components/magicui/word-rotate"
 import Link from "next/link"
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
-    <footer className={cn(className)}>
+    <footer className={cn(className, "z-50 bg-background")}>
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-4 px-6 py-8 md:flex-row lg:px-8">
         <div className="flex w-full flex-col items-start gap-4 md:flex-col">
           <Icons.logo />

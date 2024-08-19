@@ -23,7 +23,7 @@ export function CodeBlockWrapper({
   const [isOpened, setIsOpened] = React.useState(false)
 
   return (
-    <Collapsible open={isOpened} onOpenChange={setIsOpened}>
+    <Collapsible open={isOpened} onOpenChange={setIsOpened} className="">
       <div className={cn("relative overflow-hidden", className)} {...props}>
         <CollapsibleContent
           forceMount
@@ -40,7 +40,7 @@ export function CodeBlockWrapper({
         </CollapsibleContent>
         <div
           className={cn(
-            "absolute flex items-center justify-center bg-gradient-to-b from-background/10 to-background p-2 transition-all duration-500 ease-in-out",
+            "absolute flex items-center justify-center bg-gradient-to-b from-transparent to-primary-0 p-2 zyflo-transition dark:to-primary-1000",
             isOpened ? "inset-x-0 bottom-0 h-12" : "inset-0 h-full"
           )}
         >
