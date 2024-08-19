@@ -360,10 +360,11 @@ export default function ZyfloAlert({
 ## Usage
 Here's a basic example of how to use the Alert component:
 ```tsx wrap showLineNumbers
-import { ZyfloAlert } from "@/components/zyflo/alert"
+import ZyfloAlert as Alert from "@/components/zyflo/alert"
+
 export default function MyPage() {
   return (
-    <ZyfloAlert
+    <Alert
       alertTitle={{ title: "Success!" }}
       alertDescription={{ description: "Your action was completed successfully." }}
       alertIcon={{ type: "success" }}

@@ -17,9 +17,20 @@ const Sticky: React.FC<StickyProps> = ({
   const [isSticky, setIsSticky] = useState(false)
   const [stickyTop, setStickyTop] = useState<number | null>(null)
   const ref = useRef<HTMLDivElement>(null)
-
+  const [xy, setXy] = useState<number[]>([])
+  const [docsDiv, setDocsDiv] = useState<HTMLDivElement | null>(null)
+  const [initialDocsDivHeight, setInitialDocsDivHeight] = useState<number>(0)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDocsDiv(document.getElementById("docs-content") as HTMLDivElement)
+      setInitialDocsDivHeight(
+        document.getElementById("docs-content")?.clientHeight ?? 0
+      )
+    }
+  }, [])
   useEffect(() => {
     const handleScroll = () => {
+      setXy([window.scrollX, window.scrollY])
       if (ref.current) {
         const rect = ref.current.getBoundingClientRect()
         const stickyPoint = stickyTop !== null ? stickyTop : rect.top
@@ -39,14 +50,17 @@ const Sticky: React.FC<StickyProps> = ({
       window.removeEventListener("scroll", handleScroll)
     }
   }, [stickyTop, offsetTop])
-
+  console.log(offsetTop + window.scrollY, "offsetTop + window.scrollY")
+  console.log(window.scrollY, "window.scrollY")
+  console.log(offsetTop + window.scrollY < initialDocsDivHeight - 150)
+  console.log(offsetTop + window.scrollY, initialDocsDivHeight - 150)
   const stickyStyle: React.CSSProperties = isSticky
     ? {
-        position: "fixed",
-        top: offsetTop,
-        left: ref.current?.getBoundingClientRect().left,
-        width: ref.current?.getBoundingClientRect().width,
-        zIndex: 1000
+        position: "inherit",
+        paddingTop:
+          offsetTop + window.scrollY < initialDocsDivHeight - 150
+            ? offsetTop + window.scrollY
+            : window.scrollY + 50
       }
     : {}
 

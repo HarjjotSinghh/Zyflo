@@ -4,22 +4,24 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { ROUTES } from "@/lib/routes-config"
 import Anchor from "../anchor"
-import Sticky from "./sticky"
 
-export function SiteSidebar() {
+export function SiteSidebar({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) {
   const [open, setOpen] = useState(false)
 
   return (
     <div
       className={cn(
-        `hidden flex-col border-r border-muted bg-gradient-to-t from-primary/[0.02] from-0% to-background to-80% pl-4 dark:from-primary/[0.05] sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`
-
-        // "h-[calc(100vh-88.8px)]" // for your use case, use `h-screen` instead of `h-[60vh]`
+        `hidden flex-col border-r-2 border-primary/10 bg-transparent backdrop-blur-3xl [box-shadow:inset_0_0px_60px_1px_hsl(var(--primary)/0.05)] sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`,
+        className
       )}
+      {...props}
     >
-      <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="sticky top-[88.8px] justify-between gap-10">
-          <div className="mt-4 flex flex-1 flex-col items-start justify-start">
+      <Sidebar animate={true} open={open} setOpen={setOpen}>
+        <SidebarBody className="justify-between gap-10">
+          <div className="mt-6 flex w-fit flex-col items-start justify-start">
             <div className="flex flex-col gap-8">
               {ROUTES.map((route, idx) => (
                 <ZyfloSidebarLink
@@ -27,7 +29,7 @@ export function SiteSidebar() {
                   link={{
                     label: route.title,
                     href: route.href,
-                    icon: <route.icon className="size-6" />
+                    icon: <route.icon className="size-6 text-primary" />
                   }}
                   content={
                     <div className="flex min-w-fit flex-col gap-2 " key={idx}>

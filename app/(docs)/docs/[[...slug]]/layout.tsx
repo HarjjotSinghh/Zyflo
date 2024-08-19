@@ -1,4 +1,6 @@
-import { Leftbar } from "@/components/leftbar"
+export const metadata = {
+  title: "Documentation"
+}
 
 export default function DocsLayout({
   children

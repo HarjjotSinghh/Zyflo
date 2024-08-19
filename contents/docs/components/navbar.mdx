@@ -257,7 +257,7 @@ export default function ZyfloNavbar({
 Here's a basic example of how to use the Navbar component:
 
 ```tsx showLineNumbers wrap
-import { ZyfloNavbar } from "@/components/zyflo/navbar"
+import ZyfloNavbar as Navbar from "@/components/zyflo/navbar"
 
 const navItems = [
     { title: "Home", href: "/" },
@@ -267,7 +267,7 @@ const navItems = [
 
 export default function MyPage() {
     return (
-        <ZyfloNavbar
+        <Navbar
             items={navItems}
             logo={{ text: "My Website" }}
         />
@@ -500,7 +500,7 @@ Here are some examples of how to use the <code>ZyfloNavbar</code> component:
 
 The <code>ZyfloNavbar</code> component accepts the following props:
 
-### <code>items</code> 
+#### <code>items</code> 
 
 - Type: <code>ZyfloNavbarItem[]</code>
 - Required: Yes
@@ -516,7 +516,7 @@ interface ZyfloNavbarItem {
 }
 ```
 
-### <code>logo</code>
+#### <code>logo</code>
 
 The logo to be displayed in the navbar
 
@@ -531,42 +531,42 @@ type ZyfloNavbarLogoComponent =
   | { text: string; as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" }
 ```
 
-### <code>srOnly</code>
+#### <code>srOnly</code>
 
 - Type: boolean
 - Default: false
 
 If set to true, adds screen reader-only labels to navigation items.
 
-### <code>mobileNavFooter</code>
+#### <code>mobileNavFooter</code>
 
 - Type: React.ReactNode
 - Default: null
 
 Additional content to be displayed at the bottom of the mobile navigation drawer.
 
-### <code>disableAnimations</code>
+#### <code>disableAnimations</code>
 
 - Type: boolean
 - Default: false
 
 If set to true, disables all animations in the navbar.
 
-### <code>mobileNavbarCentered</code>
+#### <code>mobileNavbarCentered</code>
 
 - Type: boolean
 - Default: false
 
 If set to true, centers the content in the mobile navigation drawer.
 
-### <code>sticky</code>
+#### <code>sticky</code>
 
 - Type: boolean
 - Default: true
 
 If set to true, makes the navbar sticky at the top of the page.
 
-### <code>className</code>
+#### <code>className</code>
 
 - Type: string
 - Required: No

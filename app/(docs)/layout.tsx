@@ -24,7 +24,7 @@ interface DocsLayoutProps {
 export default function DocsLayout({ children }: DocsLayoutProps) {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 z-40 w-full border-b border-muted bg-background/80 backdrop-blur-md ">
+      <header className="sticky top-0 z-40 w-full border-b-2 border-primary/10 bg-background/80 backdrop-blur-md ">
         <div className=" mx-auto flex w-full max-w-7xl items-center justify-between gap-4 px-6 py-5 sm:px-8">
           <MainNav items={docsConfig.mainNav}>
             <DocsSidebarNav items={docsConfig.sidebarNav} />
@@ -47,23 +47,37 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           </div>
         </div>
       </header>
-      <main className="relative overflow-hidden">
+      <main
+        id="docs-content"
+        className="relative flex w-full flex-1 flex-col items-start justify-start overflow-hidden xl:items-center xl:justify-center"
+      >
         <Image
           src={"/images/light-leak2.webp"}
           alt="Light Leak"
           width={1000}
           height={600}
-          className="fixed left-0 top-0 -z-[2] h-screen w-full scale-x-[-1] scale-y-[1] overflow-hidden object-cover antialiased opacity-20 blur-sm zyflo-transition [mask-image:linear-gradient(140deg,black_10%,transparent_60%)] dark:opacity-[0.1]"
+          className="absolute left-0 top-0 -z-[1] h-screen w-full scale-x-[-1] scale-y-[1] overflow-hidden object-cover antialiased opacity-30 blur-sm zyflo-transition [mask-image:linear-gradient(140deg,black_10%,transparent_60%)] dark:opacity-[0.2]"
         />
         <div className="absolute left-0 top-0 -z-[1] h-full w-full bg-gradient-to-tr from-primary from-40% via-primary to-primary bg-[size:200%_200%] bg-[position:100%_0%] opacity-100 mix-blend-color zyflo-transition dark:opacity-30 dark:mix-blend-color"></div>
-        <div className="relative  flex flex-row items-stretch justify-center gap-4 md:gap-8 lg:gap-10 xl:gap-12">
-          {/* <div className="hidden h-full min-w-fit flex-col bg-primary/10 px-6 md:flex lg:px-8">
-            <Leftbar className="w-fit" />
-          </div> */}
-          <SiteSidebar />
-          <div className="mx-auto flex w-fit max-w-7xl flex-row justify-center gap-6 px-4 lg:gap-12 lg:px-8">
-            {children}
-          </div>
+        <Image
+          src={"/gradient-mesh-light.webp"}
+          alt="Light Leak"
+          width={20}
+          height={20}
+          draggable={false}
+          className="fixed top-0 -z-[1] block h-screen w-screen select-none object-cover object-right opacity-20 dark:hidden"
+        />
+        <Image
+          src={"/gradient-mesh-dark.webp"}
+          alt="Light Leak"
+          width={20}
+          height={20}
+          draggable={false}
+          className="fixed top-0 -z-[1] hidden h-screen w-screen select-none object-cover object-right opacity-40 dark:block"
+        />
+        <div className="mx-0 flex w-full flex-row justify-start gap-6 pr-6 lg:gap-12 lg:pr-8 xl:mx-auto 2xl:w-fit">
+          <SiteSidebar className="" />
+          {children}
         </div>
       </main>
       <SiteFooter className="border-t border-muted" />

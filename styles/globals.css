@@ -99,7 +99,7 @@ html {
 
 @layer base {
   * {
-    @apply !scroll-smooth border-border sm:!scroll-mt-[80px] md:!scroll-mt-[100px] lg:!scroll-mt-[124px] xl:!scroll-mt-[124px];
+    @apply !scroll-smooth border-border sm:!scroll-mt-[80px] md:!scroll-mt-[80px] lg:!scroll-mt-[80px] xl:!scroll-mt-[80px];
   }
   body {
     @apply bg-background text-foreground;
