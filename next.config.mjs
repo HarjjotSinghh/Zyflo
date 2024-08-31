@@ -17,17 +17,31 @@ const nextConfig = withMDX({
     // ppr: true,
     // reactCompiler: true
   },
-  future: {
-    webpack5: true,   
+  async headers() {
+    return [
+      {
+        source: "/",
+        headers: [
+          {
+            key: "cross-origin-opener-policy",
+            value: "same-origin"
+          },
+          {
+            key: "cross-origin-embedder-policy",
+            value: "require-corp"
+          }
+        ]
+      }
+    ]
   },
   webpack(config) {
     config.resolve.fallback = {
-      ...config.resolve.fallback,  
-      fs: false,
-    };
-    
-    return config;
-  },
+      ...config.resolve.fallback,
+      fs: false
+    }
+
+    return config
+  }
 })
 
-export default withContentlayer(nextConfig)
+export default nextConfig

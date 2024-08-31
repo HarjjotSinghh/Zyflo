@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils"
 import {
   AlertTriangle,
   AppWindow,
@@ -14,6 +15,7 @@ import {
   FileText,
   HelpCircle,
   Image as LucideImage,
+  Info,
   Laptop,
   LayoutPanelTop,
   Loader2,
@@ -34,6 +36,7 @@ import {
 } from "lucide-react"
 
 import Image from "next/image"
+import React from "react"
 
 const ZyfloLogo = () => {
   return (
@@ -63,17 +66,50 @@ const ZyfloLogo = () => {
   )
 }
 
-export const ZyfloIcon = () => {
+interface ZyfloIconProps {
+  fill?: {
+    dark: string
+    light: string
+  }
+  className?: string
+}
+
+export const ZyfloIcon = ({
+  fill = { dark: "#000", light: "#fff" },
+  ...props
+}: ZyfloIconProps) => {
   return (
-    <>
-      <Image
-        src="/images/logos/normal-zyflo-icon.svg"
-        alt="Zyflo Logo"
-        width={100}
-        height={100}
-        className="h-12 w-auto zyflo-transition"
-      />
-    </>
+    <React.Fragment>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        x="0"
+        y="0"
+        version="1.1"
+        viewBox="0 0 337 341"
+        fill={fill.light}
+        className={cn("block dark:hidden", props.className)}
+      >
+        <polygon
+          points="-.2 .1 336.9 .1 96.6 296.9 293.5 296.9 293.5 273.7 152 273.7 336.9 52.3 336.9 118.1 244.9 227.2 336.9 227.2 337 340.8 -.2 340.8 243.6 44.1 43.7 44.1 43.8 67.2 190.3 67.2 -.2 293.5 -.2 218.3 90.1 113.7 -.2 113.7"
+          className="st0"
+        />
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        x="0"
+        y="0"
+        version="1.1"
+        viewBox="0 0 337 341"
+        className={cn("hidden dark:block", props.className)}
+        fill={fill.dark}
+        {...props}
+      >
+        <polygon
+          points="-.2 .1 336.9 .1 96.6 296.9 293.5 296.9 293.5 273.7 152 273.7 336.9 52.3 336.9 118.1 244.9 227.2 336.9 227.2 337 340.8 -.2 340.8 243.6 44.1 43.7 44.1 43.8 67.2 190.3 67.2 -.2 293.5 -.2 218.3 90.1 113.7 -.2 113.7"
+          className="st0"
+        />
+      </svg>
+    </React.Fragment>
   )
 }
 
@@ -120,5 +156,7 @@ export const Icons = {
   twitter: Twitter,
   check: Check,
   preview: AppWindow,
-  code: SquareTerminal
+  code: SquareTerminal,
+  alertTriangle: AlertTriangle,
+  info: Info
 }

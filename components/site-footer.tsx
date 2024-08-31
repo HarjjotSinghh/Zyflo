@@ -34,7 +34,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
               rel="noreferrer"
               className="font-medium underline underline-offset-4"
             >
-              Harjot
+              Harjot Singh Rana
             </Link>
             . Hosted on{" "}
             <Link

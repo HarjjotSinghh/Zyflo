@@ -8,8 +8,10 @@ import {
 import {
   AlertCircleIcon,
   CheckCircleIcon,
+  FileWarning,
   InfoIcon,
-  MessageSquareWarningIcon
+  MessageSquareWarningIcon,
+  TriangleAlert
 } from "lucide-react"
 import React, { useEffect } from "react"
 import { motion, Variants } from "framer-motion"
@@ -266,7 +268,7 @@ export default function ZyfloAlert({
         : {
             info: InfoIcon,
             warning: MessageSquareWarningIcon,
-            danger: AlertCircleIcon,
+            danger: TriangleAlert,
             success: CheckCircleIcon,
             default: InfoIcon
           }[alertIcon.type as ZyfloAlertIconType] || InfoIcon

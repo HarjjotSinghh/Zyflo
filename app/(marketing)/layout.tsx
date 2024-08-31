@@ -6,6 +6,7 @@ import { buttonVariants } from "@/components/ui/button"
 import { MainNav } from "@/components/main-nav"
 import { SiteFooter } from "@/components/site-footer"
 import ZyfloNavbar from "@/components/zyflo/navbar"
+import ModeToggle from "@/components/mode-toggle"
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -36,6 +37,7 @@ export default async function MarketingLayout({
         srOnly={true}
         mobileNavbarCentered={false}
         sticky={true}
+        extraContent={<ModeToggle />}
         // disableAnimations
       />
       <main className="flex-1">{children}</main>

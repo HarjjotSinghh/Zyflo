@@ -16,4 +16,5 @@ export const siteConfig: SiteConfig = {
 export const zyfloComponents = [
   "Navbar",
   "Alert",
+  "Badge",
 ]

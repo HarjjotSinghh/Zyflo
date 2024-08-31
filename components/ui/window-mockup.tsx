@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils"
 import { GlobeIcon } from "lucide-react"
+import { ResizableArea } from "react-resizable-area"
 
 export default function ZyfloWindowMockup({
   children,
@@ -7,6 +8,15 @@ export default function ZyfloWindowMockup({
   ...props
 }: React.PropsWithChildren<{ className?: string }>) {
   return (
+    // <Resizable
+    //   maxHeight={"100%"}
+    //   maxWidth={"100%"}
+    //   defaultSize={{
+    //     width: 320,
+    //     height: 320
+    //   }}
+    // >
+    // <ResizableArea maximumHeight="100%" maximumWidth="100%">
     <div className="w-full rounded-lg bg-gradient-to-br from-primary/[0.03] from-50% to-primary/[0.08] shadow-2xl shadow-primary/10 ease-linear zyflo-transition dark:from-primary/5 dark:to-primary/15 dark:shadow-primary/15">
       <div className="relative flex h-12 w-full items-center justify-start gap-1.5 rounded-t-lg border-b-2 border-primary/10 px-4">
         <span className="h-3 w-3 rounded-full border-2 border-transparent bg-red-400 dark:border-red-400 dark:bg-transparent "></span>
@@ -27,5 +37,7 @@ export default function ZyfloWindowMockup({
         {children}
       </div>
     </div>
+    // </ResizableArea>
+    // </Resizable>
   )
 }

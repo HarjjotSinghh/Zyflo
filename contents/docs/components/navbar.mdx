@@ -440,6 +440,8 @@ Here are some examples of how to use the <code>ZyfloNavbar</code> component:
   </TabsContent>
   <TabsContent value="code">
   ```tsx showLineNumbers wrap
+  import { Button } from "@/components/ui/button"
+  // ...  
   <ZyfloNavbar
     items={[
         { title: "Dashboard", href: "/dashboard" },
@@ -447,7 +449,7 @@ Here are some examples of how to use the <code>ZyfloNavbar</code> component:
     ]}
     logo={{ text: "Admin Panel" }}
     mobileNavFooter={
-      <button>Logout</button>
+      <Button>Logout</Button>
     }
   />
   ```
@@ -500,6 +502,71 @@ Here are some examples of how to use the <code>ZyfloNavbar</code> component:
 
 The <code>ZyfloNavbar</code> component accepts the following props:
 
+### Quick Props Overview
+
+<Table>
+  <TableCaption>ZyfloNavbar Component Props</TableCaption>
+  <TableHeader>
+    <TableRow className="border-foreground/50 border-b font-bold text-foreground">
+      <TableHead className="md:w-[19%] w-[35%]">Prop</TableHead>
+      <TableHead className="w-[25%] md:block hidden">Type</TableHead>
+      <TableHead className="w-[15%] lg:block hidden">Default</TableHead>
+      <TableHead className="lg:w-[41%] md:w-[56%] w-[65%]">Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">items</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloNavbarItem[]</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">-</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">An array of navigation items to be displayed in the navbar</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">logo</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloNavbarLogoComponent</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">undefined</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The logo to be displayed in the navbar</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">srOnly</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">false</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, adds screen reader-only labels to navigation items</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">mobileNavFooter</TableCell>
+      <TableCell className="w-[25%] md:block hidden">React.ReactNode</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">null</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Additional content to be displayed at the bottom of the mobile navigation drawer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">disableAnimations</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">false</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, disables all animations in the navbar</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">mobileNavbarCentered</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">false</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, centers the content in the mobile navigation drawer</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">sticky</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">true</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, makes the navbar sticky at the top of the page</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">className</TableCell>
+      <TableCell className="w-[25%] md:block hidden">string</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">undefined</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Additional CSS classes to be applied to the navbar</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+### Detailed Props Overview
+
 #### <code>items</code> 
 
 - Type: <code>ZyfloNavbarItem[]</code>
@@ -533,42 +600,42 @@ type ZyfloNavbarLogoComponent =
 
 #### <code>srOnly</code>
 
-- Type: boolean
-- Default: false
+- Type: `boolean`
+- Default: `false`
 
 If set to true, adds screen reader-only labels to navigation items.
 
 #### <code>mobileNavFooter</code>
 
-- Type: React.ReactNode
-- Default: null
+- Type: `React.ReactNode`
+- Default: `null`
 
 Additional content to be displayed at the bottom of the mobile navigation drawer.
 
 #### <code>disableAnimations</code>
 
-- Type: boolean
-- Default: false
+- Type: `boolean`
+- Default: `false`
 
 If set to true, disables all animations in the navbar.
 
 #### <code>mobileNavbarCentered</code>
 
-- Type: boolean
-- Default: false
+- Type: `boolean`
+- Default: `false`
 
 If set to true, centers the content in the mobile navigation drawer.
 
 #### <code>sticky</code>
 
-- Type: boolean
-- Default: true
+- Type: `boolean`
+- Default: `true`
 
 If set to true, makes the navbar sticky at the top of the page.
 
 #### <code>className</code>
 
-- Type: string
+- Type: `string`
 - Required: No
 
 Additional CSS classes to be applied to the navbar container.

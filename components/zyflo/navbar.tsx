@@ -3,12 +3,12 @@ import Link from "next/link"
 import React from "react"
 import { buttonVariants } from "../ui/button"
 import {
-  ZyfloDrawer,
-  ZyfloDrawerTrigger,
-  ZyfloDrawerContent,
-  ZyfloDrawerHeader,
-  ZyfloDrawerDescription
-} from "@/components/zyflo/drawer"
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerDescription
+} from "@/components/ui/drawer"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { cn } from "@/lib/utils"
 import {
@@ -38,6 +38,7 @@ interface ZyfloNavbarProps extends React.ComponentPropsWithRef<"header"> {
   mobileNavbarCentered?: boolean
   sticky?: boolean
   backdropBlur?: boolean
+  extraContent?: React.ReactNode
 }
 
 export default function ZyfloNavbar({
@@ -50,6 +51,7 @@ export default function ZyfloNavbar({
   sticky = true,
   className,
   backdropBlur = true,
+  extraContent,
   ...props
 }: ZyfloNavbarProps) {
   const justify = !logo ? "center" : "between"
@@ -177,11 +179,23 @@ export default function ZyfloNavbar({
         <div className="flex w-full items-center justify-between space-x-16">
           {renderLogo()}
           <nav className="hidden lg:flex">{renderNavItems()}</nav>
+          {extraContent && !disableAnimations && (
+            <motion.div
+              variants={zyfloBlurInFromBottomVariants as unknown as Variants}
+              initial="initial"
+              custom={0}
+              whileInView="animate"
+              viewport={{ once: true }}
+            >
+              {extraContent}
+            </motion.div>
+          )}
+          {extraContent && disableAnimations && extraContent}
         </div>
       </div>
 
-      <ZyfloDrawer direction="top">
-        <ZyfloDrawerTrigger className="block lg:hidden" asChild={true}>
+      <Drawer direction="top">
+        <DrawerTrigger className="block lg:hidden" asChild={true}>
           {!disableAnimations ? (
             <motion.div
               variants={zyfloBlurInFromRightVariants as unknown as Variants}
@@ -199,14 +213,14 @@ export default function ZyfloNavbar({
           ) : (
             <RxHamburgerMenu className="size-5" />
           )}
-        </ZyfloDrawerTrigger>
-        <ZyfloDrawerContent>
-          <ZyfloDrawerHeader
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader
             className={`mt-4 !text-${mobileNavbarCentered ? "center" : "left"}`}
           >
             {renderLogo(true)}
-          </ZyfloDrawerHeader>
-          <ZyfloDrawerDescription className="p-4">
+          </DrawerHeader>
+          <DrawerDescription className="p-4">
             <nav>{renderNavItems(true)}</nav>
             {mobileNavFooter && (
               <footer
@@ -233,9 +247,9 @@ export default function ZyfloNavbar({
                 )}
               </footer>
             )}
-          </ZyfloDrawerDescription>
-        </ZyfloDrawerContent>
-      </ZyfloDrawer>
+          </DrawerDescription>
+        </DrawerContent>
+      </Drawer>
     </header>
   )
 }

@@ -7,7 +7,7 @@ export const ROUTES = [
         icon: RocketIcon,
         items: [
             { title: "Installation", href: "/installation", description: "Learn how to install Zyflo in your project." },
-            { title: "CLI", href: "/command-line-interface", description: "Learn how to use the Zyflo CLI to create a new project." },
+            { title: "CLI", href: "/command-line-interface", description: "Learn how to use the Zyflo CLI to create a new project." }
         ],
         description: "Learn how to get started with Zyflo and implement it in your project, within a few minutes.",
     },

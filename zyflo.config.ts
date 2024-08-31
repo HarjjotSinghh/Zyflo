@@ -167,7 +167,7 @@ export const zyfloFadeInFromTopVariants: ZyfloVariants = {
     name: "zyfloFadeInFromTop",
     initial: {
         opacity: 0,
-        y: -48,
+        y: -19,
         filter: "blur(0px)"
     },
     animate: (index) => ({
@@ -323,7 +323,7 @@ export const zyfloBlurInFromRightVariants: ZyfloVariants = {
     name: "zyfloBlurInFromRight",
     initial: {
         opacity: 0,
-        x: -48,
+        x: 48,
         filter: "blur(3px)"
     },
     animate: (index) => ({
@@ -342,7 +342,7 @@ export const zyfloBlurInFromLeftVariants: ZyfloVariants = {
     name: "zyfloBlurInFromLeft",
     initial: {
         opacity: 0,
-        x: 48,
+        x: -48,
         filter: "blur(3px)"
     },
     animate: (index) => ({

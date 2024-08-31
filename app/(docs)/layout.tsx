@@ -14,8 +14,8 @@ import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar"
 import { Logo } from "@/components/navbar"
 import { LogOutIcon } from "lucide-react"
 import { marketingConfig } from "@/config/marketing"
-import { SiteSidebar } from "@/components/zyflo/site-sidebar"
-import Sticky from "@/components/zyflo/sticky"
+import { SiteSidebar } from "@/components/ui/site-sidebar"
+import Sticky from "@/components/ui/sticky"
 
 interface DocsLayoutProps {
   children: React.ReactNode
@@ -56,7 +56,8 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           alt="Light Leak"
           width={1000}
           height={600}
-          className="absolute left-0 top-0 -z-[1] h-screen w-full scale-x-[-1] scale-y-[1] overflow-hidden object-cover antialiased opacity-30 blur-sm zyflo-transition [mask-image:linear-gradient(140deg,black_10%,transparent_60%)] dark:opacity-[0.2]"
+          className="absolute left-0 top-0 -z-[1] h-screen w-full scale-x-[-1] scale-y-[1] overflow-hidden object-cover antialiased opacity-30 blur-sm zyflo-transition
+          [-webkit-mask-image:linear-gradient(to_bottom,black_10%,transparent_90%)] dark:opacity-[0.4]"
         />
         <div className="absolute left-0 top-0 -z-[1] h-full w-full bg-gradient-to-tr from-primary from-40% via-primary to-primary bg-[size:200%_200%] bg-[position:100%_0%] opacity-100 mix-blend-color zyflo-transition dark:opacity-30 dark:mix-blend-color"></div>
         <Image
@@ -65,7 +66,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           width={20}
           height={20}
           draggable={false}
-          className="fixed top-0 -z-[1] block h-screen w-screen select-none object-cover object-right opacity-20 dark:hidden"
+          className="fixed top-0 -z-[1] block h-screen w-screen select-none object-cover object-right opacity-20 dark:hidden "
         />
         <Image
           src={"/gradient-mesh-dark.webp"}
@@ -75,7 +76,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           draggable={false}
           className="fixed top-0 -z-[1] hidden h-screen w-screen select-none object-cover object-right opacity-40 dark:block"
         />
-        <div className="mx-0 flex w-full flex-row justify-start gap-6 pr-6 lg:gap-12 lg:pr-8 xl:mx-auto 2xl:w-fit">
+        <div className="mx-auto flex w-full max-w-7xl flex-row justify-start gap-6 pr-6 lg:gap-12 lg:pr-8 xl:mx-auto 2xl:w-fit">
           <SiteSidebar className="" />
           {children}
         </div>

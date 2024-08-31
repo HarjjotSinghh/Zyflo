@@ -715,6 +715,67 @@ Here are some examples of how to use the ZyfloAlert component with different var
 
 The ZyfloAlert component accepts the following props:
 
+### Quick Props Overview
+
+<Table>
+  <TableCaption>ZyfloAlert Component Props</TableCaption>
+  <TableHeader>
+    <TableRow className="border-foreground/50 border-b font-bold text-foreground">
+      <TableHead className="md:w-[19%] w-[35%]">Prop</TableHead>
+      <TableHead className="w-[25%] md:block hidden">Type</TableHead>
+      <TableHead className="w-[15%] lg:block hidden">Default</TableHead>
+      <TableHead className="lg:w-[41%] md:w-[56%] w-[65%]">Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">alertTitle</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAlertTitle</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">-</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Defines the title of the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">alertDescription</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAlertDescription</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">-</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Defines the description of the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">alertIcon</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAlertIcon</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">-</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Defines the icon to be displayed in the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">variant</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAlertType</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">light</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Defines the visual style of the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">disableAnimations</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">false</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, disables all animations in the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">backdropBlur</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">true</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">If true, applies a backdrop blur effect to the alert</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">className</TableCell>
+      <TableCell className="w-[25%] md:block hidden">string</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">undefined</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Additional CSS classes to be applied to the alert container</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+
+### Detailed Props Overview
+
 ### <code>alertTitle</code>
 - Type: ZyfloAlertTitle
 - Required: Yes
@@ -762,16 +823,16 @@ type ZyfloAlertIcon = (
 - Default: "light"
 
 Defines the visual style of the alert. Possible values are:
-- light
-- info
-- warning
-- danger
-- success
-- default
-- outline
-- secondary
-- transparent
-- gradient
+- `light`
+- `info`
+- `warning`
+- `danger`
+- `success`
+- `default`
+- `outline`
+- `secondary`
+- `transparent`
+- `gradient`
 
 ```tsx wrap showLineNumbers
 const PossibleZyfloAlertType = [
@@ -790,17 +851,17 @@ export type ZyfloAlertType = (typeof PossibleZyfloAlertType)[number]
 ```
 
 ### <code>disableAnimations</code>
-- Type: boolean
-- Default: false
+- Type: `boolean`
+- Default: `false`
 
 If set to true, disables all animations in the alert.
 ### <code>backdropBlur</code>
-- Type: boolean
-- Default: true
+- Type: `boolean`
+- Default: `true`
 
 If set to true, applies a backdrop blur effect to the alert.
 ### <code>className</code>
-- Type: string
+- Type: `string`
 - Required: No
 
 Additional CSS classes to be applied to the alert container.

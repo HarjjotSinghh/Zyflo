@@ -8,6 +8,7 @@ import Note from "@/components/note"
 import { Stepper, StepperItem } from "@/components/ui/stepper"
 import { useRouter } from 'next/router'
 import ModeToggle from "./components/mode-toggle"
+import Link from "next/link"
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   logo: <span>My Nextra Documentation</span>,
@@ -42,7 +43,7 @@ export default {
     text: (
       <div className="flex w-full flex-col gap-2 items-center justify-between">
         <p>
-          Developed with 💙 by <a href="https://harjot.pro" target="_blank" rel="noreferrer" className="!text-foreground underline"><strong>Harjot</strong></a>.
+          Developed with 💙 by <Link href="https://harjot.pro" target="_blank" rel="noreferrer" className="!text-foreground underline"><strong>Harjot Singh Rana</strong></Link>.
         </p>
         <p className="mt-6 text-xs">
           © {new Date().getFullYear()} Zyflo. All rights reserved.
