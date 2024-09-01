@@ -6,7 +6,7 @@ import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 import Head from "next/head"
 import { headers } from "next/headers"
-import { Metadata } from "next"
+import { Metadata, Viewport } from "next"
 import { getURL } from "@/lib/utils"
 
 interface RootLayoutProps {
@@ -131,6 +131,10 @@ export async function generateMetadata(): Promise<Metadata> {
       ]
     }
   }
+}
+
+export const viewport: Viewport = {
+  themeColor: "#1733ee"
 }
 
 // export async function generateMetadata(): Promise<Metadata> {
