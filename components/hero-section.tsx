@@ -32,13 +32,13 @@ export default function HeroSection() {
             <GradualSpacing
               textClassName="justify-start"
               visiblity={isInView}
-              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-transparent text-white sm:text-7xl"
+              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-foreground sm:text-7xl"
               text={"Make your UI"}
             />
             <GradualSpacing
               textClassName="justify-start"
               visiblity={isInView}
-              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-transparent text-white sm:text-7xl"
+              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-foreground sm:text-7xl"
               text={"flow beautifully with Zyflo"}
             />
 

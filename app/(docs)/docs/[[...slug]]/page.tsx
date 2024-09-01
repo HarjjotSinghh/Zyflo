@@ -8,6 +8,8 @@ import { cache } from "react"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import TocObserver from "@/components/toc-observer"
 import { Leftbar } from "@/components/leftbar"
+import { getKeywords } from "@/lib/utils"
+import { Metadata } from "next"
 
 type PageProps = {
   params: { slug: string[] }
@@ -39,7 +41,7 @@ export default async function DocsPage({ params: { slug = [] } }: PageProps) {
       <div className="toc sticky top-[36px] hidden h-[95.95vh] max-w-[200px] flex-1 break-words pr-4 lg:flex lg:pr-4">
         <div className="flex w-full flex-col gap-2.5">
           <h5 className="text-sm font-medium">On this page</h5>
-            <TocObserver data={tocs} />
+          <TocObserver data={tocs} />
         </div>
       </div>
     </div>
@@ -54,26 +56,44 @@ function Markdown({ children }: PropsWithChildren) {
   )
 }
 
-export async function generateMetadata({ params: { slug = [] } }: PageProps) {
+export async function generateMetadata({
+  params
+}: PageProps): Promise<Metadata> {
+  const slug = params.slug || []
   const pathName = slug.join("/")
-  const res = await cachedGetMarkdownForSlug(pathName)
-  if (!res) return null as any
-  const { frontmatter } = res
+  const res: any = await cachedGetMarkdownForSlug(pathName)
+
+  if (!res) {
+    return {}
+  }
+
+  const ogImage = `https://zyflo.co/og/${slug[0]}/${slug[slug.length - 1]}.png`
+  console.log("slug", slug)
+  console.log("ogImage", ogImage)
   return {
-    title: frontmatter.title as string,
-    description: frontmatter.description as string,
+    title: res.frontmatter.title,
+    description: res.frontmatter.description,
     openGraph: {
-      title: frontmatter.title as string,
-      description: frontmatter.description as string,
-      url: `https://zyflo.co/docs/${pathName}`,
+      title: res.frontmatter.title,
+      description: res.frontmatter.description,
+      type: "article",
+      url: `https://zyflo.com/docs/${pathName}`,
       images: [
         {
-          url: "https://zyflo.co/og.png",
+          url: ogImage,
           width: 1200,
-          height: 630
+          height: 630,
+          alt: res.frontmatter.title + " Zyflo OG Image"
         }
       ]
-    }
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: res.frontmatter.title,
+      description: res.frontmatter.description,
+      images: [ogImage]
+    },
+    keywords: getKeywords(slug[0], slug[slug.length - 1])
   }
 }
 

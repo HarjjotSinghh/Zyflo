@@ -125,3 +125,47 @@ export const getURL = (path: string = '') => {
   // Concatenate the URL and the path.
   return path ? `${url}/${path}` : url;
 };
+
+export function getKeywords(category: string, componentName: string): string[] {
+  const baseKeywords = [
+    "Zyflo", "UI Library", "React", "Next.js", "Tailwind CSS", "UI Components",
+    "Web Development", "Frontend", "Design System", "Responsive Design",
+    "Accessibility", "Performance", "Customization", "Open Source"
+  ]
+
+  const categoryKeywords: { [key: string]: string[] } = {
+    components: [
+      "React Components", "UI Elements", "Reusable Components", "Component Library",
+      "UI Kit", "User Interface", "Interactive Components", "Modular Design"
+    ],
+    "getting-started": [
+      "Installation Guide", "Quick Start", "Setup", "Configuration", "Integration",
+      "Usage Instructions", "First Steps", "Onboarding"
+    ],
+  }
+
+  const componentKeywords: { [key: string]: string[] } = {
+    navbar: [
+      "Navigation Bar", "Header Component", "Menu", "Site Navigation", "Responsive Navbar",
+      "Top Bar", "App Bar", "Navigation Menu"
+    ],
+    alert: [
+      "Notification Component", "Warning Message", "Info Alert", "Error Alert",
+      "Success Message", "Toast Notification", "Feedback Component"
+    ],
+    badge: [
+      "Label Component", "Status Indicator", "Tag", "Chip", "Counter",
+      "Notification Badge", "Visual Indicator"
+    ],
+  }
+
+  return [
+    ...baseKeywords,
+    ...(categoryKeywords[category] || []),
+    ...(componentKeywords[componentName] || []),
+    `Zyflo ${componentName}`,
+    `${componentName} component`,
+    `${category} in Zyflo`,
+    `Zyflo ${category}`,
+  ]
+}

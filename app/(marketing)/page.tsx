@@ -24,44 +24,52 @@ export default function IndexPage() {
           <ZyfloNavbarExamples />
           <h2 className="mb-4">Zyflo Alert Component</h2>
           <div className="flex flex-row flex-wrap items-start justify-start gap-4">
-            {PossibleZyfloAlertType.map((variant) => (
-              <ZyfloAlert
-                key={variant}
-                alertTitle={{
-                  title:
-                    "Zyflo Alert (" +
-                    variant.charAt(0).toUpperCase() +
-                    variant.slice(1) +
-                    ")",
-                  as: "h4",
-                  label: "Zyflo Alert Title"
-                }}
-                alertDescription={{
-                  description:
-                    "This is an example alert. I am typing a lot of text here. Like, a lot of text, you won't get it bro. Okay just one more line here and that should be enough.",
-                  as: "p",
-                  label: "Zyflo Alert Description"
-                }}
-                // alertIcon={{ type: variant !== "info" ? variant as ZyfloAlertType : "none" }}
-                alertIcon={{
-                  type: "custom",
-                  customIcon: () => (
-                    <Icons.logoIcon
-                      className="size-5"
-                      fill={{
-                        dark:
-                          variant === "light" ? "hsl(var(--primary))" : "#fff",
-                        light:
-                          variant === "light" ? "hsl(var(--primary))" : "#000"
-                      }}
-                    />
-                  )
-                }}
-                variant={variant as ZyfloAlertType}
-                triggerWhenInView={true}
-                className="h-full max-w-md"
-              />
-            ))}
+            {PossibleZyfloAlertType.map(
+              (variant) =>
+                variant !== "transparent" && (
+                  <ZyfloAlert
+                    key={variant}
+                    alertTitle={{
+                      title:
+                        "Zyflo Alert (" +
+                        variant.charAt(0).toUpperCase() +
+                        variant.slice(1) +
+                        ")",
+                      as: "h6",
+                      label: "Zyflo Alert Title"
+                    }}
+                    alertDescription={{
+                      // description:
+                      //   "This is an example alert. I am typing a lot of text here. Like, a lot of text, you won't get it bro. Okay just one more line here and that should be enough.",
+                      description: "This is an example alert.",
+                      as: "p",
+                      label: "Zyflo Alert Description"
+                    }}
+                    // alertIcon={{ type: variant !== "info" ? variant as ZyfloAlertType : "none" }}
+                    alertIcon={{
+                      type: "custom",
+                      customIcon: () => (
+                        <Icons.logoIcon
+                          className="size-5"
+                          fill={{
+                            dark:
+                              variant === "light"
+                                ? "hsl(var(--primary))"
+                                : "#fff",
+                            light:
+                              variant === "light"
+                                ? "hsl(var(--primary))"
+                                : "#000"
+                          }}
+                        />
+                      )
+                    }}
+                    variant={variant as ZyfloAlertType}
+                    triggerWhenInView={true}
+                    className="h-full max-w-xs"
+                  />
+                )
+            )}
           </div>
           <h2 className="!mt-16">Zyflo Badge Component</h2>
           <h5 className="my-4">Small Variants</h5>
