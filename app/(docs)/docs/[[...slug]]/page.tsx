@@ -71,7 +71,10 @@ export async function generateMetadata({
   console.log("slug", slug)
   console.log("ogImage", ogImage)
   return {
-    title: res.frontmatter.title,
+    title:
+      slug[0].toLowerCase() === "components"
+        ? "Zyflo "
+        : "" + res.frontmatter.title,
     description: res.frontmatter.description,
     openGraph: {
       title: res.frontmatter.title,
