@@ -68,11 +68,10 @@ export async function generateMetadata({
   }
 
   const ogImage = `https://zyflo.co/og/${slug[0]}/${slug[slug.length - 1]}.png`
-  console.log("slug", slug)
-  console.log("ogImage", ogImage)
+
   return {
     title:
-      slug[0].toLowerCase() === "components"
+      typeof slug[0] === "string" && slug[0].toLowerCase() === "components"
         ? "Zyflo "
         : "" + res.frontmatter.title,
     description: res.frontmatter.description,
