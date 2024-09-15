@@ -73,7 +73,7 @@ export default function HeroSection() {
               viewport={{ once: true }}
               custom={9}
               href="/docs"
-              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-br from-primary-300 to-primary-500 px-10 py-2 text-center text-lg font-medium tracking-tighter text-primary-900 ring-2 ring-primary-500/80 ring-offset-2 ring-offset-primary-950 zyflo-transition hover:scale-[1.02] hover:ring-transparent active:scale-[0.98] active:ring-primary-500/70"
+              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-br from-primary-300 to-primary-500 px-10 py-2 text-center text-lg font-medium tracking-tighter text-white zyflo-transition hover:scale-[1.02] hover:ring-transparent active:scale-[0.98]"
             >
               Get Started
               <div

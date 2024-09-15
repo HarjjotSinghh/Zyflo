@@ -17,4 +17,5 @@ export const zyfloComponents = [
   "Navbar",
   "Alert",
   "Badge",
+  "Link Embed",
 ]

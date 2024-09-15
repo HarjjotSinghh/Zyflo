@@ -10,12 +10,17 @@ import "./env.mjs"
 const nextConfig = withMDX({
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   reactStrictMode: true,
-  images: {
-    domains: ["avatars.githubusercontent.com"]
-  },
   experimental: {
     // ppr: true,
     // reactCompiler: true
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**"
+      }
+    ]
   },
   async headers() {
     return [

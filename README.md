@@ -4,10 +4,9 @@ Zyflo: An animated UI library which offers React components for building beautif
 
 ## Tech Stack
 
-- [Next.js 13](https://nextjs.org/)
+- [Next.js 14](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Shadcn UI](https://ui.shadcn.com/)
-- [Contentlayer](https://www.contentlayer.dev/)
+- [Zyflo UI](https://zyflo.co/)
 
 ## License
 

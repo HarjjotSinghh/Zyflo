@@ -14,6 +14,10 @@ import { Icons } from "@/components/icons"
 import React, { ReactNode } from "react"
 import HeroSection from "@/components/hero-section"
 import ZyfloNavbarExamples from "@/components/zyflo-navbar-examples"
+import ZyfloLinkEmbed, {
+  ZyfloLinkEmbedVariant,
+  ZyfloLinkEmbedVariants
+} from "@/components/zyflo/link-embed"
 export default function IndexPage() {
   return (
     <React.Fragment>
@@ -115,6 +119,22 @@ export default function IndexPage() {
               >
                 Badge ({variant})
               </ZyfloBadge>
+            ))}
+          </div>
+          <h2 className="!mt-16">Zyflo Link Embed Component</h2>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            {ZyfloLinkEmbedVariants.map((variant) => (
+              <div className="flex flex-col items-start justify-start gap-4">
+                <h4>
+                  Link Embed (
+                  {variant.charAt(0).toUpperCase() + variant.slice(1)})
+                </h4>
+                <ZyfloLinkEmbed
+                  className="h-fit w-full md:max-w-lg"
+                  url="https://figma.com"
+                  variant={variant as ZyfloLinkEmbedVariant}
+                />
+              </div>
             ))}
           </div>
         </div>

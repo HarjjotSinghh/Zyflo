@@ -168,7 +168,7 @@ export default function ZyfloNavbar({
       className={cn(
         `${
           sticky ? "sticky top-0" : "relative"
-        } z-50 flex items-center justify-${justify} border-b border-b-muted  px-4 py-5 ${
+        } z-50 flex items-center justify-${justify} border-b border-b-primary/10  px-4 py-5 ${
           backdropBlur ? "bg-background/85 backdrop-blur-sm" : "bg-background"
         } lg:px-8`,
         className

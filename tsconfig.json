@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["react/canary"],
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
