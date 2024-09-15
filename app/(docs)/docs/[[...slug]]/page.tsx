@@ -67,9 +67,7 @@ export async function generateMetadata({
     return {}
   }
 
-  const ogImage = `https://zyflo.co/og/${slug[0]}/${slug[slug.length - 1]
-    .toLowerCase()
-    .replace(" ", "-")}.png`
+  const ogImage = `https://zyflo.co/og/${slug[0]}/${slug[slug.length - 1]}.png`
 
   return {
     title:
