@@ -717,6 +717,8 @@ import ZyfloAOS from "@/components/zyflo/aos"
 
 ## Props
 
+### Quick Props View
+
 The ZyfloAOS component accepts the following props:
 
 <Table>
@@ -751,7 +753,7 @@ The ZyfloAOS component accepts the following props:
     <TableRow>
       <TableCell className="md:w-[19%] w-[35%]">easing</TableCell>
       <TableCell className="w-[25%] md:block hidden">ZyfloAOSEasing</TableCell>
-      <TableCell className="w-[15%] lg:block hidden">"easeInOut"</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">"ease-in-out"</TableCell>
       <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The easing function to use for the animation</TableCell>
     </TableRow>
     <TableRow>
@@ -769,9 +771,15 @@ The ZyfloAOS component accepts the following props:
   </TableBody>
 </Table>
 
-## Variants
+### Detailed Props View
 
-The ZyfloAOS component supports the following animation variants:
+#### <code>children</code>
+
+The `children` prop is the content to be animated. It accepts a ReactNode.
+
+#### <code>variant</code>
+
+The `variant` prop is the animation variant to use. It accepts a string and can be any of the following:
 
 - `fade`
 - `slide-left`
@@ -808,15 +816,31 @@ The ZyfloAOS component supports the following animation variants:
 - `flip-bottom-right`
 - `flip-bottom-left`
 
-## Easing Functions
+#### <code>duration</code>
 
-The ZyfloAOS component supports the following easing functions:
+The `duration` prop is the duration of the animation in seconds. It accepts a number.
 
-- `easeOut`
-- `easeIn`
-- `easeInOut`
-- `circOut`
+#### <code>easing</code>
+
+The `easing` prop is the easing function to use for the animation. It accepts a string and can be any of the following:
+
+- `ease-in`
+- `ease-out`
+- `ease-in-out`
+- `circ-out`
 - `spring`
+
+#### <code>amount</code>
+
+The `amount` prop is the amount of the element that needs to be visible to trigger the animation. It accepts a number.
+
+#### <code>once</code>
+
+The `once` prop is whether the animation should only trigger once. It accepts a boolean.
+
+#### <code>className</code>
+
+The `className` prop is the class name to be applied to the animated element. It accepts a string.
 
 ## Customization
 
