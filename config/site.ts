@@ -21,4 +21,5 @@ export const zyfloComponents = [
   "Liquid Button",
   "Animated Background",
   "Animate On Scroll",
+  "Cursor Follow",
 ]

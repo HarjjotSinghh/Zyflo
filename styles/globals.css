@@ -425,3 +425,13 @@ pre > code {
 .dark .code-not-in-pre code:not(pre > code) {
   @apply border-2 border-primary/10;
 }
+
+.cursor-hover {
+  opacity: 0.5;
+  transform: scale(1.5);
+}
+
+a,
+.zyflo-hover {
+  cursor: pointer;
+}

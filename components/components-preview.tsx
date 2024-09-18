@@ -28,8 +28,18 @@ import ZyfloAOS, {
   ZyfloAOSVariant
 } from "@/components/zyflo/aos"
 import { Icons } from "./icons"
+import ZyfloWindowMockup from "./ui/window-mockup"
+import ZyfloCursor from "./zyflo/cursor-follow"
+import { Button } from "./ui/button"
+import { useRef } from "react"
 
 export default function ComponentsPreview() {
+  const spotBlurRef = useRef<HTMLDivElement>(null)
+  const dotRef = useRef<HTMLDivElement>(null)
+  const ringRef = useRef<HTMLDivElement>(null)
+  const invertedRef = useRef<HTMLDivElement>(null)
+  const defaultRef = useRef<HTMLDivElement>(null)
+
   return (
     <section className="relative flex items-center justify-center space-y-6 border-t-2 border-primary/20 bg-primary-0/50  pb-24 pt-16 dark:bg-primary-1000/50 lg:pb-32 lg:pt-16">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-4 px-4 text-center md:px-8 lg:px-12 xl:px-16">
@@ -265,6 +275,89 @@ export default function ComponentsPreview() {
               </ZyfloAOS>
             </div>
           ))}
+        </div>
+        <h2 className="!mt-16">Zyflo Cursor Component</h2>
+        <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
+          <div className="flex flex-col items-start justify-start">
+            <p className="my-4 text-sm font-bold">Default Cursor</p>
+            <ZyfloWindowMockup className="relative" ref={defaultRef}>
+              <ZyfloCursor
+                variant={"default"}
+                label={"Default Cursor"}
+                srOnly={"Default Cursor"}
+                containerRef={defaultRef}
+              />
+              <div className="p-4">
+                <Button variant={"secondary"} className="zyflo-hover">
+                  Hover me
+                </Button>
+              </div>
+            </ZyfloWindowMockup>
+          </div>
+          <div className="flex flex-col items-start justify-start">
+            <p className="my-4 text-sm font-bold">Spot Blur Cursor</p>
+            <ZyfloWindowMockup className="relative" ref={spotBlurRef}>
+              <ZyfloCursor
+                variant={"spot-blur"}
+                label={"Spot Blur Cursor"}
+                srOnly={"Spot Blur Cursor"}
+                containerRef={spotBlurRef}
+              />
+              <div className="p-4">
+                <Button variant={"secondary"} className="zyflo-hover">
+                  Hover me
+                </Button>
+              </div>
+            </ZyfloWindowMockup>
+          </div>
+          <div className="flex flex-col items-start justify-start">
+            <p className="my-4 text-sm font-bold">Dot Cursor</p>
+            <ZyfloWindowMockup className="relative" ref={dotRef}>
+              <ZyfloCursor
+                variant={"dot"}
+                label={"Dot Cursor"}
+                srOnly={"Dot Cursor"}
+                containerRef={dotRef}
+              />
+              <div className="p-4">
+                <Button variant={"secondary"} className="zyflo-hover">
+                  Hover me
+                </Button>
+              </div>
+            </ZyfloWindowMockup>
+          </div>
+          <div className="flex flex-col items-start justify-start">
+            <p className="my-4 text-sm font-bold">Ring Cursor</p>
+            <ZyfloWindowMockup className="relative" ref={ringRef}>
+              <ZyfloCursor
+                variant={"ring"}
+                label={"Ring Cursor"}
+                srOnly={"Ring Cursor"}
+                containerRef={ringRef}
+              />
+              <div className="p-4">
+                <Button variant={"secondary"} className="zyflo-hover">
+                  Hover me
+                </Button>
+              </div>
+            </ZyfloWindowMockup>
+          </div>
+          <div className="flex flex-col items-start justify-start">
+            <p className="my-4 text-sm font-bold">Inverted Cursor</p>
+            <ZyfloWindowMockup className="relative" ref={invertedRef}>
+              <ZyfloCursor
+                variant={"inverted"}
+                label={"Inverted Cursor"}
+                srOnly={"Inverted Cursor"}
+                containerRef={invertedRef}
+              />
+              <div className="p-4">
+                <Button variant={"secondary"} className="zyflo-hover">
+                  Hover me
+                </Button>
+              </div>
+            </ZyfloWindowMockup>
+          </div>
         </div>
       </div>
     </section>

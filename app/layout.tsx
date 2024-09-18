@@ -8,6 +8,7 @@ import Head from "next/head"
 import { headers } from "next/headers"
 import { Metadata, Viewport } from "next"
 import { getURL } from "@/lib/utils"
+import ZyfloCursor from "@/components/zyflo/cursor-follow"
 
 interface RootLayoutProps {
   children: React.ReactNode
