@@ -124,7 +124,7 @@ html {
     @apply !text-base !font-extrabold tracking-normal sm:!text-lg lg:!text-lg xl:!text-xl;
   }
   a {
-    @apply text-foreground/80 zyflo-transition;
+    @apply text-foreground/80 zyflo-transition hover:text-primary;
   }
   /* Debug */
   /* * {

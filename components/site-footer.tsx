@@ -20,14 +20,15 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
             </p>
           </div>
           <div className="w-full border-t border-muted pb-3 pt-8 text-sm text-foreground/90">
-            <span className="inline-flex items-center gap-1.5 pr-1.5">
+            <div className="inline-flex items-center gap-1.5 pr-1.5">
               Developed with{" "}
               <WordRotate
                 className="text-lg"
+                duration={1800}
                 words={["💙", "🧠", "☕", "🍔", "🍕"]}
               />{" "}
               by
-            </span>
+            </div>
             <Link
               href={siteConfig.links.author}
               target="_blank"

@@ -21,6 +21,8 @@ export const ROUTES = [
             { title: "Badge", href: "/badge", description: "Learn how to use the Zyflo Badge component to create a customizable badge." },
             { title: "Link Embed", href: "/link-embed", description: "Learn how to use the Zyflo Link Embed component to create a customizable link embed." },
             { title: "Liquid Button", href: "/liquid-button", description: "Learn how to use the Zyflo Liquid Button component to create a customizable liquid button." },
+            { title: "Animated Background", href: "/animated-background", description: "Learn how to use the Zyflo Animated Background component to create a customizable animated background." },
+            { title: "Animate On Scroll", href: "/animate-on-scroll", description: "Learn how to use the Zyflo Animate On Scroll component to create a customizable animated background." },
         ],
         description: "Explore the various components available in Zyflo and learn how to use them in your project.",
     }

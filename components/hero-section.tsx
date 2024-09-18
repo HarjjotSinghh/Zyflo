@@ -17,7 +17,7 @@ import {
 } from "@/zyflo.config"
 import { zyfloComponents } from "@/config/site"
 
-export default function HeroSection() {
+export default function HeroSection({ stars }: { stars: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref)
 
@@ -74,7 +74,7 @@ export default function HeroSection() {
               viewport={{ once: true }}
               custom={9}
               href="/docs"
-              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-br from-primary-300 to-primary-500 px-10 py-2 text-center text-lg font-medium tracking-tighter text-white zyflo-transition hover:scale-[1.02] hover:ring-transparent active:scale-[0.98]"
+              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-br from-primary-300 to-primary-500 px-10 py-2 text-center text-lg font-medium tracking-tighter text-white zyflo-transition hover:scale-[1.02] hover:text-white/90 hover:ring-transparent active:scale-[0.98]"
             >
               Get Started
               <div
@@ -93,7 +93,7 @@ export default function HeroSection() {
             >
               {[
                 ["Components", `${zyfloComponents.length} (So Far)`],
-                ["Stars on GitHub", "0 (Sad ngl)"],
+                ["Stars on GitHub", `${stars} (Sad ngl)`],
                 ["Contributors", "1 (Indie devs be like)"]
               ].map(([name, value], i) => (
                 <motion.div

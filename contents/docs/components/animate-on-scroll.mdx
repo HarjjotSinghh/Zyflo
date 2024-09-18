@@ -1,0 +1,377 @@
+---
+title: Animate On Scroll
+description: A fully customizable and versatile component for adding scroll-triggered animations to different elements on your page.
+---
+
+## Introduction
+
+The ZyfloAOS component is a powerful and flexible tool for adding scroll-triggered animations to elements on your page. It uses Framer Motion to create smooth, customizable animations that activate as the element comes into view.
+
+## Add The Component
+
+Add the following component to your project in the `/components/zyflo` directory:
+
+<ComponentSource>
+```tsx showLineNumbers wrapLines
+```
+</ComponentSource>
+
+## Usage
+
+Here's a basic example of how to use the AOS component:
+```tsx showLineNumbers wrapLines
+import ZyfloAOS from "@/components/zyflo/aos"
+
+export default function MyPage() {
+    return (
+        <ZyfloAOS
+            once={false}
+            amount={0.4}
+            duration={1.2}
+            easing="spring"
+            variant="slide-left"
+        >
+            <div className="flex size-52 items-center justify-center">
+                <p>Content goes here</p>
+            </div>
+        </ZyfloAOS>
+    )
+}
+```
+
+
+## Examples
+
+Here are all of the examples of how to use the ZyfloAOS component with all the different variants available:
+
+<Tabs defaultValue="preview-spring" className="w-full mb-4">
+  <TabsList className="mb-1">
+    <TabsTrigger className="px-10 py-2.5 inline-flex gap-2" value="preview-spring"><Icons.preview className="size-4"/>Preview (Spring)</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5 inline-flex gap-2" value="preview-ease-in-out"><Icons.preview className="size-4"/>Preview (Ease In Out)</TabsTrigger>
+    <TabsTrigger className="px-10 py-2.5 inline-flex gap-2" value="code"><Icons.code className="size-4"/>Code</TabsTrigger>
+  </TabsList>
+  <TabsContent value="preview-spring">
+    <ZyfloWindowMockup>
+        <div className="relative flex flex-row flex-wrap items-start justify-start gap-8">
+            {[
+                "fade",
+                "slide-left",
+                "slide-right",
+                "slide-top",
+                "slide-bottom",
+                "slide-top-right",
+                "slide-top-left",
+                "slide-bottom-right",
+                "slide-bottom-left",
+                "scale-center",
+                "scale-left",
+                "scale-right",
+                "scale-bottom",
+                "scale-top",
+                "scale-top-right",
+                "scale-top-left",
+                "scale-bottom-right",
+                "scale-bottom-left",
+                "rotate-left",
+                "rotate-right",
+                "rotate-bottom",
+                "rotate-top",
+                "rotate-top-right",
+                "rotate-top-left",
+                "rotate-bottom-right",
+                "rotate-bottom-left",
+                "flip-left",
+                "flip-right",
+                "flip-bottom",
+                "flip-top",
+                "flip-top-right",
+                "flip-top-left",
+                "flip-bottom-right",
+                "flip-bottom-left"
+            ].map((variant) => (
+              <div className="relative flex flex-col items-start justify-start">
+                <p className="my-4 font-bold">
+                  {variant
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}{" "}
+                  Variant
+                </p>
+                <ZyfloAOS
+                  once={false}
+                  key={variant}
+                  amount={0.4}
+                  duration={1.2}
+                  easing="spring"
+                  variant={variant}
+                >
+                  <div className="flex size-52 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
+                    <p className="font-bold">Content goes here</p>
+                  </div>
+                </ZyfloAOS>
+              </div>
+            ))}
+          </div>
+    </ZyfloWindowMockup>
+  </TabsContent>
+  <TabsContent value="preview-ease-in-out">
+    <ZyfloWindowMockup>
+        <div className="relative flex flex-row flex-wrap items-start justify-start gap-8">
+            {[
+                "fade",
+                "slide-left",
+                "slide-right",
+                "slide-top",
+                "slide-bottom",
+                "slide-top-right",
+                "slide-top-left",
+                "slide-bottom-right",
+                "slide-bottom-left",
+                "scale-center",
+                "scale-left",
+                "scale-right",
+                "scale-bottom",
+                "scale-top",
+                "scale-top-right",
+                "scale-top-left",
+                "scale-bottom-right",
+                "scale-bottom-left",
+                "rotate-left",
+                "rotate-right",
+                "rotate-bottom",
+                "rotate-top",
+                "rotate-top-right",
+                "rotate-top-left",
+                "rotate-bottom-right",
+                "rotate-bottom-left",
+                "flip-left",
+                "flip-right",
+                "flip-bottom",
+                "flip-top",
+                "flip-top-right",
+                "flip-top-left",
+                "flip-bottom-right",
+                "flip-bottom-left"
+            ].map((variant) => (
+              <div className="relative flex flex-col items-start justify-start">
+                <p className="my-4 font-bold">
+                  {variant
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}{" "}
+                  Variant
+                </p>
+                <ZyfloAOS
+                  once={false}
+                  key={variant}
+                  amount={0.4}
+                  duration={0.4}
+                  easing="ease-in-out"
+                  variant={variant}
+                >
+                  <div className="flex size-52 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
+                    <p className="font-bold">Content goes here</p>
+                  </div>
+                </ZyfloAOS>
+              </div>
+            ))}
+          </div>
+    </ZyfloWindowMockup>
+  </TabsContent>
+  
+  <TabsContent value="code">
+    <ComponentSource>
+```tsx showLineNumbers wrapLines
+import ZyfloAOS from "@/components/zyflo/aos"
+ <div className="relative flex flex-row flex-wrap items-start justify-start gap-8">
+    {[
+        "fade",
+        "slide-left",
+        "slide-right",
+        "slide-top",
+        "slide-bottom",
+        "slide-top-right",
+        "slide-top-left",
+        "slide-bottom-right",
+        "slide-bottom-left",
+        "scale-center",
+        "scale-left",
+        "scale-right",
+        "scale-bottom",
+        "scale-top",
+        "scale-top-right",
+        "scale-top-left",
+        "scale-bottom-right",
+        "scale-bottom-left",
+        "rotate-left",
+        "rotate-right",
+        "rotate-bottom",
+        "rotate-top",
+        "rotate-top-right",
+        "rotate-top-left",
+        "rotate-bottom-right",
+        "rotate-bottom-left",
+        "flip-left",
+        "flip-right",
+        "flip-bottom",
+        "flip-top",
+        "flip-top-right",
+        "flip-top-left",
+        "flip-bottom-right",
+        "flip-bottom-left"
+    ].map((variant) => (
+        <div className="relative flex flex-col items-start justify-start">
+            <p className="my-4 font-bold">
+                {variant
+                .split("-")
+                .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(" ")}{" "}
+                Variant
+            </p>
+            <ZyfloAOS
+                once={false} // set to true if you want the animation to only trigger once
+                key={variant}
+                amount={0.4} // adjust as needed
+                duration={1.2} // adjust as needed
+                easing="ease-in-out" // chose any easing from the available easings
+                variant={variant}
+            >
+                <div className="flex size-52 items-center justify-center rounded-2xl">
+                    <p className="font-bold">Content goes here</p>
+                </div>
+            </ZyfloAOS>
+        </div>
+    ))}
+</div>
+```
+</ComponentSource>
+  </TabsContent>
+</Tabs>
+
+
+## Props
+
+The ZyfloAOS component accepts the following props:
+
+<Table>
+  <TableCaption>ZyfloAOS Component Props</TableCaption>
+  <TableHeader>
+    <TableRow className="border-foreground/50 border-b font-bold text-foreground">
+      <TableHead className="md:w-[19%] w-[35%]">Prop</TableHead>
+      <TableHead className="w-[25%] md:block hidden">Type</TableHead>
+      <TableHead className="w-[15%] lg:block hidden">Default</TableHead>
+      <TableHead className="lg:w-[41%] md:w-[56%] w-[65%]">Description</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">children</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ReactNode</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">-</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The content to be animated</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">variant</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAOSVariant</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">"fade"</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The animation variant to use</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">duration</TableCell>
+      <TableCell className="w-[25%] md:block hidden">number</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">0.5</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The duration of the animation in seconds</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">easing</TableCell>
+      <TableCell className="w-[25%] md:block hidden">ZyfloAOSEasing</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">"easeInOut"</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The easing function to use for the animation</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">amount</TableCell>
+      <TableCell className="w-[25%] md:block hidden">number</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">0</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">The amount of the element that needs to be visible to trigger the animation</TableCell>
+    </TableRow>
+    <TableRow>
+      <TableCell className="md:w-[19%] w-[35%]">once</TableCell>
+      <TableCell className="w-[25%] md:block hidden">boolean</TableCell>
+      <TableCell className="w-[15%] lg:block hidden">false</TableCell>
+      <TableCell className="lg:w-[41%] md:w-[56%] w-[65%]">Whether the animation should only trigger once</TableCell>
+    </TableRow>
+  </TableBody>
+</Table>
+
+## Variants
+
+The ZyfloAOS component supports the following animation variants:
+
+- `fade`
+- `slide-left`
+- `slide-right`
+- `slide-top`
+- `slide-bottom`
+- `slide-top-right`
+- `slide-top-left`
+- `slide-bottom-right`
+- `slide-bottom-left`
+- `scale-center`
+- `scale-left`
+- `scale-right`
+- `scale-bottom`
+- `scale-top`
+- `scale-top-right`
+- `scale-top-left`
+- `scale-bottom-right`
+- `scale-bottom-left`
+- `rotate-left`
+- `rotate-right`
+- `rotate-bottom`
+- `rotate-top`
+- `rotate-top-right`
+- `rotate-top-left`
+- `rotate-bottom-right`
+- `rotate-bottom-left`
+- `flip-left`
+- `flip-right`
+- `flip-bottom`
+- `flip-top`
+- `flip-top-right`
+- `flip-top-left`
+- `flip-bottom-right`
+- `flip-bottom-left`
+
+## Easing Functions
+
+The ZyfloAOS component supports the following easing functions:
+
+- `easeOut`
+- `easeIn`
+- `easeInOut`
+- `circOut`
+- `spring`
+
+## Customization
+
+The component uses Framer Motion for animations. You can customize its behavior by modifying the props or extending the component in your project.
+
+## Accessibility
+
+When using animations, consider the following accessibility guidelines:
+
+- Use animations sparingly to avoid overwhelming users or causing motion sickness.
+- Provide a way for users to disable animations if needed.
+- Ensure that important content is still accessible even if animations are disabled.
+
+## Notes
+
+- The component uses Framer Motion for animations. Make sure you have Framer Motion installed in your project.
+- Performance may be affected if you use too many animated elements on a single page.
+
+## Contributing
+
+If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on our GitHub repository. We appreciate your contributions and are always open to collaboration.
+
+Thank you for considering contributing to Zyflo!
+

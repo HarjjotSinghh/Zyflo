@@ -19,4 +19,6 @@ export const zyfloComponents = [
   "Badge",
   "Link Embed",
   "Liquid Button",
+  "Animated Background",
+  "Animate On Scroll",
 ]
