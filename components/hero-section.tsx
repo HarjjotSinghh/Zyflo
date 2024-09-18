@@ -15,6 +15,7 @@ import {
   zyfloFadeBlurInFromBottomVariants,
   zyfloFadeInFromTopVariants
 } from "@/zyflo.config"
+import { zyfloComponents } from "@/config/site"
 
 export default function HeroSection() {
   const ref = useRef(null)
@@ -91,7 +92,7 @@ export default function HeroSection() {
               className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 sm:mt-16 sm:gap-x-16 sm:gap-y-10 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-start lg:text-left"
             >
               {[
-                ["Components", "3 (So Far)"],
+                ["Components", `${zyfloComponents.length} (So Far)`],
                 ["Stars on GitHub", "0 (Sad ngl)"],
                 ["Contributors", "1 (Indie devs be like)"]
               ].map(([name, value], i) => (

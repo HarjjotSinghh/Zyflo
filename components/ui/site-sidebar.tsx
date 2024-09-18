@@ -29,13 +29,13 @@ export function SiteSidebar({
                   link={{
                     label: route.title,
                     href: route.href,
-                    icon: <route.icon className="size-6 text-primary" />
+                    icon: <route.icon className="size-6 text-foreground" />
                   }}
                   content={
                     <div className="flex min-w-fit flex-col gap-2 " key={idx}>
                       <Anchor
                         href={`/docs/${route.href}`}
-                        className="hover:text-current"
+                        className="zyflo-transition hover:text-primary"
                       >
                         <h5 className="mb-2 inline-flex items-center gap-2 font-medium text-foreground sm:text-sm">
                           {<route.icon className="size-6" />}
@@ -48,6 +48,7 @@ export function SiteSidebar({
                             activeClassName="font-medium text-primary"
                             key={`/docs/${route.href}${subItem.href}`}
                             href={`/docs/${route.href}${subItem.href}`}
+                            className="zyflo-transition hover:text-primary"
                           >
                             {subItem.title}
                           </Anchor>

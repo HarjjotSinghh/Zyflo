@@ -110,11 +110,21 @@ module.exports = {
         "accordion-up": {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 }
+        },
+        "liquid-slow": {
+          "0%": { transform: "translate(-25%, -75%) rotate(0deg)" },
+          "100%": { transform: "translate(-25%, -75%) rotate(360deg)" }
+        },
+        "liquid-fast": {
+          "0%": { transform: "translate(-25%, -75%) rotate(0deg)" },
+          "100%": { transform: "translate(-25%, -75%) rotate(360deg)" }
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.4s ease-out",
-        "accordion-up": "accordion-up 0.4s ease-out"
+        "accordion-up": "accordion-up 0.4s ease-out",
+        "liquid-slow": "liquid-slow 9s linear infinite",
+        "liquid-fast": "liquid-fast 4s linear infinite"
       }
     }
   },

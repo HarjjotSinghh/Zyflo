@@ -86,8 +86,8 @@ export const ZyfloIcon = ({
         y="0"
         version="1.1"
         viewBox="0 0 337 341"
-        fill={fill.light}
-        className={cn("block dark:hidden", props.className)}
+        fill={fill.dark}
+        className={cn("block size-5 dark:hidden", props.className)}
       >
         <polygon
           points="-.2 .1 336.9 .1 96.6 296.9 293.5 296.9 293.5 273.7 152 273.7 336.9 52.3 336.9 118.1 244.9 227.2 336.9 227.2 337 340.8 -.2 340.8 243.6 44.1 43.7 44.1 43.8 67.2 190.3 67.2 -.2 293.5 -.2 218.3 90.1 113.7 -.2 113.7"
@@ -100,8 +100,8 @@ export const ZyfloIcon = ({
         y="0"
         version="1.1"
         viewBox="0 0 337 341"
-        className={cn("hidden dark:block", props.className)}
-        fill={fill.dark}
+        className={cn("hidden size-5 dark:block", props.className)}
+        fill={fill.light}
         {...props}
       >
         <polygon

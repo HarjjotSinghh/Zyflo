@@ -18,4 +18,5 @@ export const zyfloComponents = [
   "Alert",
   "Badge",
   "Link Embed",
+  "Liquid Button",
 ]

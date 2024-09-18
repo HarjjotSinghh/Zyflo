@@ -13,7 +13,7 @@ export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
         <div className="flex w-full flex-col items-start gap-4 md:flex-col">
           <Icons.logo />
           <div className="pb-2 text-center text-sm leading-loose md:text-left">
-            <p className="max-w-sm text-foreground/80">
+            <p className="max-w-sm text-left text-foreground/80">
               Zyflo is an open-source UI library with the goal to help
               developers build eye-catching and responsive web apps. We are on a
               misison to make web interfaces livelier and more attractive.

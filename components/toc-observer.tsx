@@ -57,7 +57,9 @@ export default function TocObserver({ data }: Props) {
               "pl-0": level == 2,
               "pl-4": level == 3,
               "pl-8 ": level == 4,
-              "font-medium text-primary": activeId == href.slice(1)
+              "font-medium text-primary zyflo-transition":
+                activeId == href.slice(1),
+              "zyflo-transition hover:text-primary": activeId != href.slice(1)
             })}
           >
             {text}

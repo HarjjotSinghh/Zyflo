@@ -56,6 +56,13 @@ function Markdown({ children }: PropsWithChildren) {
   )
 }
 
+function toTitleCase(str: string) {
+  return str.replace(
+    /\w\S*/g,
+    (txt) => txt.charAt(0).toUpperCase() + txt.slice(1).toLowerCase()
+  )
+}
+
 export async function generateMetadata({
   params
 }: PageProps): Promise<Metadata> {
@@ -68,11 +75,12 @@ export async function generateMetadata({
   }
 
   const ogImage = `https://zyflo.co/og/${slug[0]}/${slug[slug.length - 1]}.png`
+  console.log(ogImage)
 
   return {
     title:
       typeof slug[0] === "string" && slug[0].toLowerCase() === "components"
-        ? "Zyflo "
+        ? toTitleCase(slug[slug.length - 1].replaceAll("-", " "))
         : "" + res.frontmatter.title,
     description: res.frontmatter.description,
     openGraph: {

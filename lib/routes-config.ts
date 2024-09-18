@@ -20,6 +20,7 @@ export const ROUTES = [
             { title: "Alert", href: "/alert", description: "Learn how to use the Zyflo Alert component to create a visually appealing and informative alert box." },
             { title: "Badge", href: "/badge", description: "Learn how to use the Zyflo Badge component to create a customizable badge." },
             { title: "Link Embed", href: "/link-embed", description: "Learn how to use the Zyflo Link Embed component to create a customizable link embed." },
+            { title: "Liquid Button", href: "/liquid-button", description: "Learn how to use the Zyflo Liquid Button component to create a customizable liquid button." },
         ],
         description: "Explore the various components available in Zyflo and learn how to use them in your project.",
     }
