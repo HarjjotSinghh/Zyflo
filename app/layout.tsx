@@ -198,7 +198,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={"min-h-screen bg-background font-zyflo antialiased"}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <Toaster />
           <TailwindIndicator />
         </ThemeProvider>
       </body>

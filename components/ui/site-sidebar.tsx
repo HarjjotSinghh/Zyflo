@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { ROUTES } from "@/lib/routes-config"
 import Anchor from "../anchor"
+import { ZyfloBadge } from "../zyflo/badge"
 
 export function SiteSidebar({
   className,
@@ -14,7 +15,7 @@ export function SiteSidebar({
   return (
     <div
       className={cn(
-        `hidden flex-col border-r-2 border-primary/10 bg-transparent backdrop-blur-3xl sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`,
+        `hidden flex-col border-r-2 border-primary/10 bg-transparent sm:flex lg:w-fit lg:flex-shrink lg:flex-grow-0`,
         className
       )}
       {...props}
@@ -48,9 +49,18 @@ export function SiteSidebar({
                             activeClassName="font-medium text-primary"
                             key={`/docs/${route.href}${subItem.href}`}
                             href={`/docs/${route.href}${subItem.href}`}
-                            className="zyflo-transition hover:text-primary"
+                            className="flex w-full flex-row items-center justify-between gap-3 zyflo-transition hover:text-primary"
                           >
                             {subItem.title}
+                            {subItem.new && (
+                              <ZyfloBadge
+                                variant="secondary"
+                                size="sm"
+                                className="!h-4 border-primary/30 !px-[6px] !py-[0px] text-[9px] hover:border-primary/50"
+                              >
+                                New
+                              </ZyfloBadge>
+                            )}
                           </Anchor>
                         ))}
                       </div>

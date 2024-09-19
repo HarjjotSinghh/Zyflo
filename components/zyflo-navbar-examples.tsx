@@ -1,14 +1,13 @@
 import React from "react"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import ZyfloWindowMockup from "@/components/ui/window-mockup"
 import ZyfloNavbar from "@/components/zyflo/navbar"
 import { Button } from "@/components/ui/button"
 import { FaHome, FaInfoCircle, FaEnvelope } from "react-icons/fa"
 import ZyfloWindowMockupPlaceholder from "@/components/ui/window-mockup-placeholder"
 
-const ZyfloNavbarExamples = () => {
+const ZyfloNavbarExamples = ({ key }: { key: string }) => {
   return (
-    <div className="grid grid-cols-1 gap-8 pb-8 md:grid-cols-2">
+    <div className="grid grid-cols-1 gap-8 pb-8 md:grid-cols-2" key={key}>
       <div className="flex flex-col items-start justify-start gap-2">
         <h5 className="mb-4 mt-8">With Image Logo</h5>
         <ZyfloWindowMockup className="h-full max-w-2xl !p-0">

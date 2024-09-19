@@ -1,6 +1,7 @@
 import HeroSection from "@/components/hero-section"
 
 import ComponentsPreview from "@/components/components-preview"
+import { cache } from "react"
 
 export default async function IndexPage() {
   const getGithubRepoStars = async () => {
@@ -16,11 +17,12 @@ export default async function IndexPage() {
     return data.stargazers_count as number
   }
 
-  const stars = await getGithubRepoStars()
+  const stars = cache(async () => await getGithubRepoStars())
+  const starCount = await stars()
 
   return (
     <>
-      <HeroSection stars={stars} />
+      <HeroSection stars={starCount ?? 0} />
       <ComponentsPreview />
     </>
   )

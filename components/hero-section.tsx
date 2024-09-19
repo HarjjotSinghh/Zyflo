@@ -33,13 +33,14 @@ export default function HeroSection({ stars }: { stars: number }) {
             <GradualSpacing
               textClassName="justify-start"
               visiblity={isInView}
-              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-foreground sm:text-7xl"
+              className="font-geist max-w-2xl !text-3xl font-normal tracking-tighter text-foreground sm:!text-6xl"
               text={"Make your UI flow"}
             />
+            <div className="h-2 opacity-0">.</div>
             <GradualSpacing
               textClassName="justify-start"
               visiblity={isInView}
-              className="font-geist max-w-2xl text-5xl font-normal tracking-tighter text-foreground sm:text-7xl"
+              className="font-geist max-w-2xl !text-3xl font-normal tracking-tighter text-foreground sm:!text-6xl"
               text={"beautifully with Zyflo"}
             />
 
@@ -74,7 +75,7 @@ export default function HeroSection({ stars }: { stars: number }) {
               viewport={{ once: true }}
               custom={9}
               href="/docs"
-              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-br from-primary-300 to-primary-500 px-10 py-2 text-center text-lg font-medium tracking-tighter text-white zyflo-transition hover:scale-[1.02] hover:text-white/90 hover:ring-transparent active:scale-[0.98]"
+              className="group/button text-md mt-12 flex w-fit items-center justify-center gap-2 rounded-md bg-gradient-to-r from-primary-400 to-primary-500 bg-[size:200%_200%] bg-[position:0%_0%] object-center px-10 py-2 text-center text-lg font-medium tracking-tighter text-white shadow-[0_0_20px_hsl(var(--primary)/0.2)] zyflo-transition hover:scale-[1.02] hover:bg-[position:100%_100%] hover:text-white/90 hover:shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:ring-transparent active:scale-[0.98] dark:shadow-[0_0_20px_hsl(var(--primary)/0.4)] dark:hover:shadow-[0_0_30px_hsl(var(--primary)/0.6)]"
             >
               Get Started
               <div

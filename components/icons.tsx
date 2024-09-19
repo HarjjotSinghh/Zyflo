@@ -24,6 +24,7 @@ import {
   MoreVertical,
   Pizza,
   Plus,
+  RefreshCcw,
   ScanEye,
   Settings,
   SquareTerminal,
@@ -158,5 +159,6 @@ export const Icons = {
   preview: AppWindow,
   code: SquareTerminal,
   alertTriangle: AlertTriangle,
-  info: Info
+  info: Info,
+  refresh: RefreshCcw
 }

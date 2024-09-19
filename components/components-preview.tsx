@@ -31,11 +31,15 @@ import { Icons } from "./icons"
 import ZyfloWindowMockup from "./ui/window-mockup"
 import ZyfloCursor from "./zyflo/cursor-follow"
 import { Button } from "./ui/button"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import ZyfloGlitchText, {
   PossibleZyfloGlitchTextVariant,
   ZyfloGlitchTextVariant
 } from "./zyflo/glitch-text"
+import ZyfloProgress, {
+  PossibleZyfloProgressVariant,
+  ZyfloProgressVariant
+} from "./zyflo/progress"
 
 export default function ComponentsPreview() {
   const spotBlurRef = useRef<HTMLDivElement>(null)
@@ -44,13 +48,56 @@ export default function ComponentsPreview() {
   const invertedRef = useRef<HTMLDivElement>(null)
   const defaultRef = useRef<HTMLDivElement>(null)
 
+  const [replayKeys, setReplayKeys] = useState({
+    navbar: "navbar",
+    alert: "alert",
+    badge: "badge",
+    linkEmbed: "linkEmbed",
+    progressPulseEnabled: "progressPulseEnabled",
+    progressPulseDisabled: "progressPulseDisabled"
+  })
+
+  const handleReplay = (key: keyof typeof replayKeys) => {
+    setReplayKeys((prev) => ({ ...prev, [key]: Math.random().toString() }))
+  }
+
   return (
     <section className="relative flex items-center justify-center space-y-6 border-t-2 border-primary/20 bg-primary-0/50  pb-24 pt-16 dark:bg-primary-1000/50 lg:pb-32 lg:pt-16">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-4 px-4 text-center md:px-8 lg:px-12 xl:px-16">
-        <h2>Zyflo Navbar Component</h2>
-        <ZyfloNavbarExamples />
-        <h2 className="mb-4">Zyflo Alert Component</h2>
-        <div className="flex flex-row flex-wrap items-start justify-start gap-4">
+        <div className="flex w-full items-center justify-start gap-4">
+          <h2>Zyflo Navbar Component</h2>
+          <Button
+            onClick={() => handleReplay("navbar")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Navbar Animations"
+            title="Replay Navbar Animations"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">Replay Navbar Animations</span>
+          </Button>
+        </div>
+        <ZyfloNavbarExamples key={replayKeys.navbar.toString()} />
+
+        <div className="mb-4 flex w-full items-center justify-start gap-4">
+          <h2 className="">Zyflo Alert Component</h2>
+          <Button
+            onClick={() => handleReplay("alert")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Alert Animations"
+            title="Replay Alert Animations"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">Replay Alert Animations</span>
+          </Button>
+        </div>
+        <div
+          className="flex w-full flex-row flex-wrap items-start justify-start gap-4"
+          key={replayKeys.alert.toString()}
+        >
           {PossibleZyfloAlertType.map(
             (variant) =>
               variant !== "transparent" && (
@@ -82,59 +129,95 @@ export default function ComponentsPreview() {
                   // }}
                   variant={variant as ZyfloAlertType}
                   triggerWhenInView={true}
-                  className="h-full max-w-xs"
+                  className="h-full max-w-[350px]"
                 />
               )
           )}
         </div>
-        <h2 className="!mt-16">Zyflo Badge Component</h2>
-        <h5 className="my-4">Small Variants</h5>
-        <div className="flex flex-row flex-wrap items-start justify-start gap-4">
-          {PossibleZyfloBadgeVariant.map((variant) => (
-            <ZyfloBadge
-              size="sm"
-              key={variant}
-              className="capitalize"
-              variant={variant as ZyfloBadgeVariant}
-              icon={<Icons.billing className="size-4" />}
-              iconPlacement="left"
-            >
-              Badge ({variant})
-            </ZyfloBadge>
-          ))}
+
+        <div className="mt-16 flex w-full items-center justify-start gap-4">
+          <h2 className="">Zyflo Badge Component</h2>
+          <Button
+            onClick={() => handleReplay("badge")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Badge Animations"
+            title="Replay Badge Animations"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">Replay Badge Animations</span>
+          </Button>
         </div>
-        <h5 className="my-4">Medium Variants</h5>
-        <div className="flex flex-row flex-wrap items-start justify-start gap-4">
-          {PossibleZyfloBadgeVariant.map((variant) => (
-            <ZyfloBadge
-              size="md"
-              key={variant}
-              className="capitalize"
-              variant={variant as ZyfloBadgeVariant}
-              icon={<Icons.billing className="size-5" />}
-              iconPlacement="right"
-            >
-              Badge ({variant})
-            </ZyfloBadge>
-          ))}
+        <div
+          className="flex flex-col items-start justify-start gap-4"
+          key={replayKeys.badge.toString()}
+        >
+          <h5 className="mb-0 mt-6">Small Variants</h5>
+          <div className="flex flex-row flex-wrap items-start justify-start gap-4">
+            {PossibleZyfloBadgeVariant.map((variant) => (
+              <ZyfloBadge
+                size="sm"
+                key={variant}
+                className="capitalize"
+                variant={variant as ZyfloBadgeVariant}
+                icon={<Icons.billing className="size-4" />}
+                iconPlacement="left"
+              >
+                Badge ({variant})
+              </ZyfloBadge>
+            ))}
+          </div>
+          <h5 className="mb-0 mt-6">Medium Variants</h5>
+          <div className="flex flex-row flex-wrap items-start justify-start gap-4">
+            {PossibleZyfloBadgeVariant.map((variant) => (
+              <ZyfloBadge
+                size="md"
+                key={variant}
+                className="capitalize"
+                variant={variant as ZyfloBadgeVariant}
+                icon={<Icons.billing className="size-5" />}
+                iconPlacement="right"
+              >
+                Badge ({variant})
+              </ZyfloBadge>
+            ))}
+          </div>
+          <h5 className="mb-0 mt-6">Large Variants</h5>
+          <div className="flex flex-row flex-wrap items-start justify-start gap-4">
+            {PossibleZyfloBadgeVariant.map((variant) => (
+              <ZyfloBadge
+                size="lg"
+                key={variant}
+                className="capitalize"
+                variant={variant as ZyfloBadgeVariant}
+                icon={<Icons.billing className="size-6" />}
+                iconPlacement="left"
+              >
+                Badge ({variant})
+              </ZyfloBadge>
+            ))}
+          </div>
         </div>
-        <h5 className="my-4">Large Variants</h5>
-        <div className="flex flex-row flex-wrap items-start justify-start gap-4">
-          {PossibleZyfloBadgeVariant.map((variant) => (
-            <ZyfloBadge
-              size="lg"
-              key={variant}
-              className="capitalize"
-              variant={variant as ZyfloBadgeVariant}
-              icon={<Icons.billing className="size-6" />}
-              iconPlacement="left"
-            >
-              Badge ({variant})
-            </ZyfloBadge>
-          ))}
+
+        <div className="mb-4 mt-16 flex w-full items-center justify-start gap-4">
+          <h2 className="">Zyflo Link Embed Component</h2>
+          <Button
+            onClick={() => handleReplay("linkEmbed")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Link Embed Animations"
+            title="Replay Link Embed Animations"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">Replay Link Embed Animations</span>
+          </Button>
         </div>
-        <h2 className="!mt-16">Zyflo Link Embed Component</h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div
+          className="grid grid-cols-1 gap-8 md:grid-cols-2"
+          key={replayKeys.linkEmbed.toString()}
+        >
           {ZyfloLinkEmbedVariants.map((variant) => (
             <div className="flex flex-col items-start justify-start gap-4">
               <h4>
@@ -149,8 +232,9 @@ export default function ComponentsPreview() {
             </div>
           ))}
         </div>
+
         <h2 className="!mt-16">Zyflo Liquid Button Component</h2>
-        <h5 className="my-4">Small Variants</h5>
+        <h5 className="mb-0 mt-6">Small Variants</h5>
         <div className="flex flex-row flex-wrap items-start justify-start gap-4">
           {PossibleZyfloLiquidButtonVariant.map((variant) => (
             <ZyfloLiquidButton
@@ -164,7 +248,7 @@ export default function ComponentsPreview() {
             </ZyfloLiquidButton>
           ))}
         </div>
-        <h5 className="my-4">Medium Variants</h5>
+        <h5 className="mb-0 mt-6">Medium Variants</h5>
         <div className="flex flex-row flex-wrap items-start justify-start gap-4">
           {PossibleZyfloLiquidButtonVariant.map((variant) => (
             <ZyfloLiquidButton
@@ -178,7 +262,7 @@ export default function ComponentsPreview() {
             </ZyfloLiquidButton>
           ))}
         </div>
-        <h5 className="my-4">Large Variants</h5>
+        <h5 className="mb-0 mt-6">Large Variants</h5>
         <div className="flex flex-row flex-wrap items-start justify-start gap-4">
           {PossibleZyfloLiquidButtonVariant.map((variant) => (
             <ZyfloLiquidButton
@@ -192,6 +276,7 @@ export default function ComponentsPreview() {
             </ZyfloLiquidButton>
           ))}
         </div>
+
         <h2 className="!mt-16">Zyflo Animated Background Component</h2>
         <div className="relative grid grid-cols-1 items-start justify-start gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
           {PossibleZyfloAnimatedBackgroundVariant.filter(
@@ -254,34 +339,34 @@ export default function ComponentsPreview() {
             </div>
           </div>
         </div>
+
         <h2 className="!mt-16">Zyflo AOS Component</h2>
         <div className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {Array.from(PossibleZyfloAOSVariants)
-            .sort((a, b) => a.localeCompare(b))
-            .map((variant) => (
-              <div className="relative flex flex-col items-start justify-start">
-                <p className="my-4 line-clamp-1 text-sm font-bold">
-                  {variant
-                    .split("-")
-                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                    .join(" ")}{" "}
-                  Variant
-                </p>
-                <ZyfloAOS
-                  once={false}
-                  key={variant}
-                  amount={0.4}
-                  duration={1.2}
-                  easing="spring"
-                  variant={variant as ZyfloAOSVariant}
-                >
-                  <div className="flex size-44 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
-                    <p className="font-bold">Content goes here</p>
-                  </div>
-                </ZyfloAOS>
-              </div>
-            ))}
+          {Array.from(PossibleZyfloAOSVariants).map((variant) => (
+            <div className="relative flex flex-col items-start justify-start">
+              <p className="my-4 line-clamp-1 text-sm font-bold">
+                {variant
+                  .split("-")
+                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                  .join(" ")}{" "}
+                Variant
+              </p>
+              <ZyfloAOS
+                once={false}
+                key={variant}
+                amount={0.4}
+                duration={1.2}
+                easing="spring"
+                variant={variant as ZyfloAOSVariant}
+              >
+                <div className="flex size-44 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
+                  <p className="font-bold">Content goes here</p>
+                </div>
+              </ZyfloAOS>
+            </div>
+          ))}
         </div>
+
         <h2 className="!mt-16">Zyflo Cursor Component</h2>
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
           <div className="flex flex-col items-start justify-start">
@@ -365,6 +450,7 @@ export default function ComponentsPreview() {
             </ZyfloWindowMockup>
           </div>
         </div>
+
         <h2 className="!mt-16">Zyflo Glitch Text Component</h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {PossibleZyfloGlitchTextVariant.map((variant) => (
@@ -389,6 +475,82 @@ export default function ComponentsPreview() {
                 }
                 text="Glitch Text Example"
                 className="text-left"
+              />
+            </div>
+          ))}
+        </div>
+
+        <h2 className="!mt-16">Zyflo Progress Component</h2>
+
+        <div className="mt-6 flex w-full items-center justify-start gap-4">
+          <h3 className="">Pulse Enabled</h3>
+          <Button
+            onClick={() => handleReplay("progressPulseEnabled")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Progress Animations (Pulse Enabled)"
+            title="Replay Progress Animations (Pulse Enabled)"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">
+              Replay Progress Animations (Pulse Enabled)
+            </span>
+          </Button>
+        </div>
+        <div
+          className="grid w-full grid-cols-1 gap-8 md:grid-cols-2"
+          key={replayKeys.progressPulseEnabled.toString()}
+        >
+          {PossibleZyfloProgressVariant.map((variant) => (
+            <div className="flex w-full min-w-full flex-col items-start justify-start md:min-w-[250px] lg:min-w-[300px] xl:min-w-[500px]">
+              <p className="my-4 text-sm font-bold capitalize">
+                Progress ({variant.replaceAll("-", " ")})
+              </p>
+              <ZyfloProgress
+                variant={variant as ZyfloProgressVariant}
+                progress={69}
+                size="lg"
+                className="w-full"
+                pulse={true}
+                progressMessage="completed"
+              />
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-6 flex w-full items-center justify-start gap-4">
+          <h3 className="">Pulse Disabled</h3>
+          <Button
+            onClick={() => handleReplay("progressPulseDisabled")}
+            variant="secondary"
+            size="icon"
+            aria-label="Replay Progress Animations (Pulse Disabled)"
+            title="Replay Progress Animations (Pulse Disabled)"
+            className="border-2 border-primary/20 zyflo-transition hover:border-primary/40"
+          >
+            <Icons.refresh className="size-4" />
+            <span className="sr-only">
+              Replay Progress Animations (Pulse Disabled)
+            </span>
+          </Button>
+        </div>
+        <div
+          className="grid w-full grid-cols-1 gap-8 md:grid-cols-3"
+          key={replayKeys.progressPulseDisabled.toString()}
+        >
+          {PossibleZyfloProgressVariant.map((variant) => (
+            <div className="flex w-full min-w-full flex-col items-start justify-start">
+              <p className="my-4 text-sm font-bold capitalize">
+                Progress ({variant.replaceAll("-", " ")})
+              </p>
+              <ZyfloProgress
+                variant={variant as ZyfloProgressVariant}
+                progress={69}
+                size="lg"
+                className="w-full"
+                pulse={false}
+                progressMessage="completed"
               />
             </div>
           ))}
