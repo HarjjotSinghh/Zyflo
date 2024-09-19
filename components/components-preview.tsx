@@ -32,6 +32,10 @@ import ZyfloWindowMockup from "./ui/window-mockup"
 import ZyfloCursor from "./zyflo/cursor-follow"
 import { Button } from "./ui/button"
 import { useRef } from "react"
+import ZyfloGlitchText, {
+  PossibleZyfloGlitchTextVariant,
+  ZyfloGlitchTextVariant
+} from "./zyflo/glitch-text"
 
 export default function ComponentsPreview() {
   const spotBlurRef = useRef<HTMLDivElement>(null)
@@ -252,29 +256,31 @@ export default function ComponentsPreview() {
         </div>
         <h2 className="!mt-16">Zyflo AOS Component</h2>
         <div className="relative grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-          {PossibleZyfloAOSVariants.map((variant) => (
-            <div className="relative flex flex-col items-start justify-start">
-              <p className="my-4 line-clamp-1 text-sm font-bold">
-                {variant
-                  .split("-")
-                  .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-                  .join(" ")}{" "}
-                Variant
-              </p>
-              <ZyfloAOS
-                once={false}
-                key={variant}
-                amount={0.4}
-                duration={1.2}
-                easing="spring"
-                variant={variant as ZyfloAOSVariant}
-              >
-                <div className="flex size-44 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
-                  <p className="font-bold">Content goes here</p>
-                </div>
-              </ZyfloAOS>
-            </div>
-          ))}
+          {Array.from(PossibleZyfloAOSVariants)
+            .sort((a, b) => a.localeCompare(b))
+            .map((variant) => (
+              <div className="relative flex flex-col items-start justify-start">
+                <p className="my-4 line-clamp-1 text-sm font-bold">
+                  {variant
+                    .split("-")
+                    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+                    .join(" ")}{" "}
+                  Variant
+                </p>
+                <ZyfloAOS
+                  once={false}
+                  key={variant}
+                  amount={0.4}
+                  duration={1.2}
+                  easing="spring"
+                  variant={variant as ZyfloAOSVariant}
+                >
+                  <div className="flex size-44 items-center justify-center rounded-2xl border-2 border-primary/20 bg-secondary/50 shadow-[0_0_20px_0] shadow-primary/5 zyflo-transition hover:border-primary/40 hover:shadow-[0_0_40px_0] hover:shadow-primary/20">
+                    <p className="font-bold">Content goes here</p>
+                  </div>
+                </ZyfloAOS>
+              </div>
+            ))}
         </div>
         <h2 className="!mt-16">Zyflo Cursor Component</h2>
         <div className="grid w-full grid-cols-1 gap-8 md:grid-cols-2">
@@ -358,6 +364,34 @@ export default function ComponentsPreview() {
               </div>
             </ZyfloWindowMockup>
           </div>
+        </div>
+        <h2 className="!mt-16">Zyflo Glitch Text Component</h2>
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          {PossibleZyfloGlitchTextVariant.map((variant) => (
+            <div className="flex flex-col items-start justify-start">
+              <p className="my-4 text-sm font-bold capitalize">
+                Glitch Text ({variant.replaceAll("-", " ")})
+              </p>
+              <ZyfloGlitchText
+                variant={variant as ZyfloGlitchTextVariant}
+                size="lg"
+                colors={{
+                  text: "hsl(var(--foreground))",
+                  after: "#FF0000",
+                  before: "#00FFFF"
+                }}
+                intensity={
+                  variant === "transformation"
+                    ? 0.8
+                    : variant === "noise"
+                    ? 0.4
+                    : 0.8
+                }
+                text="Glitch Text Example"
+                className="text-left"
+              />
+            </div>
+          ))}
         </div>
       </div>
     </section>

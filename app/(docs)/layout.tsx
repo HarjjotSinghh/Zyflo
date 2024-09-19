@@ -81,7 +81,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
           {children}
         </div>
       </main>
-      <SiteFooter className="border-t border-muted" />
+      <SiteFooter className="border-t border-primary/10" />
     </div>
   )
 }

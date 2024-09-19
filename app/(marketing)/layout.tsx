@@ -41,7 +41,7 @@ export default async function MarketingLayout({
         // disableAnimations
       />
       <main className="flex-1">{children}</main>
-      <SiteFooter className="border-t border-muted" />
+      <SiteFooter className="border-t border-primary/10" />
     </div>
   )
 }

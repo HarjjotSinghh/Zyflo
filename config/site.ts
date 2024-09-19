@@ -22,4 +22,5 @@ export const zyfloComponents = [
   "Animated Background",
   "Animate On Scroll",
   "Cursor Follow",
+  "Glitch Text",
 ]

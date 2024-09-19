@@ -24,6 +24,7 @@ export const ROUTES = [
             { title: "Animated Background", href: "/animated-background", description: "Learn how to use the Zyflo Animated Background component to create a customizable animated background." },
             { title: "Animate On Scroll", href: "/animate-on-scroll", description: "Learn how to use the Zyflo Animate On Scroll component to create a customizable animated background." },
             { title: "Cursor Follow", href: "/cursor-follow", description: "Learn how to use the Zyflo Cursor Follow component to create a customizable cursor." },
+            { title: "Glitch Text", href: "/glitch-text", description: "Learn how to use the Zyflo Glitch Text component to create a customizable glitch text." },
         ],
         description: "Explore the various components available in Zyflo and learn how to use them in your project.",
     }

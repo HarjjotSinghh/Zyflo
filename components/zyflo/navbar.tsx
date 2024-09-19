@@ -11,11 +11,7 @@ import {
 } from "@/components/ui/drawer"
 import { RxHamburgerMenu } from "react-icons/rx"
 import { cn } from "@/lib/utils"
-import {
-  zyfloBlurInFromBottomVariants,
-  zyfloBlurInFromLeftVariants,
-  zyfloBlurInFromRightVariants
-} from "@/zyflo.config"
+import { zyfloBlurInFromBottomVariants } from "@/zyflo.config"
 import { motion, Variants } from "framer-motion"
 
 interface ZyfloNavbarItem {
@@ -93,7 +89,7 @@ export default function ZyfloNavbar({
       content
     ) : (
       <motion.div
-        variants={zyfloBlurInFromLeftVariants as unknown as Variants}
+        variants={zyfloBlurInFromBottomVariants as unknown as Variants}
         initial="initial"
         custom={0}
         whileInView="animate"
@@ -144,11 +140,7 @@ export default function ZyfloNavbar({
           ) : (
             <motion.li
               key={item.title + index}
-              variants={
-                isMobile
-                  ? (zyfloBlurInFromLeftVariants as unknown as Variants)
-                  : (zyfloBlurInFromBottomVariants as unknown as Variants)
-              }
+              variants={zyfloBlurInFromBottomVariants as unknown as Variants}
               initial="initial"
               custom={index}
               whileInView="animate"
@@ -198,7 +190,7 @@ export default function ZyfloNavbar({
         <DrawerTrigger className="block lg:hidden" asChild={true}>
           {!disableAnimations ? (
             <motion.div
-              variants={zyfloBlurInFromRightVariants as unknown as Variants}
+              variants={zyfloBlurInFromBottomVariants as unknown as Variants}
               initial="initial"
               custom={0}
               whileInView="animate"
