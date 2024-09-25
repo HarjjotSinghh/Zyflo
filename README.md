@@ -3,7 +3,15 @@
 
 ## [![CC BY-NC 4.0][cc-by-nc-shield]][cc-by-nc]
 
-
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/HarjjotSinghh/Zyflo)
+[![GitHub stars](https://badgen.net/github/stars/HarjjotSinghh/Zyflo?color=blue)](https://GitHub.com/HarjjotSinghh/Zyflo/stargazers/)
+[![Maintainer](https://badgen.net/badge/maintainer/Harjot%20Singh%20Rana/blue)](https://harjot.pro)
+[![GitHub branches](https://badgen.net/github/branches/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo)
+[![GitHub commits](https://badgen.net/github/commits/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/commits/main)
+[![GitHub last commit](https://badgen.net/github/last-commit/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/commits/main)
+[![GitHub issues](https://badgen.net/github/issues/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/issues)
+[![GitHub pull requests](https://badgen.net/github/prs/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/pulls)
+[![GitHub watchers](https://badgen.net/github/watchers/HarjjotSinghh/Zyflo?color=blue)](https://GitHub.com/HarjjotSinghh/Zyflo/watchers/)
 
 [cc-by-nc]: LICENSE
 [cc-by-nc-image]: https://licensebuttons.net/l/by-nc/4.0/88x31.png
