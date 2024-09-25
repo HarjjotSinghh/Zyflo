@@ -19,6 +19,15 @@
 [![GitHub pull requests](https://badgen.net/github/prs/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/pulls)
 [![GitHub watchers](https://badgen.net/github/watchers/HarjjotSinghh/Zyflo?color=blue)](https://GitHub.com/HarjjotSinghh/Zyflo/watchers/)
 
+[![GitHub stars](https://badgen.net/github/stars/HarjjotSinghh/Zyflo?color=blue)](https://GitHub.com/HarjjotSinghh/Zyflo/stargazers/)
+[![Maintainer](https://badgen.net/badge/maintainer/Harjot%20Singh%20Rana/blue)](https://harjot.pro)
+[![GitHub branches](https://badgen.net/github/branches/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo)
+[![GitHub commits](https://badgen.net/github/commits/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/commits/main)
+[![GitHub last commit](https://badgen.net/github/last-commit/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/commits/main)
+[![GitHub issues](https://badgen.net/github/issues/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/issues)
+[![GitHub pull requests](https://badgen.net/github/prs/HarjjotSinghh/Zyflo?color=blue)](https://github.com/HarjjotSinghh/Zyflo/pulls)
+[![GitHub watchers](https://badgen.net/github/watchers/HarjjotSinghh/Zyflo?color=blue)](https://GitHub.com/HarjjotSinghh/Zyflo/watchers/)
+
 ## Introduction
 
 Zyflo is an animated UI library which offers React components for building beautiful and accessible web applications. Zyflo puts an emphasis on flow and continuity, allowing developers to build eye-catching, responsive experiences with ease. Zyflo lets you create anything from intricate animations to simple effects in no time — all while integrating perfectly with your existing projects and making user engagement better than ever without clunky performance downgrades. Make every element in your UI flow together beautifully with Zyflo.
