@@ -195,6 +195,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
+    <head>
+      <script defer src="https://cloud.umami.is/script.js" data-website-id="9b34f4a7-9804-47bb-b48c-3d033a506aa1"></script>
+    </head>
       <body className={"min-h-screen bg-background font-zyflo antialiased"}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
